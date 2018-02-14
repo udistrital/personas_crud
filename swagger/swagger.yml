@@ -1,0 +1,1749 @@
+swagger: "2.0"
+info:
+  title: beego Test API
+  description: beego has a very cool tools to autogenerate documents for your API
+  version: 1.0.0
+  termsOfService: http://beego.me/
+  contact:
+    email: astaxie@gmail.com
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+basePath: /v1
+paths:
+  /estado_civil/:
+    get:
+      tags:
+      - estado_civil
+      description: get EstadoCivil
+      operationId: EstadoCivilController.Get All
+      parameters:
+      - in: query
+        name: query
+        description: Filter. e.g. col1:v1,col2:v2 ...
+        type: string
+      - in: query
+        name: fields
+        description: Fields returned. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: sortby
+        description: Sorted-by fields. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: order
+        description: Order corresponding to each sortby field, if single value, apply
+          to all sortby fields. e.g. desc,asc ...
+        type: string
+      - in: query
+        name: limit
+        description: Limit the size of result set. Must be an integer
+        type: string
+      - in: query
+        name: offset
+        description: Start position of result set. Must be an integer
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.EstadoCivil'
+        "403":
+          description: ""
+    post:
+      tags:
+      - estado_civil
+      description: create EstadoCivil
+      operationId: EstadoCivilController.Post
+      parameters:
+      - in: body
+        name: body
+        description: body for EstadoCivil content
+        required: true
+        schema:
+          $ref: '#/definitions/models.EstadoCivil'
+      responses:
+        "201":
+          description: '{int} models.EstadoCivil'
+        "403":
+          description: body is empty
+  /estado_civil/{id}:
+    get:
+      tags:
+      - estado_civil
+      description: get EstadoCivil by id
+      operationId: EstadoCivilController.Get One
+      parameters:
+      - in: path
+        name: id
+        description: The key for staticblock
+        required: true
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.EstadoCivil'
+        "403":
+          description: :id is empty
+    put:
+      tags:
+      - estado_civil
+      description: update the EstadoCivil
+      operationId: EstadoCivilController.Put
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to update
+        required: true
+        type: string
+      - in: body
+        name: body
+        description: body for EstadoCivil content
+        required: true
+        schema:
+          $ref: '#/definitions/models.EstadoCivil'
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.EstadoCivil'
+        "403":
+          description: :id is not int
+    delete:
+      tags:
+      - estado_civil
+      description: delete the EstadoCivil
+      operationId: EstadoCivilController.Delete
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to delete
+        required: true
+        type: string
+      responses:
+        "200":
+          description: '{string} delete success!'
+        "403":
+          description: id is empty
+  /genero/:
+    get:
+      tags:
+      - genero
+      description: get Genero
+      operationId: GeneroController.Get All
+      parameters:
+      - in: query
+        name: query
+        description: Filter. e.g. col1:v1,col2:v2 ...
+        type: string
+      - in: query
+        name: fields
+        description: Fields returned. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: sortby
+        description: Sorted-by fields. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: order
+        description: Order corresponding to each sortby field, if single value, apply
+          to all sortby fields. e.g. desc,asc ...
+        type: string
+      - in: query
+        name: limit
+        description: Limit the size of result set. Must be an integer
+        type: string
+      - in: query
+        name: offset
+        description: Start position of result set. Must be an integer
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.Genero'
+        "403":
+          description: ""
+    post:
+      tags:
+      - genero
+      description: create Genero
+      operationId: GeneroController.Post
+      parameters:
+      - in: body
+        name: body
+        description: body for Genero content
+        required: true
+        schema:
+          $ref: '#/definitions/models.Genero'
+      responses:
+        "201":
+          description: '{int} models.Genero'
+        "403":
+          description: body is empty
+  /genero/{id}:
+    get:
+      tags:
+      - genero
+      description: get Genero by id
+      operationId: GeneroController.Get One
+      parameters:
+      - in: path
+        name: id
+        description: The key for staticblock
+        required: true
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.Genero'
+        "403":
+          description: :id is empty
+    put:
+      tags:
+      - genero
+      description: update the Genero
+      operationId: GeneroController.Put
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to update
+        required: true
+        type: string
+      - in: body
+        name: body
+        description: body for Genero content
+        required: true
+        schema:
+          $ref: '#/definitions/models.Genero'
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.Genero'
+        "403":
+          description: :id is not int
+    delete:
+      tags:
+      - genero
+      description: delete the Genero
+      operationId: GeneroController.Delete
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to delete
+        required: true
+        type: string
+      responses:
+        "200":
+          description: '{string} delete success!'
+        "403":
+          description: id is empty
+  /grupo_etnico/:
+    get:
+      tags:
+      - grupo_etnico
+      description: get GrupoEtnico
+      operationId: GrupoEtnicoController.Get All
+      parameters:
+      - in: query
+        name: query
+        description: Filter. e.g. col1:v1,col2:v2 ...
+        type: string
+      - in: query
+        name: fields
+        description: Fields returned. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: sortby
+        description: Sorted-by fields. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: order
+        description: Order corresponding to each sortby field, if single value, apply
+          to all sortby fields. e.g. desc,asc ...
+        type: string
+      - in: query
+        name: limit
+        description: Limit the size of result set. Must be an integer
+        type: string
+      - in: query
+        name: offset
+        description: Start position of result set. Must be an integer
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.GrupoEtnico'
+        "403":
+          description: ""
+    post:
+      tags:
+      - grupo_etnico
+      description: create GrupoEtnico
+      operationId: GrupoEtnicoController.Post
+      parameters:
+      - in: body
+        name: body
+        description: body for GrupoEtnico content
+        required: true
+        schema:
+          $ref: '#/definitions/models.GrupoEtnico'
+      responses:
+        "201":
+          description: '{int} models.GrupoEtnico'
+        "403":
+          description: body is empty
+  /grupo_etnico/{id}:
+    get:
+      tags:
+      - grupo_etnico
+      description: get GrupoEtnico by id
+      operationId: GrupoEtnicoController.Get One
+      parameters:
+      - in: path
+        name: id
+        description: The key for staticblock
+        required: true
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.GrupoEtnico'
+        "403":
+          description: :id is empty
+    put:
+      tags:
+      - grupo_etnico
+      description: update the GrupoEtnico
+      operationId: GrupoEtnicoController.Put
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to update
+        required: true
+        type: string
+      - in: body
+        name: body
+        description: body for GrupoEtnico content
+        required: true
+        schema:
+          $ref: '#/definitions/models.GrupoEtnico'
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.GrupoEtnico'
+        "403":
+          description: :id is not int
+    delete:
+      tags:
+      - grupo_etnico
+      description: delete the GrupoEtnico
+      operationId: GrupoEtnicoController.Delete
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to delete
+        required: true
+        type: string
+      responses:
+        "200":
+          description: '{string} delete success!'
+        "403":
+          description: id is empty
+  /perfil_profesional/:
+    get:
+      tags:
+      - perfil_profesional
+      description: get PerfilProfesional
+      operationId: PerfilProfesionalController.Get All
+      parameters:
+      - in: query
+        name: query
+        description: Filter. e.g. col1:v1,col2:v2 ...
+        type: string
+      - in: query
+        name: fields
+        description: Fields returned. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: sortby
+        description: Sorted-by fields. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: order
+        description: Order corresponding to each sortby field, if single value, apply
+          to all sortby fields. e.g. desc,asc ...
+        type: string
+      - in: query
+        name: limit
+        description: Limit the size of result set. Must be an integer
+        type: string
+      - in: query
+        name: offset
+        description: Start position of result set. Must be an integer
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.PerfilProfesional'
+        "403":
+          description: ""
+    post:
+      tags:
+      - perfil_profesional
+      description: create PerfilProfesional
+      operationId: PerfilProfesionalController.Post
+      parameters:
+      - in: body
+        name: body
+        description: body for PerfilProfesional content
+        required: true
+        schema:
+          $ref: '#/definitions/models.PerfilProfesional'
+      responses:
+        "201":
+          description: '{int} models.PerfilProfesional'
+        "403":
+          description: body is empty
+  /perfil_profesional/{id}:
+    get:
+      tags:
+      - perfil_profesional
+      description: get PerfilProfesional by id
+      operationId: PerfilProfesionalController.Get One
+      parameters:
+      - in: path
+        name: id
+        description: The key for staticblock
+        required: true
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.PerfilProfesional'
+        "403":
+          description: :id is empty
+    put:
+      tags:
+      - perfil_profesional
+      description: update the PerfilProfesional
+      operationId: PerfilProfesionalController.Put
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to update
+        required: true
+        type: string
+      - in: body
+        name: body
+        description: body for PerfilProfesional content
+        required: true
+        schema:
+          $ref: '#/definitions/models.PerfilProfesional'
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.PerfilProfesional'
+        "403":
+          description: :id is not int
+    delete:
+      tags:
+      - perfil_profesional
+      description: delete the PerfilProfesional
+      operationId: PerfilProfesionalController.Delete
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to delete
+        required: true
+        type: string
+      responses:
+        "200":
+          description: '{string} delete success!'
+        "403":
+          description: id is empty
+  /persona/:
+    get:
+      tags:
+      - persona
+      description: get Persona
+      operationId: PersonaController.Get All
+      parameters:
+      - in: query
+        name: query
+        description: Filter. e.g. col1:v1,col2:v2 ...
+        type: string
+      - in: query
+        name: fields
+        description: Fields returned. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: sortby
+        description: Sorted-by fields. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: order
+        description: Order corresponding to each sortby field, if single value, apply
+          to all sortby fields. e.g. desc,asc ...
+        type: string
+      - in: query
+        name: limit
+        description: Limit the size of result set. Must be an integer
+        type: string
+      - in: query
+        name: offset
+        description: Start position of result set. Must be an integer
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.Persona'
+        "403":
+          description: ""
+    post:
+      tags:
+      - persona
+      description: create Persona
+      operationId: PersonaController.Post
+      parameters:
+      - in: body
+        name: body
+        description: body for Persona content
+        required: true
+        schema:
+          $ref: '#/definitions/models.Persona'
+      responses:
+        "201":
+          description: '{int} models.Persona'
+        "403":
+          description: body is empty
+  /persona/{id}:
+    get:
+      tags:
+      - persona
+      description: get Persona by id
+      operationId: PersonaController.Get One
+      parameters:
+      - in: path
+        name: id
+        description: The key for staticblock
+        required: true
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.Persona'
+        "403":
+          description: :id is empty
+    put:
+      tags:
+      - persona
+      description: update the Persona
+      operationId: PersonaController.Put
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to update
+        required: true
+        type: string
+      - in: body
+        name: body
+        description: body for Persona content
+        required: true
+        schema:
+          $ref: '#/definitions/models.Persona'
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.Persona'
+        "403":
+          description: :id is not int
+    delete:
+      tags:
+      - persona
+      description: delete the Persona
+      operationId: PersonaController.Delete
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to delete
+        required: true
+        type: string
+      responses:
+        "200":
+          description: '{string} delete success!'
+        "403":
+          description: id is empty
+  /persona_estado_civil/:
+    get:
+      tags:
+      - persona_estado_civil
+      description: get PersonaEstadoCivil
+      operationId: PersonaEstadoCivilController.Get All
+      parameters:
+      - in: query
+        name: query
+        description: Filter. e.g. col1:v1,col2:v2 ...
+        type: string
+      - in: query
+        name: fields
+        description: Fields returned. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: sortby
+        description: Sorted-by fields. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: order
+        description: Order corresponding to each sortby field, if single value, apply
+          to all sortby fields. e.g. desc,asc ...
+        type: string
+      - in: query
+        name: limit
+        description: Limit the size of result set. Must be an integer
+        type: string
+      - in: query
+        name: offset
+        description: Start position of result set. Must be an integer
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.PersonaEstadoCivil'
+        "403":
+          description: ""
+    post:
+      tags:
+      - persona_estado_civil
+      description: create PersonaEstadoCivil
+      operationId: PersonaEstadoCivilController.Post
+      parameters:
+      - in: body
+        name: body
+        description: body for PersonaEstadoCivil content
+        required: true
+        schema:
+          $ref: '#/definitions/models.PersonaEstadoCivil'
+      responses:
+        "201":
+          description: '{int} models.PersonaEstadoCivil'
+        "403":
+          description: body is empty
+  /persona_estado_civil/{id}:
+    get:
+      tags:
+      - persona_estado_civil
+      description: get PersonaEstadoCivil by id
+      operationId: PersonaEstadoCivilController.Get One
+      parameters:
+      - in: path
+        name: id
+        description: The key for staticblock
+        required: true
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.PersonaEstadoCivil'
+        "403":
+          description: :id is empty
+    put:
+      tags:
+      - persona_estado_civil
+      description: update the PersonaEstadoCivil
+      operationId: PersonaEstadoCivilController.Put
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to update
+        required: true
+        type: string
+      - in: body
+        name: body
+        description: body for PersonaEstadoCivil content
+        required: true
+        schema:
+          $ref: '#/definitions/models.PersonaEstadoCivil'
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.PersonaEstadoCivil'
+        "403":
+          description: :id is not int
+    delete:
+      tags:
+      - persona_estado_civil
+      description: delete the PersonaEstadoCivil
+      operationId: PersonaEstadoCivilController.Delete
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to delete
+        required: true
+        type: string
+      responses:
+        "200":
+          description: '{string} delete success!'
+        "403":
+          description: id is empty
+  /persona_genero/:
+    get:
+      tags:
+      - persona_genero
+      description: get PersonaGenero
+      operationId: PersonaGeneroController.Get All
+      parameters:
+      - in: query
+        name: query
+        description: Filter. e.g. col1:v1,col2:v2 ...
+        type: string
+      - in: query
+        name: fields
+        description: Fields returned. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: sortby
+        description: Sorted-by fields. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: order
+        description: Order corresponding to each sortby field, if single value, apply
+          to all sortby fields. e.g. desc,asc ...
+        type: string
+      - in: query
+        name: limit
+        description: Limit the size of result set. Must be an integer
+        type: string
+      - in: query
+        name: offset
+        description: Start position of result set. Must be an integer
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.PersonaGenero'
+        "403":
+          description: ""
+    post:
+      tags:
+      - persona_genero
+      description: create PersonaGenero
+      operationId: PersonaGeneroController.Post
+      parameters:
+      - in: body
+        name: body
+        description: body for PersonaGenero content
+        required: true
+        schema:
+          $ref: '#/definitions/models.PersonaGenero'
+      responses:
+        "201":
+          description: '{int} models.PersonaGenero'
+        "403":
+          description: body is empty
+  /persona_genero/{id}:
+    get:
+      tags:
+      - persona_genero
+      description: get PersonaGenero by id
+      operationId: PersonaGeneroController.Get One
+      parameters:
+      - in: path
+        name: id
+        description: The key for staticblock
+        required: true
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.PersonaGenero'
+        "403":
+          description: :id is empty
+    put:
+      tags:
+      - persona_genero
+      description: update the PersonaGenero
+      operationId: PersonaGeneroController.Put
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to update
+        required: true
+        type: string
+      - in: body
+        name: body
+        description: body for PersonaGenero content
+        required: true
+        schema:
+          $ref: '#/definitions/models.PersonaGenero'
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.PersonaGenero'
+        "403":
+          description: :id is not int
+    delete:
+      tags:
+      - persona_genero
+      description: delete the PersonaGenero
+      operationId: PersonaGeneroController.Delete
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to delete
+        required: true
+        type: string
+      responses:
+        "200":
+          description: '{string} delete success!'
+        "403":
+          description: id is empty
+  /persona_grupo_etnico/:
+    get:
+      tags:
+      - persona_grupo_etnico
+      description: get PersonaGrupoEtnico
+      operationId: PersonaGrupoEtnicoController.Get All
+      parameters:
+      - in: query
+        name: query
+        description: Filter. e.g. col1:v1,col2:v2 ...
+        type: string
+      - in: query
+        name: fields
+        description: Fields returned. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: sortby
+        description: Sorted-by fields. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: order
+        description: Order corresponding to each sortby field, if single value, apply
+          to all sortby fields. e.g. desc,asc ...
+        type: string
+      - in: query
+        name: limit
+        description: Limit the size of result set. Must be an integer
+        type: string
+      - in: query
+        name: offset
+        description: Start position of result set. Must be an integer
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.PersonaGrupoEtnico'
+        "403":
+          description: ""
+    post:
+      tags:
+      - persona_grupo_etnico
+      description: create PersonaGrupoEtnico
+      operationId: PersonaGrupoEtnicoController.Post
+      parameters:
+      - in: body
+        name: body
+        description: body for PersonaGrupoEtnico content
+        required: true
+        schema:
+          $ref: '#/definitions/models.PersonaGrupoEtnico'
+      responses:
+        "201":
+          description: '{int} models.PersonaGrupoEtnico'
+        "403":
+          description: body is empty
+  /persona_grupo_etnico/{id}:
+    get:
+      tags:
+      - persona_grupo_etnico
+      description: get PersonaGrupoEtnico by id
+      operationId: PersonaGrupoEtnicoController.Get One
+      parameters:
+      - in: path
+        name: id
+        description: The key for staticblock
+        required: true
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.PersonaGrupoEtnico'
+        "403":
+          description: :id is empty
+    put:
+      tags:
+      - persona_grupo_etnico
+      description: update the PersonaGrupoEtnico
+      operationId: PersonaGrupoEtnicoController.Put
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to update
+        required: true
+        type: string
+      - in: body
+        name: body
+        description: body for PersonaGrupoEtnico content
+        required: true
+        schema:
+          $ref: '#/definitions/models.PersonaGrupoEtnico'
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.PersonaGrupoEtnico'
+        "403":
+          description: :id is not int
+    delete:
+      tags:
+      - persona_grupo_etnico
+      description: delete the PersonaGrupoEtnico
+      operationId: PersonaGrupoEtnicoController.Delete
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to delete
+        required: true
+        type: string
+      responses:
+        "200":
+          description: '{string} delete success!'
+        "403":
+          description: id is empty
+  /persona_perfil_profesional/:
+    get:
+      tags:
+      - persona_perfil_profesional
+      description: get PersonaPerfilProfesional
+      operationId: PersonaPerfilProfesionalController.Get All
+      parameters:
+      - in: query
+        name: query
+        description: Filter. e.g. col1:v1,col2:v2 ...
+        type: string
+      - in: query
+        name: fields
+        description: Fields returned. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: sortby
+        description: Sorted-by fields. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: order
+        description: Order corresponding to each sortby field, if single value, apply
+          to all sortby fields. e.g. desc,asc ...
+        type: string
+      - in: query
+        name: limit
+        description: Limit the size of result set. Must be an integer
+        type: string
+      - in: query
+        name: offset
+        description: Start position of result set. Must be an integer
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.PersonaPerfilProfesional'
+        "403":
+          description: ""
+    post:
+      tags:
+      - persona_perfil_profesional
+      description: create PersonaPerfilProfesional
+      operationId: PersonaPerfilProfesionalController.Post
+      parameters:
+      - in: body
+        name: body
+        description: body for PersonaPerfilProfesional content
+        required: true
+        schema:
+          $ref: '#/definitions/models.PersonaPerfilProfesional'
+      responses:
+        "201":
+          description: '{int} models.PersonaPerfilProfesional'
+        "403":
+          description: body is empty
+  /persona_perfil_profesional/{id}:
+    get:
+      tags:
+      - persona_perfil_profesional
+      description: get PersonaPerfilProfesional by id
+      operationId: PersonaPerfilProfesionalController.Get One
+      parameters:
+      - in: path
+        name: id
+        description: The key for staticblock
+        required: true
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.PersonaPerfilProfesional'
+        "403":
+          description: :id is empty
+    put:
+      tags:
+      - persona_perfil_profesional
+      description: update the PersonaPerfilProfesional
+      operationId: PersonaPerfilProfesionalController.Put
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to update
+        required: true
+        type: string
+      - in: body
+        name: body
+        description: body for PersonaPerfilProfesional content
+        required: true
+        schema:
+          $ref: '#/definitions/models.PersonaPerfilProfesional'
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.PersonaPerfilProfesional'
+        "403":
+          description: :id is not int
+    delete:
+      tags:
+      - persona_perfil_profesional
+      description: delete the PersonaPerfilProfesional
+      operationId: PersonaPerfilProfesionalController.Delete
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to delete
+        required: true
+        type: string
+      responses:
+        "200":
+          description: '{string} delete success!'
+        "403":
+          description: id is empty
+  /persona_tipo_discapacidad/:
+    get:
+      tags:
+      - persona_tipo_discapacidad
+      description: get PersonaTipoDiscapacidad
+      operationId: PersonaTipoDiscapacidadController.Get All
+      parameters:
+      - in: query
+        name: query
+        description: Filter. e.g. col1:v1,col2:v2 ...
+        type: string
+      - in: query
+        name: fields
+        description: Fields returned. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: sortby
+        description: Sorted-by fields. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: order
+        description: Order corresponding to each sortby field, if single value, apply
+          to all sortby fields. e.g. desc,asc ...
+        type: string
+      - in: query
+        name: limit
+        description: Limit the size of result set. Must be an integer
+        type: string
+      - in: query
+        name: offset
+        description: Start position of result set. Must be an integer
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.PersonaTipoDiscapacidad'
+        "403":
+          description: ""
+    post:
+      tags:
+      - persona_tipo_discapacidad
+      description: create PersonaTipoDiscapacidad
+      operationId: PersonaTipoDiscapacidadController.Post
+      parameters:
+      - in: body
+        name: body
+        description: body for PersonaTipoDiscapacidad content
+        required: true
+        schema:
+          $ref: '#/definitions/models.PersonaTipoDiscapacidad'
+      responses:
+        "201":
+          description: '{int} models.PersonaTipoDiscapacidad'
+        "403":
+          description: body is empty
+  /persona_tipo_discapacidad/{id}:
+    get:
+      tags:
+      - persona_tipo_discapacidad
+      description: get PersonaTipoDiscapacidad by id
+      operationId: PersonaTipoDiscapacidadController.Get One
+      parameters:
+      - in: path
+        name: id
+        description: The key for staticblock
+        required: true
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.PersonaTipoDiscapacidad'
+        "403":
+          description: :id is empty
+    put:
+      tags:
+      - persona_tipo_discapacidad
+      description: update the PersonaTipoDiscapacidad
+      operationId: PersonaTipoDiscapacidadController.Put
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to update
+        required: true
+        type: string
+      - in: body
+        name: body
+        description: body for PersonaTipoDiscapacidad content
+        required: true
+        schema:
+          $ref: '#/definitions/models.PersonaTipoDiscapacidad'
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.PersonaTipoDiscapacidad'
+        "403":
+          description: :id is not int
+    delete:
+      tags:
+      - persona_tipo_discapacidad
+      description: delete the PersonaTipoDiscapacidad
+      operationId: PersonaTipoDiscapacidadController.Delete
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to delete
+        required: true
+        type: string
+      responses:
+        "200":
+          description: '{string} delete success!'
+        "403":
+          description: id is empty
+  /relacion_personas/:
+    get:
+      tags:
+      - relacion_personas
+      description: get RelacionPersonas
+      operationId: RelacionPersonasController.Get All
+      parameters:
+      - in: query
+        name: query
+        description: Filter. e.g. col1:v1,col2:v2 ...
+        type: string
+      - in: query
+        name: fields
+        description: Fields returned. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: sortby
+        description: Sorted-by fields. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: order
+        description: Order corresponding to each sortby field, if single value, apply
+          to all sortby fields. e.g. desc,asc ...
+        type: string
+      - in: query
+        name: limit
+        description: Limit the size of result set. Must be an integer
+        type: string
+      - in: query
+        name: offset
+        description: Start position of result set. Must be an integer
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.RelacionPersonas'
+        "403":
+          description: ""
+    post:
+      tags:
+      - relacion_personas
+      description: create RelacionPersonas
+      operationId: RelacionPersonasController.Post
+      parameters:
+      - in: body
+        name: body
+        description: body for RelacionPersonas content
+        required: true
+        schema:
+          $ref: '#/definitions/models.RelacionPersonas'
+      responses:
+        "201":
+          description: '{int} models.RelacionPersonas'
+        "403":
+          description: body is empty
+  /relacion_personas/{id}:
+    get:
+      tags:
+      - relacion_personas
+      description: get RelacionPersonas by id
+      operationId: RelacionPersonasController.Get One
+      parameters:
+      - in: path
+        name: id
+        description: The key for staticblock
+        required: true
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.RelacionPersonas'
+        "403":
+          description: :id is empty
+    put:
+      tags:
+      - relacion_personas
+      description: update the RelacionPersonas
+      operationId: RelacionPersonasController.Put
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to update
+        required: true
+        type: string
+      - in: body
+        name: body
+        description: body for RelacionPersonas content
+        required: true
+        schema:
+          $ref: '#/definitions/models.RelacionPersonas'
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.RelacionPersonas'
+        "403":
+          description: :id is not int
+    delete:
+      tags:
+      - relacion_personas
+      description: delete the RelacionPersonas
+      operationId: RelacionPersonasController.Delete
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to delete
+        required: true
+        type: string
+      responses:
+        "200":
+          description: '{string} delete success!'
+        "403":
+          description: id is empty
+  /tipo_discapacidad/:
+    get:
+      tags:
+      - tipo_discapacidad
+      description: get TipoDiscapacidad
+      operationId: TipoDiscapacidadController.Get All
+      parameters:
+      - in: query
+        name: query
+        description: Filter. e.g. col1:v1,col2:v2 ...
+        type: string
+      - in: query
+        name: fields
+        description: Fields returned. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: sortby
+        description: Sorted-by fields. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: order
+        description: Order corresponding to each sortby field, if single value, apply
+          to all sortby fields. e.g. desc,asc ...
+        type: string
+      - in: query
+        name: limit
+        description: Limit the size of result set. Must be an integer
+        type: string
+      - in: query
+        name: offset
+        description: Start position of result set. Must be an integer
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.TipoDiscapacidad'
+        "403":
+          description: ""
+    post:
+      tags:
+      - tipo_discapacidad
+      description: create TipoDiscapacidad
+      operationId: TipoDiscapacidadController.Post
+      parameters:
+      - in: body
+        name: body
+        description: body for TipoDiscapacidad content
+        required: true
+        schema:
+          $ref: '#/definitions/models.TipoDiscapacidad'
+      responses:
+        "201":
+          description: '{int} models.TipoDiscapacidad'
+        "403":
+          description: body is empty
+  /tipo_discapacidad/{id}:
+    get:
+      tags:
+      - tipo_discapacidad
+      description: get TipoDiscapacidad by id
+      operationId: TipoDiscapacidadController.Get One
+      parameters:
+      - in: path
+        name: id
+        description: The key for staticblock
+        required: true
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.TipoDiscapacidad'
+        "403":
+          description: :id is empty
+    put:
+      tags:
+      - tipo_discapacidad
+      description: update the TipoDiscapacidad
+      operationId: TipoDiscapacidadController.Put
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to update
+        required: true
+        type: string
+      - in: body
+        name: body
+        description: body for TipoDiscapacidad content
+        required: true
+        schema:
+          $ref: '#/definitions/models.TipoDiscapacidad'
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.TipoDiscapacidad'
+        "403":
+          description: :id is not int
+    delete:
+      tags:
+      - tipo_discapacidad
+      description: delete the TipoDiscapacidad
+      operationId: TipoDiscapacidadController.Delete
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to delete
+        required: true
+        type: string
+      responses:
+        "200":
+          description: '{string} delete success!'
+        "403":
+          description: id is empty
+  /tipo_relacion_personas/:
+    get:
+      tags:
+      - tipo_relacion_personas
+      description: get TipoRelacionPersonas
+      operationId: TipoRelacionPersonasController.Get All
+      parameters:
+      - in: query
+        name: query
+        description: Filter. e.g. col1:v1,col2:v2 ...
+        type: string
+      - in: query
+        name: fields
+        description: Fields returned. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: sortby
+        description: Sorted-by fields. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: order
+        description: Order corresponding to each sortby field, if single value, apply
+          to all sortby fields. e.g. desc,asc ...
+        type: string
+      - in: query
+        name: limit
+        description: Limit the size of result set. Must be an integer
+        type: string
+      - in: query
+        name: offset
+        description: Start position of result set. Must be an integer
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.TipoRelacionPersonas'
+        "403":
+          description: ""
+    post:
+      tags:
+      - tipo_relacion_personas
+      description: create TipoRelacionPersonas
+      operationId: TipoRelacionPersonasController.Post
+      parameters:
+      - in: body
+        name: body
+        description: body for TipoRelacionPersonas content
+        required: true
+        schema:
+          $ref: '#/definitions/models.TipoRelacionPersonas'
+      responses:
+        "201":
+          description: '{int} models.TipoRelacionPersonas'
+        "403":
+          description: body is empty
+  /tipo_relacion_personas/{id}:
+    get:
+      tags:
+      - tipo_relacion_personas
+      description: get TipoRelacionPersonas by id
+      operationId: TipoRelacionPersonasController.Get One
+      parameters:
+      - in: path
+        name: id
+        description: The key for staticblock
+        required: true
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.TipoRelacionPersonas'
+        "403":
+          description: :id is empty
+    put:
+      tags:
+      - tipo_relacion_personas
+      description: update the TipoRelacionPersonas
+      operationId: TipoRelacionPersonasController.Put
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to update
+        required: true
+        type: string
+      - in: body
+        name: body
+        description: body for TipoRelacionPersonas content
+        required: true
+        schema:
+          $ref: '#/definitions/models.TipoRelacionPersonas'
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.TipoRelacionPersonas'
+        "403":
+          description: :id is not int
+    delete:
+      tags:
+      - tipo_relacion_personas
+      description: delete the TipoRelacionPersonas
+      operationId: TipoRelacionPersonasController.Delete
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to delete
+        required: true
+        type: string
+      responses:
+        "200":
+          description: '{string} delete success!'
+        "403":
+          description: id is empty
+definitions:
+  models.EstadoCivil:
+    title: EstadoCivil
+    type: object
+    properties:
+      Activo:
+        type: boolean
+      CodigoAbreviacion:
+        type: string
+      Descripcion:
+        type: string
+      Id:
+        type: integer
+        format: int64
+      Nombre:
+        type: string
+      NumeroOrden:
+        type: number
+        format: double
+  models.Genero:
+    title: Genero
+    type: object
+    properties:
+      Activo:
+        type: boolean
+      CodigoAbreviacion:
+        type: string
+      Descripcion:
+        type: string
+      Id:
+        type: integer
+        format: int64
+      Nombre:
+        type: string
+      NumeroOrden:
+        type: number
+        format: double
+  models.GrupoEtnico:
+    title: GrupoEtnico
+    type: object
+    properties:
+      Activo:
+        type: boolean
+      CodigoAbreviacion:
+        type: string
+      Descripcion:
+        type: string
+      Id:
+        type: integer
+        format: int64
+      Nombre:
+        type: string
+      NumeroOrden:
+        type: number
+        format: double
+  models.PerfilProfesional:
+    title: PerfilProfesional
+    type: object
+    properties:
+      Activo:
+        type: boolean
+      CodigoAbreviacion:
+        type: string
+      Descripcion:
+        type: string
+      Id:
+        type: integer
+        format: int64
+      Nombre:
+        type: string
+      NumeroOrden:
+        type: number
+        format: double
+  models.Persona:
+    title: Persona
+    type: object
+    properties:
+      CiudadNacimiento:
+        type: integer
+        format: int64
+      FechaNacimiento:
+        type: string
+        format: string
+      Id:
+        type: integer
+        format: int64
+      PrimerApellido:
+        type: string
+      PrimerNombre:
+        type: string
+      SegundoApellido:
+        type: string
+      SegundoNombre:
+        type: string
+      Usuario:
+        type: integer
+        format: int64
+  models.PersonaEstadoCivil:
+    title: PersonaEstadoCivil
+    type: object
+    properties:
+      EstadoCivil:
+        $ref: '#/definitions/models.EstadoCivil'
+      Id:
+        type: integer
+        format: int64
+      Persona:
+        $ref: '#/definitions/models.Persona'
+  models.PersonaGenero:
+    title: PersonaGenero
+    type: object
+    properties:
+      Genero:
+        $ref: '#/definitions/models.Genero'
+      Id:
+        type: integer
+        format: int64
+      Persona:
+        $ref: '#/definitions/models.Persona'
+  models.PersonaGrupoEtnico:
+    title: PersonaGrupoEtnico
+    type: object
+    properties:
+      GrupoEtnico:
+        $ref: '#/definitions/models.GrupoEtnico'
+      Id:
+        type: integer
+        format: int64
+      Persona:
+        $ref: '#/definitions/models.Persona'
+  models.PersonaPerfilProfesional:
+    title: PersonaPerfilProfesional
+    type: object
+    properties:
+      Id:
+        type: integer
+        format: int64
+      PerfilProfesional:
+        $ref: '#/definitions/models.PerfilProfesional'
+      Persona:
+        $ref: '#/definitions/models.Persona'
+  models.PersonaTipoDiscapacidad:
+    title: PersonaTipoDiscapacidad
+    type: object
+    properties:
+      Id:
+        type: integer
+        format: int64
+      Persona:
+        $ref: '#/definitions/models.Persona'
+      TipoDiscapacidad:
+        $ref: '#/definitions/models.TipoDiscapacidad'
+  models.RelacionPersonas:
+    title: RelacionPersonas
+    type: object
+    properties:
+      Id:
+        type: integer
+        format: int64
+      PersonaPrincipal:
+        $ref: '#/definitions/models.Persona'
+      PersonaRelacionada:
+        $ref: '#/definitions/models.Persona'
+      TipoRelacionPersonas:
+        $ref: '#/definitions/models.TipoRelacionPersonas'
+  models.TipoDiscapacidad:
+    title: TipoDiscapacidad
+    type: object
+    properties:
+      Activo:
+        type: boolean
+      CodigoAbreviacion:
+        type: string
+      Descripcion:
+        type: string
+      Id:
+        type: integer
+        format: int64
+      Nombre:
+        type: string
+      NumeroOrden:
+        type: number
+        format: double
+  models.TipoRelacionPersonas:
+    title: TipoRelacionPersonas
+    type: object
+    properties:
+      Activo:
+        type: boolean
+      CodigoAbreviacion:
+        type: string
+      Descripcion:
+        type: string
+      Id:
+        type: integer
+        format: int64
+      Nombre:
+        type: string
+      NumeroOrden:
+        type: number
+        format: double
+tags:
+- name: genero
+  description: |
+    GeneroController operations for Genero
+- name: persona_genero
+  description: |
+    PersonaGeneroController operations for PersonaGenero
+- name: grupo_etnico
+  description: |
+    GrupoEtnicoController operations for GrupoEtnico
+- name: persona_grupo_etnico
+  description: |
+    PersonaGrupoEtnicoController operations for PersonaGrupoEtnico
+- name: estado_civil
+  description: |
+    EstadoCivilController operations for EstadoCivil
+- name: persona_estado_civil
+  description: |
+    PersonaEstadoCivilController operations for PersonaEstadoCivil
+- name: tipo_discapacidad
+  description: |
+    TipoDiscapacidadController operations for TipoDiscapacidad
+- name: persona_tipo_discapacidad
+  description: |
+    PersonaTipoDiscapacidadController operations for PersonaTipoDiscapacidad
+- name: perfil_profesional
+  description: |
+    PerfilProfesionalController operations for PerfilProfesional
+- name: persona_perfil_profesional
+  description: |
+    PersonaPerfilProfesionalController operations for PersonaPerfilProfesional
+- name: tipo_relacion_personas
+  description: |
+    TipoRelacionPersonasController operations for TipoRelacionPersonas
+- name: persona
+  description: |
+    PersonaController operations for Persona
+- name: relacion_personas
+  description: |
+    RelacionPersonasController operations for RelacionPersonas
