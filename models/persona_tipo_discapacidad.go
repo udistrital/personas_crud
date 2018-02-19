@@ -10,7 +10,7 @@ import (
 )
 
 type PersonaTipoDiscapacidad struct {
-	Id               int               `orm:"column(id);pk"`
+	Id               int               `orm:"column(id);pk;auto"`
 	TipoDiscapacidad *TipoDiscapacidad `orm:"column(tipo_discapacidad);rel(fk)"`
 	Persona          *Persona          `orm:"column(persona);rel(fk)"`
 }
@@ -148,4 +148,19 @@ func DeletePersonaTipoDiscapacidad(id int) (err error) {
 		}
 	}
 	return
+}
+
+// GetPersonaTipoDiscapacidadByIdPersonaOnCh retrieves EstadoCivil by PersonaId. Returns error if
+// Id doesn't exist
+func GetPersonaTipoDiscapacidadByIdPersonaOnCh(id int, c chan interface{}) (err error) {
+	o := orm.NewOrm()
+	var pg []PersonaTipoDiscapacidad
+	qs := o.QueryTable(new(PersonaTipoDiscapacidad)).RelatedSel("tipo_discapacidad")
+	qs.Filter("persona", id).All(&pg, "tipo_discapacidad")
+	var descapacidades []TipoDiscapacidad
+	for _, vp := range pg {
+		descapacidades = append(descapacidades, *vp.TipoDiscapacidad)
+	}
+	c <- descapacidades
+	return nil
 }

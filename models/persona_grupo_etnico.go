@@ -10,7 +10,7 @@ import (
 )
 
 type PersonaGrupoEtnico struct {
-	Id          int          `orm:"column(id);pk"`
+	Id          int          `orm:"column(id);pk;auto"`
 	GrupoEtnico *GrupoEtnico `orm:"column(grupo_etnico);rel(fk)"`
 	Persona     *Persona     `orm:"column(persona);rel(fk)"`
 }
@@ -148,4 +148,15 @@ func DeletePersonaGrupoEtnico(id int) (err error) {
 		}
 	}
 	return
+}
+
+// GetPersonaGrupoEtnicoByIdPersonaOnCh retrieves GrupoEtnico by PersonaId. Returns error if
+// Id doesn't exist
+func GetPersonaGrupoEtnicoByIdPersonaOnCh(id int, c chan interface{}) (err error) {
+	o := orm.NewOrm()
+	var pg PersonaGrupoEtnico
+	qs := o.QueryTable(new(PersonaGrupoEtnico)).RelatedSel("grupo_etnico")
+	qs.Filter("persona", id).All(&pg, "grupo_etnico")
+	c <- pg.GrupoEtnico
+	return nil
 }

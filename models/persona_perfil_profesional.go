@@ -10,7 +10,7 @@ import (
 )
 
 type PersonaPerfilProfesional struct {
-	Id                int                `orm:"column(id);pk"`
+	Id                int                `orm:"column(id);pk;auto"`
 	PerfilProfesional *PerfilProfesional `orm:"column(perfil_profesional);rel(fk)"`
 	Persona           *Persona           `orm:"column(persona);rel(fk)"`
 }
@@ -148,4 +148,19 @@ func DeletePersonaPerfilProfesional(id int) (err error) {
 		}
 	}
 	return
+}
+
+// GetPersonaPerfilProfesionalByIdPersonaOnCh retrieves PerfilProfesional by PersonaId. Returns error if
+// Id doesn't exist
+func GetPersonaPerfilProfesionalByIdPersonaOnCh(id int, c chan interface{}) (err error) {
+	o := orm.NewOrm()
+	var pg []PersonaPerfilProfesional
+	qs := o.QueryTable(new(PersonaPerfilProfesional)).RelatedSel("perfil_profesional")
+	qs.Filter("persona", id).All(&pg, "perfil_profesional")
+	var perfiles []PerfilProfesional
+	for _, vp := range pg {
+		perfiles = append(perfiles, *vp.PerfilProfesional)
+	}
+	c <- perfiles
+	return nil
 }
