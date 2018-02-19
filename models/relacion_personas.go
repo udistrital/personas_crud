@@ -10,7 +10,7 @@ import (
 )
 
 type RelacionPersonas struct {
-	Id                   int                   `orm:"column(id);pk"`
+	Id                   int                   `orm:"column(id);pk;auto"`
 	PersonaPrincipal     *Persona              `orm:"column(persona_principal);rel(fk)"`
 	PersonaRelacionada   *Persona              `orm:"column(persona_relacionada);rel(fk)"`
 	TipoRelacionPersonas *TipoRelacionPersonas `orm:"column(tipo_relacion_personas);rel(fk)"`

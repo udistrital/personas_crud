@@ -10,7 +10,7 @@ import (
 )
 
 type EstadoCivil struct {
-	Id                int     `orm:"column(id);pk"`
+	Id                int     `orm:"column(id);pk;auto"`
 	Nombre            string  `orm:"column(nombre)"`
 	Descripcion       string  `orm:"column(descripcion);null"`
 	CodigoAbreviacion string  `orm:"column(codigo_abreviacion);null"`
@@ -152,3 +152,18 @@ func DeleteEstadoCivil(id int) (err error) {
 	}
 	return
 }
+
+// GetEstadoCivilByIdOnCh retrieves EstadoCivil by Id from Persona. Returns error if
+// Id doesn't exist and assig nil to channel
+/*func GetEstadoCivilByIdOnCh(id int, c chan interface{}) (err error) {
+	o := orm.NewOrm()
+	var v = new(EstadoCivil)
+	v = &EstadoCivil{Id: id}
+	if err = o.Read(v); err == nil {
+		c <- v
+		return nil
+	}
+	c <- nil
+	return err
+}
+*/

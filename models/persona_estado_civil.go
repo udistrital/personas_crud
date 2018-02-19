@@ -10,7 +10,7 @@ import (
 )
 
 type PersonaEstadoCivil struct {
-	Id          int          `orm:"column(id);pk"`
+	Id          int          `orm:"column(id);pk;auto"`
 	EstadoCivil *EstadoCivil `orm:"column(estado_civil);rel(fk)"`
 	Persona     *Persona     `orm:"column(persona);rel(fk)"`
 }
@@ -148,4 +148,15 @@ func DeletePersonaEstadoCivil(id int) (err error) {
 		}
 	}
 	return
+}
+
+// GetPersonaEstadoCivilByIdPersonaOnCh retrieves EstadoCivil by PersonaId. Returns error if
+// Id doesn't exist
+func GetPersonaEstadoCivilByIdPersonaOnCh(id int, c chan interface{}) (err error) {
+	o := orm.NewOrm()
+	var pg PersonaEstadoCivil
+	qs := o.QueryTable(new(PersonaEstadoCivil)).RelatedSel("estado_civil")
+	qs.Filter("persona", id).All(&pg, "estado_civil")
+	c <- pg.EstadoCivil
+	return nil
 }

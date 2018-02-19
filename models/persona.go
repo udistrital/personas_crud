@@ -11,7 +11,7 @@ import (
 )
 
 type Persona struct {
-	Id               int       `orm:"column(id);pk"`
+	Id               int       `orm:"column(id);pk;auto"`
 	PrimerNombre     string    `orm:"column(primer_nombre)"`
 	SegundoNombre    string    `orm:"column(segundo_nombre);null"`
 	PrimerApellido   string    `orm:"column(primer_apellido)"`
@@ -154,4 +154,20 @@ func DeletePersona(id int) (err error) {
 		}
 	}
 	return
+}
+
+// GetPersonaById retrieves Persona by Id. Returns error if
+// Id doesn't exist
+func GetPersonaByIdOnCh(id int, c chan interface{}) (err error) {
+	o := orm.NewOrm()
+	var v = new(Persona)
+	v = &Persona{Id: id}
+	if err = o.Read(v); err == nil {
+		c <- *v
+		return nil
+	} else {
+		c <- nil
+		return err
+	}
+
 }

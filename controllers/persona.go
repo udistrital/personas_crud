@@ -3,9 +3,10 @@ package controllers
 import (
 	"encoding/json"
 	"errors"
-	"github.com/udistrital/personas_crud/models"
 	"strconv"
 	"strings"
+
+	"github.com/udistrital/personas_crud/models"
 
 	"github.com/astaxie/beego"
 )
@@ -57,6 +58,25 @@ func (c *PersonaController) GetOne() {
 	idStr := c.Ctx.Input.Param(":id")
 	id, _ := strconv.Atoi(idStr)
 	v, err := models.GetPersonaById(id)
+	if err != nil {
+		c.Data["json"] = err.Error()
+	} else {
+		c.Data["json"] = v
+	}
+	c.ServeJSON()
+}
+
+// GetPersonaByIdFull ...
+// @Title GetPersonaByIdFull
+// @Description get Full information of Persona by id
+// @Param	id		path 	string	true		"The key for staticblock"
+// @Success 200 {object} models.TrPersona
+// @Failure 403 :id is empty
+// @router /full/:id [get]
+func (c *PersonaController) GetFull() {
+	idStr := c.Ctx.Input.Param(":id")
+	id, _ := strconv.Atoi(idStr)
+	v, err := models.GetPersonaByIdFull(id)
 	if err != nil {
 		c.Data["json"] = err.Error()
 	} else {

@@ -10,7 +10,7 @@ import (
 )
 
 type Genero struct {
-	Id                int     `orm:"column(id);pk"`
+	Id                int     `orm:"column(id);pk;auto"`
 	Nombre            string  `orm:"column(nombre)"`
 	Descripcion       string  `orm:"column(descripcion);null"`
 	CodigoAbreviacion string  `orm:"column(codigo_abreviacion);null"`
@@ -152,3 +152,18 @@ func DeleteGenero(id int) (err error) {
 	}
 	return
 }
+
+// GetGeneroById retrieves Genero by Id. Returns error if
+// Id doesn't exist
+/*func GetGeneroByIdOnCh(id int, c chan interface{}) (err error) {
+	o := orm.NewOrm()
+	var v = new(Genero)
+	v = &Genero{Id: id}
+	if err = o.Read(v); err == nil {
+		c <- *v
+		return nil
+	}
+	c <- nil
+	return err
+}
+*/

@@ -10,7 +10,7 @@ import (
 )
 
 type PersonaGenero struct {
-	Id      int      `orm:"column(id);pk"`
+	Id      int      `orm:"column(id);pk;auto"`
 	Genero  *Genero  `orm:"column(genero);rel(fk)"`
 	Persona *Persona `orm:"column(persona);rel(fk)"`
 }
@@ -148,4 +148,15 @@ func DeletePersonaGenero(id int) (err error) {
 		}
 	}
 	return
+}
+
+// GetGeneroPersonaByIdPersonaOnCh retrieves Genero by Id Persona. Returns error if
+// Id doesn't exist
+func GetGeneroPersonaByIdPersonaOnCh(id int, c chan interface{}) (err error) {
+	o := orm.NewOrm()
+	var pg PersonaGenero
+	qs := o.QueryTable(new(PersonaGenero)).RelatedSel("genero")
+	qs.Filter("persona", id).All(&pg, "genero")
+	c <- pg.Genero
+	return nil
 }
