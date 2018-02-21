@@ -160,3 +160,14 @@ func GetPersonaGrupoEtnicoByIdPersonaOnCh(id int, c chan interface{}) (err error
 	c <- pg.GrupoEtnico
 	return nil
 }
+
+// GetPersonaGrupoEtnicoByIdPersonaOnRef retrieves GrupoEtnico by PersonaId. Returns error if
+// Id doesn't exist
+func GetPersonaGrupoEtnicoByIdPersonaOnRef(id int, c *interface{}) (err error) {
+	o := orm.NewOrm()
+	var pg PersonaGrupoEtnico
+	qs := o.QueryTable(new(PersonaGrupoEtnico)).RelatedSel("grupo_etnico")
+	qs.Filter("persona", id).All(&pg, "grupo_etnico")
+	*c = pg.GrupoEtnico
+	return nil
+}

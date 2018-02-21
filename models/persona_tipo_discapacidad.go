@@ -164,3 +164,18 @@ func GetPersonaTipoDiscapacidadByIdPersonaOnCh(id int, c chan interface{}) (err 
 	c <- descapacidades
 	return nil
 }
+
+// GetPersonaTipoDiscapacidadByIdPersonaOnRef retrieves EstadoCivil by PersonaId. Returns error if
+// Id doesn't exist
+func GetPersonaTipoDiscapacidadByIdPersonaOnRef(id int, c *interface{}) (err error) {
+	o := orm.NewOrm()
+	var pg []PersonaTipoDiscapacidad
+	qs := o.QueryTable(new(PersonaTipoDiscapacidad)).RelatedSel("tipo_discapacidad")
+	qs.Filter("persona", id).All(&pg, "tipo_discapacidad")
+	var descapacidades []TipoDiscapacidad
+	for _, vp := range pg {
+		descapacidades = append(descapacidades, *vp.TipoDiscapacidad)
+	}
+	*c = descapacidades
+	return nil
+}

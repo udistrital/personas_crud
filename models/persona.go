@@ -16,9 +16,10 @@ type Persona struct {
 	SegundoNombre    string    `orm:"column(segundo_nombre);null"`
 	PrimerApellido   string    `orm:"column(primer_apellido)"`
 	SegundoApellido  string    `orm:"column(segundo_apellido);null"`
-	FechaNacimiento  time.Time `orm:"column(fecha_nacimiento);type(date)"`
-	CiudadNacimiento int       `orm:"column(ciudad_nacimiento)"`
-	Usuario          int       `orm:"column(usuario);null"`
+	FechaNacimiento  time.Time `orm:"column(fecha_nacimiento);type(date);null"`
+	CiudadNacimiento int       `orm:"column(ciudad_nacimiento);null"`
+	Usuario          string    `orm:"column(usuario);null"`
+	Ente             int       `orm:"column(ente);null"`
 }
 
 func (t *Persona) TableName() string {
@@ -156,7 +157,7 @@ func DeletePersona(id int) (err error) {
 	return
 }
 
-// GetPersonaById retrieves Persona by Id. Returns error if
+// GetPersonaByIdOnCh retrieves Persona by Id. Returns error if
 // Id doesn't exist
 func GetPersonaByIdOnCh(id int, c chan interface{}) (err error) {
 	o := orm.NewOrm()
@@ -167,6 +168,22 @@ func GetPersonaByIdOnCh(id int, c chan interface{}) (err error) {
 		return nil
 	} else {
 		c <- nil
+		return err
+	}
+
+}
+
+// GetPersonaByIdOnRef retrieves Persona by Id. Returns error if
+// Id doesn't exist
+func GetPersonaByIdOnRef(id int, c *interface{}) (err error) {
+	o := orm.NewOrm()
+	var v = new(Persona)
+	v = &Persona{Id: id}
+	if err = o.Read(v); err == nil {
+		*c = v
+		return nil
+	} else {
+		*c = nil
 		return err
 	}
 

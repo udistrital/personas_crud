@@ -93,6 +93,42 @@ func init() {
 				&controllers.RelacionPersonasController{},
 			),
 		),
+
+		beego.NSNamespace("/tipo_ente",
+			beego.NSInclude(
+				&controllers.TipoEnteController{},
+			),
+		),
+
+		beego.NSNamespace("/contacto_ente",
+			beego.NSInclude(
+				&controllers.ContactoEnteController{},
+			),
+		),
+
+		beego.NSNamespace("/identificacion",
+			beego.NSInclude(
+				&controllers.IdentificacionController{},
+			),
+		),
+
+		beego.NSNamespace("/tipo_identificacion",
+			beego.NSInclude(
+				&controllers.TipoIdentificacionController{},
+			),
+		),
+
+		beego.NSNamespace("/tipo_contacto",
+			beego.NSInclude(
+				&controllers.TipoContactoController{},
+			),
+		),
+
+		beego.NSNamespace("/ente",
+			beego.NSInclude(
+				&controllers.EnteController{},
+			),
+		),
 	)
 	beego.AddNamespace(ns)
 }

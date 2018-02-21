@@ -13,13 +13,12 @@ type TrPersona struct {
 // Id doesn't exist
 func GetPersonaByIdFull(id int) (v *TrPersona, err error) {
 
+	//start := time.Now()
+
 	var p TrPersona
 	ch := make(chan interface{}, 7)
 	go GetPersonaByIdOnCh(id, ch)
 	p.Persona = <-ch
-	// fmt.Println(id)
-	// //fmt.Println("av", <-ch)
-	// fmt.Println("v", v)
 	go GetGeneroPersonaByIdPersonaOnCh(id, ch)
 	p.Genero = <-ch
 	go GetPersonaEstadoCivilByIdPersonaOnCh(id, ch)
@@ -30,7 +29,7 @@ func GetPersonaByIdFull(id int) (v *TrPersona, err error) {
 	p.GrupoEtnico = <-ch
 	go GetPersonaTipoDiscapacidadByIdPersonaOnCh(id, ch)
 	p.TipoDiscapacidad = <-ch
-	print("antes", v)
+
 	close(ch)
 	return &p, nil
 

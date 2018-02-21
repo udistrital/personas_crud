@@ -15,6 +15,352 @@
     },
     "basePath": "/v1",
     "paths": {
+        "/contacto_ente/": {
+            "get": {
+                "tags": [
+                    "contacto_ente"
+                ],
+                "description": "get ContactoEnte",
+                "operationId": "ContactoEnteController.Get All",
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "query",
+                        "description": "Filter. e.g. col1:v1,col2:v2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "fields",
+                        "description": "Fields returned. e.g. col1,col2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "sortby",
+                        "description": "Sorted-by fields. e.g. col1,col2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "order",
+                        "description": "Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "limit",
+                        "description": "Limit the size of result set. Must be an integer",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "offset",
+                        "description": "Start position of result set. Must be an integer",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.ContactoEnte"
+                        }
+                    },
+                    "403": {
+                        "description": ""
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "contacto_ente"
+                ],
+                "description": "create ContactoEnte",
+                "operationId": "ContactoEnteController.Post",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "body for ContactoEnte content",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.ContactoEnte"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "{int} models.ContactoEnte"
+                    },
+                    "403": {
+                        "description": "body is empty"
+                    }
+                }
+            }
+        },
+        "/contacto_ente/{id}": {
+            "get": {
+                "tags": [
+                    "contacto_ente"
+                ],
+                "description": "get ContactoEnte by id",
+                "operationId": "ContactoEnteController.Get One",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The key for staticblock",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.ContactoEnte"
+                        }
+                    },
+                    "403": {
+                        "description": ":id is empty"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "contacto_ente"
+                ],
+                "description": "update the ContactoEnte",
+                "operationId": "ContactoEnteController.Put",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The id you want to update",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "body for ContactoEnte content",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.ContactoEnte"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.ContactoEnte"
+                        }
+                    },
+                    "403": {
+                        "description": ":id is not int"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "contacto_ente"
+                ],
+                "description": "delete the ContactoEnte",
+                "operationId": "ContactoEnteController.Delete",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The id you want to delete",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "{string} delete success!"
+                    },
+                    "403": {
+                        "description": "id is empty"
+                    }
+                }
+            }
+        },
+        "/ente/": {
+            "get": {
+                "tags": [
+                    "ente"
+                ],
+                "description": "get Ente",
+                "operationId": "EnteController.Get All",
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "query",
+                        "description": "Filter. e.g. col1:v1,col2:v2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "fields",
+                        "description": "Fields returned. e.g. col1,col2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "sortby",
+                        "description": "Sorted-by fields. e.g. col1,col2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "order",
+                        "description": "Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "limit",
+                        "description": "Limit the size of result set. Must be an integer",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "offset",
+                        "description": "Start position of result set. Must be an integer",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.Ente"
+                        }
+                    },
+                    "403": {
+                        "description": ""
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "ente"
+                ],
+                "description": "create Ente",
+                "operationId": "EnteController.Post",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "body for Ente content",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.Ente"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "{int} models.Ente"
+                    },
+                    "403": {
+                        "description": "body is empty"
+                    }
+                }
+            }
+        },
+        "/ente/{id}": {
+            "get": {
+                "tags": [
+                    "ente"
+                ],
+                "description": "get Ente by id",
+                "operationId": "EnteController.Get One",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The key for staticblock",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.Ente"
+                        }
+                    },
+                    "403": {
+                        "description": ":id is empty"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "ente"
+                ],
+                "description": "update the Ente",
+                "operationId": "EnteController.Put",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The id you want to update",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "body for Ente content",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.Ente"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.Ente"
+                        }
+                    },
+                    "403": {
+                        "description": ":id is not int"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "ente"
+                ],
+                "description": "delete the Ente",
+                "operationId": "EnteController.Delete",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The id you want to delete",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "{string} delete success!"
+                    },
+                    "403": {
+                        "description": "id is empty"
+                    }
+                }
+            }
+        },
         "/estado_civil/": {
             "get": {
                 "tags": [
@@ -534,6 +880,179 @@
                 }
             }
         },
+        "/identificacion/": {
+            "get": {
+                "tags": [
+                    "identificacion"
+                ],
+                "description": "get Identificacion",
+                "operationId": "IdentificacionController.Get All",
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "query",
+                        "description": "Filter. e.g. col1:v1,col2:v2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "fields",
+                        "description": "Fields returned. e.g. col1,col2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "sortby",
+                        "description": "Sorted-by fields. e.g. col1,col2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "order",
+                        "description": "Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "limit",
+                        "description": "Limit the size of result set. Must be an integer",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "offset",
+                        "description": "Start position of result set. Must be an integer",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.Identificacion"
+                        }
+                    },
+                    "403": {
+                        "description": ""
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "identificacion"
+                ],
+                "description": "create Identificacion",
+                "operationId": "IdentificacionController.Post",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "body for Identificacion content",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.Identificacion"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "{int} models.Identificacion"
+                    },
+                    "403": {
+                        "description": "body is empty"
+                    }
+                }
+            }
+        },
+        "/identificacion/{id}": {
+            "get": {
+                "tags": [
+                    "identificacion"
+                ],
+                "description": "get Identificacion by id",
+                "operationId": "IdentificacionController.Get One",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The key for staticblock",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.Identificacion"
+                        }
+                    },
+                    "403": {
+                        "description": ":id is empty"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "identificacion"
+                ],
+                "description": "update the Identificacion",
+                "operationId": "IdentificacionController.Put",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The id you want to update",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "body for Identificacion content",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.Identificacion"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.Identificacion"
+                        }
+                    },
+                    "403": {
+                        "description": ":id is not int"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "identificacion"
+                ],
+                "description": "delete the Identificacion",
+                "operationId": "IdentificacionController.Delete",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The id you want to delete",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "{string} delete success!"
+                    },
+                    "403": {
+                        "description": "id is empty"
+                    }
+                }
+            }
+        },
         "/perfil_profesional/": {
             "get": {
                 "tags": [
@@ -787,6 +1306,35 @@
                     },
                     "403": {
                         "description": "body is empty"
+                    }
+                }
+            }
+        },
+        "/persona/full/{id}": {
+            "get": {
+                "tags": [
+                    "persona"
+                ],
+                "description": "get Full information of Persona by id",
+                "operationId": "PersonaController.GetFull",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The key for staticblock",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/.interface{}"
+                        }
+                    },
+                    "403": {
+                        "description": ":id is empty"
                     }
                 }
             }
@@ -1918,6 +2466,179 @@
                 }
             }
         },
+        "/tipo_contacto/": {
+            "get": {
+                "tags": [
+                    "tipo_contacto"
+                ],
+                "description": "get TipoContacto",
+                "operationId": "TipoContactoController.Get All",
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "query",
+                        "description": "Filter. e.g. col1:v1,col2:v2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "fields",
+                        "description": "Fields returned. e.g. col1,col2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "sortby",
+                        "description": "Sorted-by fields. e.g. col1,col2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "order",
+                        "description": "Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "limit",
+                        "description": "Limit the size of result set. Must be an integer",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "offset",
+                        "description": "Start position of result set. Must be an integer",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.TipoContacto"
+                        }
+                    },
+                    "403": {
+                        "description": ""
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "tipo_contacto"
+                ],
+                "description": "create TipoContacto",
+                "operationId": "TipoContactoController.Post",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "body for TipoContacto content",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.TipoContacto"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "{int} models.TipoContacto"
+                    },
+                    "403": {
+                        "description": "body is empty"
+                    }
+                }
+            }
+        },
+        "/tipo_contacto/{id}": {
+            "get": {
+                "tags": [
+                    "tipo_contacto"
+                ],
+                "description": "get TipoContacto by id",
+                "operationId": "TipoContactoController.Get One",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The key for staticblock",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.TipoContacto"
+                        }
+                    },
+                    "403": {
+                        "description": ":id is empty"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "tipo_contacto"
+                ],
+                "description": "update the TipoContacto",
+                "operationId": "TipoContactoController.Put",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The id you want to update",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "body for TipoContacto content",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.TipoContacto"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.TipoContacto"
+                        }
+                    },
+                    "403": {
+                        "description": ":id is not int"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "tipo_contacto"
+                ],
+                "description": "delete the TipoContacto",
+                "operationId": "TipoContactoController.Delete",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The id you want to delete",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "{string} delete success!"
+                    },
+                    "403": {
+                        "description": "id is empty"
+                    }
+                }
+            }
+        },
         "/tipo_discapacidad/": {
             "get": {
                 "tags": [
@@ -2072,6 +2793,352 @@
                 ],
                 "description": "delete the TipoDiscapacidad",
                 "operationId": "TipoDiscapacidadController.Delete",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The id you want to delete",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "{string} delete success!"
+                    },
+                    "403": {
+                        "description": "id is empty"
+                    }
+                }
+            }
+        },
+        "/tipo_ente/": {
+            "get": {
+                "tags": [
+                    "tipo_ente"
+                ],
+                "description": "get TipoEnte",
+                "operationId": "TipoEnteController.Get All",
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "query",
+                        "description": "Filter. e.g. col1:v1,col2:v2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "fields",
+                        "description": "Fields returned. e.g. col1,col2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "sortby",
+                        "description": "Sorted-by fields. e.g. col1,col2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "order",
+                        "description": "Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "limit",
+                        "description": "Limit the size of result set. Must be an integer",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "offset",
+                        "description": "Start position of result set. Must be an integer",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.TipoEnte"
+                        }
+                    },
+                    "403": {
+                        "description": ""
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "tipo_ente"
+                ],
+                "description": "create TipoEnte",
+                "operationId": "TipoEnteController.Post",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "body for TipoEnte content",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.TipoEnte"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "{int} models.TipoEnte"
+                    },
+                    "403": {
+                        "description": "body is empty"
+                    }
+                }
+            }
+        },
+        "/tipo_ente/{id}": {
+            "get": {
+                "tags": [
+                    "tipo_ente"
+                ],
+                "description": "get TipoEnte by id",
+                "operationId": "TipoEnteController.Get One",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The key for staticblock",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.TipoEnte"
+                        }
+                    },
+                    "403": {
+                        "description": ":id is empty"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "tipo_ente"
+                ],
+                "description": "update the TipoEnte",
+                "operationId": "TipoEnteController.Put",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The id you want to update",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "body for TipoEnte content",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.TipoEnte"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.TipoEnte"
+                        }
+                    },
+                    "403": {
+                        "description": ":id is not int"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "tipo_ente"
+                ],
+                "description": "delete the TipoEnte",
+                "operationId": "TipoEnteController.Delete",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The id you want to delete",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "{string} delete success!"
+                    },
+                    "403": {
+                        "description": "id is empty"
+                    }
+                }
+            }
+        },
+        "/tipo_identificacion/": {
+            "get": {
+                "tags": [
+                    "tipo_identificacion"
+                ],
+                "description": "get TipoIdentificacion",
+                "operationId": "TipoIdentificacionController.Get All",
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "query",
+                        "description": "Filter. e.g. col1:v1,col2:v2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "fields",
+                        "description": "Fields returned. e.g. col1,col2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "sortby",
+                        "description": "Sorted-by fields. e.g. col1,col2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "order",
+                        "description": "Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "limit",
+                        "description": "Limit the size of result set. Must be an integer",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "offset",
+                        "description": "Start position of result set. Must be an integer",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.TipoIdentificacion"
+                        }
+                    },
+                    "403": {
+                        "description": ""
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "tipo_identificacion"
+                ],
+                "description": "create TipoIdentificacion",
+                "operationId": "TipoIdentificacionController.Post",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "body for TipoIdentificacion content",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.TipoIdentificacion"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "{int} models.TipoIdentificacion"
+                    },
+                    "403": {
+                        "description": "body is empty"
+                    }
+                }
+            }
+        },
+        "/tipo_identificacion/{id}": {
+            "get": {
+                "tags": [
+                    "tipo_identificacion"
+                ],
+                "description": "get TipoIdentificacion by id",
+                "operationId": "TipoIdentificacionController.Get One",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The key for staticblock",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.TipoIdentificacion"
+                        }
+                    },
+                    "403": {
+                        "description": ":id is empty"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "tipo_identificacion"
+                ],
+                "description": "update the TipoIdentificacion",
+                "operationId": "TipoIdentificacionController.Put",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The id you want to update",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "body for TipoIdentificacion content",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.TipoIdentificacion"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.TipoIdentificacion"
+                        }
+                    },
+                    "403": {
+                        "description": ":id is not int"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "tipo_identificacion"
+                ],
+                "description": "delete the TipoIdentificacion",
+                "operationId": "TipoIdentificacionController.Delete",
                 "parameters": [
                     {
                         "in": "path",
@@ -2266,6 +3333,41 @@
         }
     },
     "definitions": {
+        ".interface{}": {
+            "type": "object"
+        },
+        "models.ContactoEnte": {
+            "title": "ContactoEnte",
+            "type": "object",
+            "properties": {
+                "Ente": {
+                    "$ref": "#/definitions/models.Ente"
+                },
+                "Id": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "TipoContacto": {
+                    "$ref": "#/definitions/models.TipoContacto"
+                },
+                "Valor": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.Ente": {
+            "title": "Ente",
+            "type": "object",
+            "properties": {
+                "Id": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "TipoEnte": {
+                    "$ref": "#/definitions/models.TipoEnte"
+                }
+            }
+        },
         "models.EstadoCivil": {
             "title": "EstadoCivil",
             "type": "object",
@@ -2344,6 +3446,33 @@
                 }
             }
         },
+        "models.Identificacion": {
+            "title": "Identificacion",
+            "type": "object",
+            "properties": {
+                "Ente": {
+                    "$ref": "#/definitions/models.Ente"
+                },
+                "FechaExpedicion": {
+                    "type": "string",
+                    "format": "string"
+                },
+                "Id": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "LugarExpedicion": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "NumeroIdentificacion": {
+                    "type": "string"
+                },
+                "TipoIdentificacion": {
+                    "$ref": "#/definitions/models.TipoIdentificacion"
+                }
+            }
+        },
         "models.PerfilProfesional": {
             "title": "PerfilProfesional",
             "type": "object",
@@ -2378,6 +3507,10 @@
                     "type": "integer",
                     "format": "int64"
                 },
+                "Ente": {
+                    "type": "integer",
+                    "format": "int64"
+                },
                 "FechaNacimiento": {
                     "type": "string",
                     "format": "string"
@@ -2399,8 +3532,7 @@
                     "type": "string"
                 },
                 "Usuario": {
-                    "type": "integer",
-                    "format": "int64"
+                    "type": "string"
                 }
             }
         },
@@ -2503,8 +3635,86 @@
                 }
             }
         },
+        "models.TipoContacto": {
+            "title": "TipoContacto",
+            "type": "object",
+            "properties": {
+                "Activo": {
+                    "type": "boolean"
+                },
+                "CodigoAbreviacion": {
+                    "type": "string"
+                },
+                "Descripcion": {
+                    "type": "string"
+                },
+                "Id": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "Nombre": {
+                    "type": "string"
+                },
+                "NumeroOrden": {
+                    "type": "number",
+                    "format": "double"
+                }
+            }
+        },
         "models.TipoDiscapacidad": {
             "title": "TipoDiscapacidad",
+            "type": "object",
+            "properties": {
+                "Activo": {
+                    "type": "boolean"
+                },
+                "CodigoAbreviacion": {
+                    "type": "string"
+                },
+                "Descripcion": {
+                    "type": "string"
+                },
+                "Id": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "Nombre": {
+                    "type": "string"
+                },
+                "NumeroOrden": {
+                    "type": "number",
+                    "format": "double"
+                }
+            }
+        },
+        "models.TipoEnte": {
+            "title": "TipoEnte",
+            "type": "object",
+            "properties": {
+                "Activo": {
+                    "type": "boolean"
+                },
+                "CodigoAbreviacion": {
+                    "type": "string"
+                },
+                "Descripcion": {
+                    "type": "string"
+                },
+                "Id": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "Nombre": {
+                    "type": "string"
+                },
+                "NumeroOrden": {
+                    "type": "number",
+                    "format": "double"
+                }
+            }
+        },
+        "models.TipoIdentificacion": {
+            "title": "TipoIdentificacion",
             "type": "object",
             "properties": {
                 "Activo": {
@@ -2608,6 +3818,30 @@
         {
             "name": "relacion_personas",
             "description": "RelacionPersonasController operations for RelacionPersonas\n"
+        },
+        {
+            "name": "tipo_ente",
+            "description": "TipoEnteController operations for TipoEnte\n"
+        },
+        {
+            "name": "contacto_ente",
+            "description": "ContactoEnteController operations for ContactoEnte\n"
+        },
+        {
+            "name": "identificacion",
+            "description": "IdentificacionController operations for Identificacion\n"
+        },
+        {
+            "name": "tipo_identificacion",
+            "description": "TipoIdentificacionController operations for TipoIdentificacion\n"
+        },
+        {
+            "name": "tipo_contacto",
+            "description": "TipoContactoController operations for TipoContacto\n"
+        },
+        {
+            "name": "ente",
+            "description": "EnteController operations for Ente\n"
         }
     ]
 }

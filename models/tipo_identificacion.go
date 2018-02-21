@@ -9,45 +9,48 @@ import (
 	"github.com/astaxie/beego/orm"
 )
 
-type PersonaGenero struct {
-	Id      int      `orm:"column(id);pk;auto"`
-	Genero  *Genero  `orm:"column(genero);rel(fk)"`
-	Persona *Persona `orm:"column(persona);rel(fk)"`
+type TipoIdentificacion struct {
+	Id                int     `orm:"column(id);pk;auto"`
+	Nombre            string  `orm:"column(nombre)"`
+	Descripcion       string  `orm:"column(descripcion);null"`
+	CodigoAbreviacion string  `orm:"column(codigo_abreviacion);null"`
+	Activo            bool    `orm:"column(activo)"`
+	NumeroOrden       float64 `orm:"column(numero_orden);null"`
 }
 
-func (t *PersonaGenero) TableName() string {
-	return "persona_genero"
+func (t *TipoIdentificacion) TableName() string {
+	return "tipo_identificacion"
 }
 
 func init() {
-	orm.RegisterModel(new(PersonaGenero))
+	orm.RegisterModel(new(TipoIdentificacion))
 }
 
-// AddPersonaGenero insert a new PersonaGenero into database and returns
+// AddTipoIdentificacion insert a new TipoIdentificacion into database and returns
 // last inserted Id on success.
-func AddPersonaGenero(m *PersonaGenero) (id int64, err error) {
+func AddTipoIdentificacion(m *TipoIdentificacion) (id int64, err error) {
 	o := orm.NewOrm()
 	id, err = o.Insert(m)
 	return
 }
 
-// GetPersonaGeneroById retrieves PersonaGenero by Id. Returns error if
+// GetTipoIdentificacionById retrieves TipoIdentificacion by Id. Returns error if
 // Id doesn't exist
-func GetPersonaGeneroById(id int) (v *PersonaGenero, err error) {
+func GetTipoIdentificacionById(id int) (v *TipoIdentificacion, err error) {
 	o := orm.NewOrm()
-	v = &PersonaGenero{Id: id}
+	v = &TipoIdentificacion{Id: id}
 	if err = o.Read(v); err == nil {
 		return v, nil
 	}
 	return nil, err
 }
 
-// GetAllPersonaGenero retrieves all PersonaGenero matches certain condition. Returns empty list if
+// GetAllTipoIdentificacion retrieves all TipoIdentificacion matches certain condition. Returns empty list if
 // no records exist
-func GetAllPersonaGenero(query map[string]string, fields []string, sortby []string, order []string,
+func GetAllTipoIdentificacion(query map[string]string, fields []string, sortby []string, order []string,
 	offset int64, limit int64) (ml []interface{}, err error) {
 	o := orm.NewOrm()
-	qs := o.QueryTable(new(PersonaGenero))
+	qs := o.QueryTable(new(TipoIdentificacion))
 	// query k=v
 	for k, v := range query {
 		// rewrite dot-notation to Object__Attribute
@@ -97,7 +100,7 @@ func GetAllPersonaGenero(query map[string]string, fields []string, sortby []stri
 		}
 	}
 
-	var l []PersonaGenero
+	var l []TipoIdentificacion
 	qs = qs.OrderBy(sortFields...)
 	if _, err = qs.Limit(limit, offset).All(&l, fields...); err == nil {
 		if len(fields) == 0 {
@@ -120,11 +123,11 @@ func GetAllPersonaGenero(query map[string]string, fields []string, sortby []stri
 	return nil, err
 }
 
-// UpdatePersonaGenero updates PersonaGenero by Id and returns error if
+// UpdateTipoIdentificacion updates TipoIdentificacion by Id and returns error if
 // the record to be updated doesn't exist
-func UpdatePersonaGeneroById(m *PersonaGenero) (err error) {
+func UpdateTipoIdentificacionById(m *TipoIdentificacion) (err error) {
 	o := orm.NewOrm()
-	v := PersonaGenero{Id: m.Id}
+	v := TipoIdentificacion{Id: m.Id}
 	// ascertain id exists in the database
 	if err = o.Read(&v); err == nil {
 		var num int64
@@ -135,39 +138,17 @@ func UpdatePersonaGeneroById(m *PersonaGenero) (err error) {
 	return
 }
 
-// DeletePersonaGenero deletes PersonaGenero by Id and returns error if
+// DeleteTipoIdentificacion deletes TipoIdentificacion by Id and returns error if
 // the record to be deleted doesn't exist
-func DeletePersonaGenero(id int) (err error) {
+func DeleteTipoIdentificacion(id int) (err error) {
 	o := orm.NewOrm()
-	v := PersonaGenero{Id: id}
+	v := TipoIdentificacion{Id: id}
 	// ascertain id exists in the database
 	if err = o.Read(&v); err == nil {
 		var num int64
-		if num, err = o.Delete(&PersonaGenero{Id: id}); err == nil {
+		if num, err = o.Delete(&TipoIdentificacion{Id: id}); err == nil {
 			fmt.Println("Number of records deleted in database:", num)
 		}
 	}
 	return
-}
-
-// GetGeneroPersonaByIdPersonaOnCh retrieves Genero by Id Persona. Returns error if
-// Id doesn't exist
-func GetGeneroPersonaByIdPersonaOnCh(id int, c chan interface{}) (err error) {
-	o := orm.NewOrm()
-	var pg PersonaGenero
-	qs := o.QueryTable(new(PersonaGenero)).RelatedSel("genero")
-	qs.Filter("persona", id).All(&pg, "genero")
-	c <- pg.Genero
-	return nil
-}
-
-// GetGeneroPersonaByIdPersonaOnRef retrieves Genero by Id Persona. Returns error if
-// Id doesn't exist
-func GetGeneroPersonaByIdPersonaOnRef(id int, c *interface{}) (err error) {
-	o := orm.NewOrm()
-	var pg PersonaGenero
-	qs := o.QueryTable(new(PersonaGenero)).RelatedSel("genero")
-	qs.Filter("persona", id).All(&pg, "genero")
-	*c = pg.Genero
-	return nil
 }
