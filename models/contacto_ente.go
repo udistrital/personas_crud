@@ -150,3 +150,15 @@ func DeleteContactoEnte(id int) (err error) {
 	}
 	return
 }
+
+// GetContactoEnteByIdEnte retrieves Identificacion by Id. Returns error if
+// Id doesn't exist
+func GetContactoEnteByIdEnte(id int, c chan interface{}) (err error) {
+	o := orm.NewOrm()
+	var pg []ContactoEnte
+	_, err = o.QueryTable(new(ContactoEnte)).Filter("ente", id).RelatedSel("tipo_contacto").All(&pg) //Values(&pg, "id", "numero_identificacion", "ente") //.Filter("ente", id)
+	//qs.Filter("ente", id).Values(&pg, "id", "numero_identificacion") //All(&pg)
+	//var perfiles []PerfilProfesional
+	c <- pg
+	return nil
+}
