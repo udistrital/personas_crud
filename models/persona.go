@@ -34,7 +34,16 @@ func init() {
 // last inserted Id on success.
 func AddPersona(m *Persona) (id int64, err error) {
 	o := orm.NewOrm()
-	id, err = o.Insert(m)
+	o.Begin()
+	var en = &Ente{0, &TipoEnte{Id: 1}} //id del tipo ente para persona
+	iden, err := o.Insert(en)
+	if err == nil {
+		m.Ente = int(iden)
+		id, err = o.Insert(m)
+		o.Commit()
+		return
+	}
+	o.Rollback()
 	return
 }
 
@@ -159,7 +168,7 @@ func DeletePersona(id int) (err error) {
 
 // GetPersonaByIdOnCh retrieves Persona by Id. Returns error if
 // Id doesn't exist
-func GetPersonaByIdOnCh(id int, c chan interface{}) (err error) {
+func GetPersonaByIdOnCh(id int, c chan<- interface{}) (err error) {
 	o := orm.NewOrm()
 	var v = new(Persona)
 	v = &Persona{Id: id}
@@ -170,7 +179,6 @@ func GetPersonaByIdOnCh(id int, c chan interface{}) (err error) {
 		c <- nil
 		return err
 	}
-
 }
 
 // GetPersonaByIdOnRef retrieves Persona by Id. Returns error if
