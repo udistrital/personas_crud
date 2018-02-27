@@ -4,6 +4,7 @@ import (
 	_ "github.com/udistrital/personas_crud/routers"
 
 	"github.com/astaxie/beego"
+	"github.com/astaxie/beego/logs"
 	"github.com/astaxie/beego/orm"
 	"github.com/astaxie/beego/plugins/cors"
 	_ "github.com/lib/pq"
@@ -32,5 +33,6 @@ func main() {
 		ExposeHeaders:    []string{"Content-Length"},
 		AllowCredentials: true,
 	}))
+	logs.SetLogger(logs.AdapterFile, `{"filename":"/var/log/beego/personasCrud.log"}`)
 	beego.Run()
 }
