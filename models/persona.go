@@ -181,6 +181,21 @@ func GetPersonaByIdOnCh(id int, c chan<- interface{}) (err error) {
 	}
 }
 
+// GetPersonaByUserIdOnCh retrieves Persona by Id. Returns error if
+// Id doesn't exist
+func GetPersonaByUserIdOnCh(uid string, c chan<- interface{}) (err error) {
+	o := orm.NewOrm()
+	var pg Persona
+	qs := o.QueryTable(new(Persona))
+	qs.Filter("usuario", uid).All(&pg)
+	if pg.Id == 0 {
+		c <- nil
+		return
+	}
+	c <- pg
+	return
+}
+
 // GetPersonaByIdOnRef retrieves Persona by Id. Returns error if
 // Id doesn't exist
 func GetPersonaByIdOnRef(id int, c *interface{}) (err error) {

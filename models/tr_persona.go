@@ -18,28 +18,39 @@ type TrPersona struct {
 
 // GetPersonaByIdFull retrieves FUll info from Persona by Id. Returns error if
 // Id doesn't exist
-func GetPersonaByIdFull(id int) (v *TrPersona, err error) {
-
+func GetPersonaByIdFull(id interface{}) (v *TrPersona, err error) {
 	start := time.Now()
-
 	var p TrPersona
 	ch := make(chan interface{})
-	go GetPersonaByIdOnCh(id, ch)
-	p.Persona = <-ch
-	go GetIdentificacionByIdEnte(p.Persona.(Persona).Ente, ch)
-	p.Identificacion = <-ch
-	go GetContactoEnteByIdEnte(p.Persona.(Persona).Ente, ch)
-	p.ContactoEnte = <-ch
-	go GetGeneroPersonaByIdPersonaOnCh(id, ch)
-	p.Genero = <-ch
-	go GetPersonaEstadoCivilByIdPersonaOnCh(id, ch)
-	p.EstadoCivil = <-ch
-	go GetPersonaPerfilProfesionalByIdPersonaOnCh(id, ch)
-	p.PerfilProfesional = <-ch
-	go GetPersonaGrupoEtnicoByIdPersonaOnCh(id, ch)
-	p.GrupoEtnico = <-ch
-	go GetPersonaTipoDiscapacidadByIdPersonaOnCh(id, ch)
-	p.TipoDiscapacidad = <-ch
+	switch t := id.(type) {
+	case int:
+		go GetPersonaByIdOnCh(id.(int), ch)
+		p.Persona = <-ch
+	case string:
+		go GetPersonaByUserIdOnCh(id.(string), ch)
+		p.Persona = <-ch
+	default:
+		_ = t
+		return
+	}
+	if p.Persona != nil {
+		go GetIdentificacionByIdEnte(p.Persona.(Persona).Ente, ch)
+		p.Identificacion = <-ch
+		go GetContactoEnteByIdEnte(p.Persona.(Persona).Ente, ch)
+		p.ContactoEnte = <-ch
+		go GetGeneroPersonaByIdPersonaOnCh(p.Persona.(Persona).Id, ch)
+		p.Genero = <-ch
+		go GetPersonaEstadoCivilByIdPersonaOnCh(p.Persona.(Persona).Id, ch)
+		p.EstadoCivil = <-ch
+		go GetPersonaPerfilProfesionalByIdPersonaOnCh(p.Persona.(Persona).Id, ch)
+		p.PerfilProfesional = <-ch
+		go GetPersonaGrupoEtnicoByIdPersonaOnCh(p.Persona.(Persona).Id, ch)
+		p.GrupoEtnico = <-ch
+		go GetPersonaTipoDiscapacidadByIdPersonaOnCh(p.Persona.(Persona).Id, ch)
+		p.TipoDiscapacidad = <-ch
+	} else {
+		return
+	}
 
 	close(ch)
 	elapsed := time.Since(start)

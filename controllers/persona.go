@@ -69,19 +69,34 @@ func (c *PersonaController) GetOne() {
 // GetFull ...
 // @Title GetFull
 // @Description get Full information of Persona by id
-// @Param	id		path 	string	true		"The key for staticblock"
+// @Param	id	query	string	false	"Filter model by id"
+// @Param	userid	query	string	false	"Filter model by usuario"
 // @Success 200 {object} interface{}
 // @Failure 403 :id is empty
-// @router /full/:id [get]
+// @router /full/ [get]
 func (c *PersonaController) GetFull() {
-	idStr := c.Ctx.Input.Param(":id")
-	id, _ := strconv.Atoi(idStr)
-	v, err := models.GetPersonaByIdFull(id)
-	if err != nil {
-		c.Data["json"] = err.Error()
-	} else {
-		c.Data["json"] = v
+	/*idStr := c.Ctx.Input.Param(":id")
+	id, _ := strconv.Atoi(idStr)*/
+	var id = 0
+	var uid = ""
+	id, _ = c.GetInt("id")
+	uid = c.GetString("userid")
+	if id != 0 && uid == "" {
+		v, err := models.GetPersonaByIdFull(id)
+		if err != nil {
+			c.Data["json"] = err.Error()
+		} else {
+			c.Data["json"] = v
+		}
+	} else if id == 0 && uid != "" {
+		v, err := models.GetPersonaByIdFull(uid)
+		if err != nil {
+			c.Data["json"] = err.Error()
+		} else {
+			c.Data["json"] = v
+		}
 	}
+
 	c.ServeJSON()
 }
 

@@ -330,7 +330,7 @@ func init() {
 	beego.GlobalControllerRouter["github.com/udistrital/personas_crud/controllers:PersonaController"] = append(beego.GlobalControllerRouter["github.com/udistrital/personas_crud/controllers:PersonaController"],
 		beego.ControllerComments{
 			Method: "GetFull",
-			Router: `/full/:id`,
+			Router: `/full/`,
 			AllowHTTPMethods: []string{"get"},
 			MethodParams: param.Make(),
 			Params: nil})
