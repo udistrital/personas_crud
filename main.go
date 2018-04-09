@@ -8,6 +8,7 @@ import (
 	"github.com/astaxie/beego/orm"
 	"github.com/astaxie/beego/plugins/cors"
 	_ "github.com/lib/pq"
+	"github.com/udistrital/utils_oas/apiStatusLib"
 )
 
 func init() {
@@ -33,6 +34,12 @@ func main() {
 		ExposeHeaders:    []string{"Content-Length"},
 		AllowCredentials: true,
 	}))
-	logs.SetLogger(logs.AdapterFile, `{"filename":"/var/log/beego/personasCrud.log"}`)
+
+	logPath := "{\"filename\":\""
+	logPath += beego.AppConfig.String("logPath")
+	logPath += "\"}"
+	logs.SetLogger(logs.AdapterFile, logPath)
+
+	apistatus.Init()
 	beego.Run()
 }

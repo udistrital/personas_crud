@@ -129,6 +129,36 @@ func init() {
 				&controllers.EnteController{},
 			),
 		),
+
+		beego.NSNamespace("/organizacion",
+			beego.NSInclude(
+				&controllers.OrganizacionController{},
+			),
+		),
+
+		beego.NSNamespace("/tipo_organizacion",
+			beego.NSInclude(
+				&controllers.TipoOrganizacionController{},
+			),
+		),
+
+		beego.NSNamespace("/ubicacion_ente",
+			beego.NSInclude(
+				&controllers.UbicacionEnteController{},
+			),
+		),
+
+		beego.NSNamespace("/tipo_relacion_ubicacion_ente",
+			beego.NSInclude(
+				&controllers.TipoRelacionUbicacionEnteController{},
+			),
+		),
+
+		beego.NSNamespace("/grupo_sanguineo_persona",
+			beego.NSInclude(
+				&controllers.GrupoSanguineoPersonaController{},
+			),
+		),
 	)
 	beego.AddNamespace(ns)
 }

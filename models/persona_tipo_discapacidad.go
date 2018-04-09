@@ -13,6 +13,7 @@ type PersonaTipoDiscapacidad struct {
 	Id               int               `orm:"column(id);pk;auto"`
 	TipoDiscapacidad *TipoDiscapacidad `orm:"column(tipo_discapacidad);rel(fk)"`
 	Persona          *Persona          `orm:"column(persona);rel(fk)"`
+	Activo           bool              `orm:"column(activo)"`
 }
 
 func (t *PersonaTipoDiscapacidad) TableName() string {
