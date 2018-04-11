@@ -586,6 +586,121 @@ paths:
           description: '{string} delete success!'
         "403":
           description: id is empty
+  /grupo_sanguineo_persona/:
+    get:
+      tags:
+      - grupo_sanguineo_persona
+      description: get GrupoSanguineoPersona
+      operationId: GrupoSanguineoPersonaController.Get All
+      parameters:
+      - in: query
+        name: query
+        description: Filter. e.g. col1:v1,col2:v2 ...
+        type: string
+      - in: query
+        name: fields
+        description: Fields returned. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: sortby
+        description: Sorted-by fields. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: order
+        description: Order corresponding to each sortby field, if single value, apply
+          to all sortby fields. e.g. desc,asc ...
+        type: string
+      - in: query
+        name: limit
+        description: Limit the size of result set. Must be an integer
+        type: string
+      - in: query
+        name: offset
+        description: Start position of result set. Must be an integer
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.GrupoSanguineoPersona'
+        "403":
+          description: ""
+    post:
+      tags:
+      - grupo_sanguineo_persona
+      description: create GrupoSanguineoPersona
+      operationId: GrupoSanguineoPersonaController.Post
+      parameters:
+      - in: body
+        name: body
+        description: body for GrupoSanguineoPersona content
+        required: true
+        schema:
+          $ref: '#/definitions/models.GrupoSanguineoPersona'
+      responses:
+        "201":
+          description: '{int} models.GrupoSanguineoPersona'
+        "403":
+          description: body is empty
+  /grupo_sanguineo_persona/{id}:
+    get:
+      tags:
+      - grupo_sanguineo_persona
+      description: get GrupoSanguineoPersona by id
+      operationId: GrupoSanguineoPersonaController.Get One
+      parameters:
+      - in: path
+        name: id
+        description: The key for staticblock
+        required: true
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.GrupoSanguineoPersona'
+        "403":
+          description: :id is empty
+    put:
+      tags:
+      - grupo_sanguineo_persona
+      description: update the GrupoSanguineoPersona
+      operationId: GrupoSanguineoPersonaController.Put
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to update
+        required: true
+        type: string
+      - in: body
+        name: body
+        description: body for GrupoSanguineoPersona content
+        required: true
+        schema:
+          $ref: '#/definitions/models.GrupoSanguineoPersona'
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.GrupoSanguineoPersona'
+        "403":
+          description: :id is not int
+    delete:
+      tags:
+      - grupo_sanguineo_persona
+      description: delete the GrupoSanguineoPersona
+      operationId: GrupoSanguineoPersonaController.Delete
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to delete
+        required: true
+        type: string
+      responses:
+        "200":
+          description: '{string} delete success!'
+        "403":
+          description: id is empty
   /identificacion/:
     get:
       tags:
@@ -690,6 +805,121 @@ paths:
       - identificacion
       description: delete the Identificacion
       operationId: IdentificacionController.Delete
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to delete
+        required: true
+        type: string
+      responses:
+        "200":
+          description: '{string} delete success!'
+        "403":
+          description: id is empty
+  /organizacion/:
+    get:
+      tags:
+      - organizacion
+      description: get Organizacion
+      operationId: OrganizacionController.Get All
+      parameters:
+      - in: query
+        name: query
+        description: Filter. e.g. col1:v1,col2:v2 ...
+        type: string
+      - in: query
+        name: fields
+        description: Fields returned. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: sortby
+        description: Sorted-by fields. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: order
+        description: Order corresponding to each sortby field, if single value, apply
+          to all sortby fields. e.g. desc,asc ...
+        type: string
+      - in: query
+        name: limit
+        description: Limit the size of result set. Must be an integer
+        type: string
+      - in: query
+        name: offset
+        description: Start position of result set. Must be an integer
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.Organizacion'
+        "403":
+          description: ""
+    post:
+      tags:
+      - organizacion
+      description: create Organizacion
+      operationId: OrganizacionController.Post
+      parameters:
+      - in: body
+        name: body
+        description: body for Organizacion content
+        required: true
+        schema:
+          $ref: '#/definitions/models.Organizacion'
+      responses:
+        "201":
+          description: '{int} models.Organizacion'
+        "403":
+          description: body is empty
+  /organizacion/{id}:
+    get:
+      tags:
+      - organizacion
+      description: get Organizacion by id
+      operationId: OrganizacionController.Get One
+      parameters:
+      - in: path
+        name: id
+        description: The key for staticblock
+        required: true
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.Organizacion'
+        "403":
+          description: :id is empty
+    put:
+      tags:
+      - organizacion
+      description: update the Organizacion
+      operationId: OrganizacionController.Put
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to update
+        required: true
+        type: string
+      - in: body
+        name: body
+        description: body for Organizacion content
+        required: true
+        schema:
+          $ref: '#/definitions/models.Organizacion'
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.Organizacion'
+        "403":
+          description: :id is not int
+    delete:
+      tags:
+      - organizacion
+      description: delete the Organizacion
+      operationId: OrganizacionController.Delete
       parameters:
       - in: path
         name: id
@@ -931,17 +1161,20 @@ paths:
           description: '{string} delete success!'
         "403":
           description: id is empty
-  /persona/full/{id}:
+  /persona/full/:
     get:
       tags:
       - persona
       description: get Full information of Persona by id
       operationId: PersonaController.GetFull
       parameters:
-      - in: path
+      - in: query
         name: id
-        description: The key for staticblock
-        required: true
+        description: Filter model by id
+        type: string
+      - in: query
+        name: userid
+        description: Filter model by usuario
         type: string
       responses:
         "200":
@@ -2100,6 +2333,121 @@ paths:
           description: '{string} delete success!'
         "403":
           description: id is empty
+  /tipo_organizacion/:
+    get:
+      tags:
+      - tipo_organizacion
+      description: get TipoOrganizacion
+      operationId: TipoOrganizacionController.Get All
+      parameters:
+      - in: query
+        name: query
+        description: Filter. e.g. col1:v1,col2:v2 ...
+        type: string
+      - in: query
+        name: fields
+        description: Fields returned. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: sortby
+        description: Sorted-by fields. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: order
+        description: Order corresponding to each sortby field, if single value, apply
+          to all sortby fields. e.g. desc,asc ...
+        type: string
+      - in: query
+        name: limit
+        description: Limit the size of result set. Must be an integer
+        type: string
+      - in: query
+        name: offset
+        description: Start position of result set. Must be an integer
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.TipoOrganizacion'
+        "403":
+          description: ""
+    post:
+      tags:
+      - tipo_organizacion
+      description: create TipoOrganizacion
+      operationId: TipoOrganizacionController.Post
+      parameters:
+      - in: body
+        name: body
+        description: body for TipoOrganizacion content
+        required: true
+        schema:
+          $ref: '#/definitions/models.TipoOrganizacion'
+      responses:
+        "201":
+          description: '{int} models.TipoOrganizacion'
+        "403":
+          description: body is empty
+  /tipo_organizacion/{id}:
+    get:
+      tags:
+      - tipo_organizacion
+      description: get TipoOrganizacion by id
+      operationId: TipoOrganizacionController.Get One
+      parameters:
+      - in: path
+        name: id
+        description: The key for staticblock
+        required: true
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.TipoOrganizacion'
+        "403":
+          description: :id is empty
+    put:
+      tags:
+      - tipo_organizacion
+      description: update the TipoOrganizacion
+      operationId: TipoOrganizacionController.Put
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to update
+        required: true
+        type: string
+      - in: body
+        name: body
+        description: body for TipoOrganizacion content
+        required: true
+        schema:
+          $ref: '#/definitions/models.TipoOrganizacion'
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.TipoOrganizacion'
+        "403":
+          description: :id is not int
+    delete:
+      tags:
+      - tipo_organizacion
+      description: delete the TipoOrganizacion
+      operationId: TipoOrganizacionController.Delete
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to delete
+        required: true
+        type: string
+      responses:
+        "200":
+          description: '{string} delete success!'
+        "403":
+          description: id is empty
   /tipo_relacion_personas/:
     get:
       tags:
@@ -2215,6 +2563,236 @@ paths:
           description: '{string} delete success!'
         "403":
           description: id is empty
+  /tipo_relacion_ubicacion_ente/:
+    get:
+      tags:
+      - tipo_relacion_ubicacion_ente
+      description: get TipoRelacionUbicacionEnte
+      operationId: TipoRelacionUbicacionEnteController.Get All
+      parameters:
+      - in: query
+        name: query
+        description: Filter. e.g. col1:v1,col2:v2 ...
+        type: string
+      - in: query
+        name: fields
+        description: Fields returned. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: sortby
+        description: Sorted-by fields. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: order
+        description: Order corresponding to each sortby field, if single value, apply
+          to all sortby fields. e.g. desc,asc ...
+        type: string
+      - in: query
+        name: limit
+        description: Limit the size of result set. Must be an integer
+        type: string
+      - in: query
+        name: offset
+        description: Start position of result set. Must be an integer
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.TipoRelacionUbicacionEnte'
+        "403":
+          description: ""
+    post:
+      tags:
+      - tipo_relacion_ubicacion_ente
+      description: create TipoRelacionUbicacionEnte
+      operationId: TipoRelacionUbicacionEnteController.Post
+      parameters:
+      - in: body
+        name: body
+        description: body for TipoRelacionUbicacionEnte content
+        required: true
+        schema:
+          $ref: '#/definitions/models.TipoRelacionUbicacionEnte'
+      responses:
+        "201":
+          description: '{int} models.TipoRelacionUbicacionEnte'
+        "403":
+          description: body is empty
+  /tipo_relacion_ubicacion_ente/{id}:
+    get:
+      tags:
+      - tipo_relacion_ubicacion_ente
+      description: get TipoRelacionUbicacionEnte by id
+      operationId: TipoRelacionUbicacionEnteController.Get One
+      parameters:
+      - in: path
+        name: id
+        description: The key for staticblock
+        required: true
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.TipoRelacionUbicacionEnte'
+        "403":
+          description: :id is empty
+    put:
+      tags:
+      - tipo_relacion_ubicacion_ente
+      description: update the TipoRelacionUbicacionEnte
+      operationId: TipoRelacionUbicacionEnteController.Put
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to update
+        required: true
+        type: string
+      - in: body
+        name: body
+        description: body for TipoRelacionUbicacionEnte content
+        required: true
+        schema:
+          $ref: '#/definitions/models.TipoRelacionUbicacionEnte'
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.TipoRelacionUbicacionEnte'
+        "403":
+          description: :id is not int
+    delete:
+      tags:
+      - tipo_relacion_ubicacion_ente
+      description: delete the TipoRelacionUbicacionEnte
+      operationId: TipoRelacionUbicacionEnteController.Delete
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to delete
+        required: true
+        type: string
+      responses:
+        "200":
+          description: '{string} delete success!'
+        "403":
+          description: id is empty
+  /ubicacion_ente/:
+    get:
+      tags:
+      - ubicacion_ente
+      description: get UbicacionEnte
+      operationId: UbicacionEnteController.Get All
+      parameters:
+      - in: query
+        name: query
+        description: Filter. e.g. col1:v1,col2:v2 ...
+        type: string
+      - in: query
+        name: fields
+        description: Fields returned. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: sortby
+        description: Sorted-by fields. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: order
+        description: Order corresponding to each sortby field, if single value, apply
+          to all sortby fields. e.g. desc,asc ...
+        type: string
+      - in: query
+        name: limit
+        description: Limit the size of result set. Must be an integer
+        type: string
+      - in: query
+        name: offset
+        description: Start position of result set. Must be an integer
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.UbicacionEnte'
+        "403":
+          description: ""
+    post:
+      tags:
+      - ubicacion_ente
+      description: create UbicacionEnte
+      operationId: UbicacionEnteController.Post
+      parameters:
+      - in: body
+        name: body
+        description: body for UbicacionEnte content
+        required: true
+        schema:
+          $ref: '#/definitions/models.UbicacionEnte'
+      responses:
+        "201":
+          description: '{int} models.UbicacionEnte'
+        "403":
+          description: body is empty
+  /ubicacion_ente/{id}:
+    get:
+      tags:
+      - ubicacion_ente
+      description: get UbicacionEnte by id
+      operationId: UbicacionEnteController.Get One
+      parameters:
+      - in: path
+        name: id
+        description: The key for staticblock
+        required: true
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.UbicacionEnte'
+        "403":
+          description: :id is empty
+    put:
+      tags:
+      - ubicacion_ente
+      description: update the UbicacionEnte
+      operationId: UbicacionEnteController.Put
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to update
+        required: true
+        type: string
+      - in: body
+        name: body
+        description: body for UbicacionEnte content
+        required: true
+        schema:
+          $ref: '#/definitions/models.UbicacionEnte'
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.UbicacionEnte'
+        "403":
+          description: :id is not int
+    delete:
+      tags:
+      - ubicacion_ente
+      description: delete the UbicacionEnte
+      operationId: UbicacionEnteController.Delete
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to delete
+        required: true
+        type: string
+      responses:
+        "200":
+          description: '{string} delete success!'
+        "403":
+          description: id is empty
 definitions:
   .interface{}:
     type: object
@@ -2294,6 +2872,19 @@ definitions:
       NumeroOrden:
         type: number
         format: double
+  models.GrupoSanguineoPersona:
+    title: GrupoSanguineoPersona
+    type: object
+    properties:
+      FactorRh:
+        type: string
+      GrupoSanguineo:
+        type: string
+      Id:
+        type: integer
+        format: int64
+      Persona:
+        $ref: '#/definitions/models.Persona'
   models.Identificacion:
     title: Identificacion
     type: object
@@ -2313,6 +2904,19 @@ definitions:
         type: string
       TipoIdentificacion:
         $ref: '#/definitions/models.TipoIdentificacion'
+  models.Organizacion:
+    title: Organizacion
+    type: object
+    properties:
+      Ente:
+        $ref: '#/definitions/models.Ente'
+      Id:
+        type: integer
+        format: int64
+      Nombre:
+        type: string
+      TipoOrganizacion:
+        $ref: '#/definitions/models.TipoOrganizacion'
   models.PerfilProfesional:
     title: PerfilProfesional
     type: object
@@ -2335,15 +2939,14 @@ definitions:
     title: Persona
     type: object
     properties:
-      CiudadNacimiento:
-        type: integer
-        format: int64
       Ente:
         type: integer
         format: int64
       FechaNacimiento:
         type: string
         format: string
+      Foto:
+        type: string
       Id:
         type: integer
         format: int64
@@ -2405,6 +3008,8 @@ definitions:
     title: PersonaTipoDiscapacidad
     type: object
     properties:
+      Activo:
+        type: boolean
       Id:
         type: integer
         format: int64
@@ -2497,6 +3102,24 @@ definitions:
       NumeroOrden:
         type: number
         format: double
+  models.TipoOrganizacion:
+    title: TipoOrganizacion
+    type: object
+    properties:
+      Activo:
+        type: boolean
+      CodigoAbreviacion:
+        type: string
+      Descripcion:
+        type: string
+      Id:
+        type: integer
+        format: int64
+      Nombre:
+        type: string
+      NumeroOrden:
+        type: number
+        format: double
   models.TipoRelacionPersonas:
     title: TipoRelacionPersonas
     type: object
@@ -2515,6 +3138,40 @@ definitions:
       NumeroOrden:
         type: number
         format: double
+  models.TipoRelacionUbicacionEnte:
+    title: TipoRelacionUbicacionEnte
+    type: object
+    properties:
+      Activo:
+        type: boolean
+      CodigoAbreviacion:
+        type: string
+      Descripcion:
+        type: string
+      Id:
+        type: integer
+        format: int64
+      Nombre:
+        type: string
+      NumeroOrden:
+        type: number
+        format: double
+  models.UbicacionEnte:
+    title: UbicacionEnte
+    type: object
+    properties:
+      Activo:
+        type: boolean
+      Ente:
+        $ref: '#/definitions/models.Ente'
+      Id:
+        type: integer
+        format: int64
+      LugarUbicacion:
+        type: integer
+        format: int64
+      TipoRelacionUbicacionEnte:
+        $ref: '#/definitions/models.TipoRelacionUbicacionEnte'
 tags:
 - name: genero
   description: |
@@ -2573,3 +3230,18 @@ tags:
 - name: ente
   description: |
     EnteController operations for Ente
+- name: organizacion
+  description: |
+    OrganizacionController operations for Organizacion
+- name: tipo_organizacion
+  description: |
+    TipoOrganizacionController operations for TipoOrganizacion
+- name: ubicacion_ente
+  description: |
+    UbicacionEnteController operations for UbicacionEnte
+- name: tipo_relacion_ubicacion_ente
+  description: |
+    TipoRelacionUbicacionEnteController operations for TipoRelacionUbicacionEnte
+- name: grupo_sanguineo_persona
+  description: |
+    GrupoSanguineoPersonaController operations for GrupoSanguineoPersona

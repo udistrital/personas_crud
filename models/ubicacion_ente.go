@@ -5,65 +5,51 @@ import (
 	"fmt"
 	"reflect"
 	"strings"
-	"time"
 
 	"github.com/astaxie/beego/orm"
 )
 
-type Persona struct {
-	Id              int       `orm:"column(id);pk;auto"`
-	PrimerNombre    string    `orm:"column(primer_nombre)"`
-	SegundoNombre   string    `orm:"column(segundo_nombre);null"`
-	PrimerApellido  string    `orm:"column(primer_apellido)"`
-	SegundoApellido string    `orm:"column(segundo_apellido);null"`
-	FechaNacimiento time.Time `orm:"column(fecha_nacimiento);type(date);null"`
-	Usuario         *string   `orm:"column(usuario);null"`
-	Ente            int       `orm:"column(ente);null"`
-	Foto            string    `orm:"column(foto);null"`
+type UbicacionEnte struct {
+	Id                        int                        `orm:"column(id);pk"`
+	LugarUbicacion            int                        `orm:"column(lugar_ubicacion)"`
+	Ente                      *Ente                      `orm:"column(ente);rel(fk)"`
+	TipoRelacionUbicacionEnte *TipoRelacionUbicacionEnte `orm:"column(tipo_relacion_ubicacion_ente);rel(fk)"`
+	Activo                    bool                       `orm:"column(activo)"`
 }
 
-func (t *Persona) TableName() string {
-	return "persona"
+func (t *UbicacionEnte) TableName() string {
+	return "ubicacion_ente"
 }
 
 func init() {
-	orm.RegisterModel(new(Persona))
+	orm.RegisterModel(new(UbicacionEnte))
 }
 
-// AddPersona insert a new Persona into database and returns
+// AddUbicacionEnte insert a new UbicacionEnte into database and returns
 // last inserted Id on success.
-func AddPersona(m *Persona) (id int64, err error) {
+func AddUbicacionEnte(m *UbicacionEnte) (id int64, err error) {
 	o := orm.NewOrm()
-	o.Begin()
-	var en = &Ente{0, &TipoEnte{Id: 1}} //id del tipo ente para persona
-	iden, err := o.Insert(en)
-	if err == nil {
-		m.Ente = int(iden)
-		id, err = o.Insert(m)
-		o.Commit()
-		return
-	}
-	o.Rollback()
+	id, err = o.Insert(m)
 	return
 }
 
-// GetPersonaById retrieves Persona by Id. Returns error if
+// GetUbicacionEnteById retrieves UbicacionEnte by Id. Returns error if
 // Id doesn't exist
-func GetPersonaById(id int) (v *Persona, err error) {
+func GetUbicacionEnteById(id int) (v *UbicacionEnte, err error) {
 	o := orm.NewOrm()
-	v = &Persona{Id: id}
+	v = &UbicacionEnte{Id: id}
 	if err = o.Read(v); err == nil {
 		return v, nil
 	}
 	return nil, err
 }
 
-// GetAllPersona retrieves all Persona matches certain condition. Returns empty list if
+// GetAllUbicacionEnte retrieves all UbicacionEnte matches certain condition. Returns empty list if
 // no records exist
-func GetAllPersona(query map[string]string, fields []string, sortby []string, order []string,
+func GetAllUbicacionEnte(query map[string]string, fields []string, sortby []string, order []string,
 	offset int64, limit int64) (ml []interface{}, err error) {
 	o := orm.NewOrm()
-	qs := o.QueryTable(new(Persona))
+	qs := o.QueryTable(new(UbicacionEnte))
 	// query k=v
 	for k, v := range query {
 		// rewrite dot-notation to Object__Attribute
@@ -113,7 +99,7 @@ func GetAllPersona(query map[string]string, fields []string, sortby []string, or
 		}
 	}
 
-	var l []Persona
+	var l []UbicacionEnte
 	qs = qs.OrderBy(sortFields...)
 	if _, err = qs.Limit(limit, offset).All(&l, fields...); err == nil {
 		if len(fields) == 0 {
@@ -136,11 +122,11 @@ func GetAllPersona(query map[string]string, fields []string, sortby []string, or
 	return nil, err
 }
 
-// UpdatePersona updates Persona by Id and returns error if
+// UpdateUbicacionEnte updates UbicacionEnte by Id and returns error if
 // the record to be updated doesn't exist
-func UpdatePersonaById(m *Persona) (err error) {
+func UpdateUbicacionEnteById(m *UbicacionEnte) (err error) {
 	o := orm.NewOrm()
-	v := Persona{Id: m.Id}
+	v := UbicacionEnte{Id: m.Id}
 	// ascertain id exists in the database
 	if err = o.Read(&v); err == nil {
 		var num int64
@@ -151,63 +137,17 @@ func UpdatePersonaById(m *Persona) (err error) {
 	return
 }
 
-// DeletePersona deletes Persona by Id and returns error if
+// DeleteUbicacionEnte deletes UbicacionEnte by Id and returns error if
 // the record to be deleted doesn't exist
-func DeletePersona(id int) (err error) {
+func DeleteUbicacionEnte(id int) (err error) {
 	o := orm.NewOrm()
-	v := Persona{Id: id}
+	v := UbicacionEnte{Id: id}
 	// ascertain id exists in the database
 	if err = o.Read(&v); err == nil {
 		var num int64
-		if num, err = o.Delete(&Persona{Id: id}); err == nil {
+		if num, err = o.Delete(&UbicacionEnte{Id: id}); err == nil {
 			fmt.Println("Number of records deleted in database:", num)
 		}
 	}
 	return
-}
-
-// GetPersonaByIdOnCh retrieves Persona by Id. Returns error if
-// Id doesn't exist
-func GetPersonaByIdOnCh(id int, c chan<- interface{}) (err error) {
-	o := orm.NewOrm()
-	var v = new(Persona)
-	v = &Persona{Id: id}
-	if err = o.Read(v); err == nil {
-		c <- *v
-		return nil
-	} else {
-		c <- nil
-		return err
-	}
-}
-
-// GetPersonaByUserIdOnCh retrieves Persona by Id. Returns error if
-// Id doesn't exist
-func GetPersonaByUserIdOnCh(uid string, c chan<- interface{}) (err error) {
-	o := orm.NewOrm()
-	var pg Persona
-	qs := o.QueryTable(new(Persona))
-	qs.Filter("usuario", uid).All(&pg)
-	if pg.Id == 0 {
-		c <- nil
-		return
-	}
-	c <- pg
-	return
-}
-
-// GetPersonaByIdOnRef retrieves Persona by Id. Returns error if
-// Id doesn't exist
-func GetPersonaByIdOnRef(id int, c *interface{}) (err error) {
-	o := orm.NewOrm()
-	var v = new(Persona)
-	v = &Persona{Id: id}
-	if err = o.Read(v); err == nil {
-		*c = v
-		return nil
-	} else {
-		*c = nil
-		return err
-	}
-
 }
