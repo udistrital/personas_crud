@@ -17,7 +17,7 @@ type Persona struct {
 	PrimerApellido  string    `orm:"column(primer_apellido)"`
 	SegundoApellido string    `orm:"column(segundo_apellido);null"`
 	FechaNacimiento time.Time `orm:"column(fecha_nacimiento);type(date);null"`
-	Usuario         string    `orm:"column(usuario);null"`
+	Usuario         *string   `orm:"column(usuario);null"`
 	Ente            int       `orm:"column(ente);null"`
 	Foto            string    `orm:"column(foto);null"`
 }

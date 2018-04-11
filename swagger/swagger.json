@@ -4653,10 +4653,10 @@
             "title": "TipoOrganizacion",
             "type": "object",
             "properties": {
-                "CodigoAbreviacion": {
-                    "type": "string"
+                "Activo": {
+                    "type": "boolean"
                 },
-                "Definicion": {
+                "CodigoAbreviacion": {
                     "type": "string"
                 },
                 "Descripcion": {
@@ -4666,8 +4666,12 @@
                     "type": "integer",
                     "format": "int64"
                 },
-                "Organizacion": {
-                    "$ref": "#/definitions/models.Organizacion"
+                "Nombre": {
+                    "type": "string"
+                },
+                "NumeroOrden": {
+                    "type": "number",
+                    "format": "double"
                 }
             }
         },

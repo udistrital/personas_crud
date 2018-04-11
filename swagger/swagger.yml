@@ -3106,17 +3106,20 @@ definitions:
     title: TipoOrganizacion
     type: object
     properties:
+      Activo:
+        type: boolean
       CodigoAbreviacion:
-        type: string
-      Definicion:
         type: string
       Descripcion:
         type: string
       Id:
         type: integer
         format: int64
-      Organizacion:
-        $ref: '#/definitions/models.Organizacion'
+      Nombre:
+        type: string
+      NumeroOrden:
+        type: number
+        format: double
   models.TipoRelacionPersonas:
     title: TipoRelacionPersonas
     type: object
