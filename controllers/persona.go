@@ -89,9 +89,9 @@ func (c *PersonaController) GetFull() {
 	if id != 0 && uid == "" {
 		v, err := models.GetPersonaByIdFull(id)
 		if err != nil {
-			c.Data["json"] = err.Error()
+			c.Data["json"] = models.Alert{Type: "error", Code: "E_400", Body: err.Error()}
 		} else {
-			c.Data["json"] = models.Alert{Type: "error", Code: "S_200", Body: v}
+			c.Data["json"] = v
 		}
 	} else if id == 0 && uid != "" {
 		v, err := models.GetPersonaByIdFull(uid)
