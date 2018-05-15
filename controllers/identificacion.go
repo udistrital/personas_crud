@@ -40,10 +40,10 @@ func (c *IdentificacionController) Post() {
 			c.Ctx.Output.SetStatus(201)
 			c.Data["json"] = v
 		} else {
-			c.Data["json"] = err.Error()
+			c.Data["json"] = models.Alert{Type: "error", Code: "E_400", Body: err.Error()}
 		}
 	} else {
-		c.Data["json"] = err.Error()
+		c.Data["json"] = models.Alert{Type: "error", Code: "E_400", Body: err.Error()}
 	}
 	c.ServeJSON()
 }
@@ -123,7 +123,7 @@ func (c *IdentificacionController) GetAll() {
 
 	l, err := models.GetAllIdentificacion(query, fields, sortby, order, offset, limit)
 	if err != nil {
-		c.Data["json"] = err.Error()
+		c.Data["json"] = models.Alert{Type: "error", Code: "E_400", Body: err.Error()}
 	} else {
 		c.Data["json"] = l
 	}
