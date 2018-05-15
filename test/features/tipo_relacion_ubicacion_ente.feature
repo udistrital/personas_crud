@@ -23,6 +23,7 @@ Scenario Outline: To probe response route /tipo_relacion_ubicacion_ente
     Examples: 
     |method |route                             |bodyreq                |codres     |bodyres                         |
     |POST   |/v1/tipo_relacion_ubicacion_ente  |./files/req/Yt1.json   |201 Created|./files/re10/Vok1.json          |
+    |POST   |/v1/tipo_relacion_ubicacion_ente  |./files/req/Vacio.json |200 OK     |./files/res0/Ierr6.json         |
     |GET    |/v1/tipo_relacion_ubicacion_ente  |./files/req/Vacio.json |200 OK     |./files/re10/Vok2.json          |
     |POST   |/v1/tipo_relacion_ubicacion_ente  |./files/req/Nt1.json   |200 OK     |./files/re10/Ierr1.json         |
     |POST   |/v1/tipo_relacion_ubicacion_ente  |./files/req/Nt2.json   |200 OK     |./files/re10/Ierr2.json         |

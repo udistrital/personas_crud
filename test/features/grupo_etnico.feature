@@ -23,6 +23,7 @@ Scenario Outline: To probe response route /grupo_etnico
     Examples: 
     |method |route             |bodyreq                |codres     |bodyres                         |
     |GET    |/v1/grupo_etnico  |./files/req/Vacio.json |200 OK     |./files/res2/Vok2.json          |
+    |POST   |/v1/grupo_etnico |./files/req/Vacio.json  |200 OK     |./files/res0/Ierr6.json         |
     |POST   |/v1/grupo_etnico  |./files/req/Yt1.json   |201 Created|./files/res2/Vok1.json          |
     |POST   |/v1/grupo_etnico  |./files/req/Nt1.json   |200 OK     |./files/res2/Ierr1.json         |
     |POST   |/v1/grupo_etnico  |./files/req/Nt2.json   |200 OK     |./files/res2/Ierr2.json         |

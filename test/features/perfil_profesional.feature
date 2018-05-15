@@ -23,6 +23,7 @@ Scenario Outline: To probe response route /perfil_profesional
     Examples: 
     |method |route                   |bodyreq                |codres     |bodyres                         |
     |GET    |/v1/perfil_profesional  |./files/req/Vacio.json |200 OK     |./files/res3/Vok2.json          |
+    |POST   |/v1/perfil_profesional  |./files/req/Vacio.json |200 OK     |./files/res0/Ierr6.json         |
     |POST   |/v1/perfil_profesional  |./files/req/Yt1.json   |201 Created|./files/res3/Vok1.json          |
     |POST   |/v1/perfil_profesional  |./files/req/Nt1.json   |200 OK     |./files/res3/Ierr1.json         |
     |POST   |/v1/perfil_profesional  |./files/req/Nt2.json   |200 OK     |./files/res3/Ierr2.json         |

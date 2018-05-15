@@ -21,8 +21,9 @@ Scenario Outline: To probe response route /estado_civil
     And the response should match json "<bodyres>"
 
     Examples: 
-    |method |route             |bodyreq                |codres     |bodyres                        |
+    |method |route             |bodyreq                |codres     |bodyres                         |
     |GET    |/v1/estado_civil  |./files/req/Vacio.json |200 OK     |./files/res0/Vok2.json          |
+    |POST   |/v1/estado_civil  |./files/req/Vacio.json |200 OK     |./files/res0/Ierr6.json         |
     |POST   |/v1/estado_civil  |./files/req/Yt1.json   |201 Created|./files/res0/Vok1.json          |
     |POST   |/v1/estado_civil  |./files/req/Nt1.json   |200 OK     |./files/res0/Ierr1.json         |
     |POST   |/v1/estado_civil  |./files/req/Nt2.json   |200 OK     |./files/res0/Ierr2.json         |

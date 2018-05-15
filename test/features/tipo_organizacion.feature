@@ -23,6 +23,7 @@ Scenario Outline: To probe response route /tipo_organizacion
     Examples: 
     |method |route                   |bodyreq                |codres     |bodyres                         |
     |POST   |/v1/tipo_organizacion  |./files/req/Yt1.json   |201 Created|./files/res8/Vok1.json          |
+    |POST   |/v1/tipo_organizacion  |./files/req/Vacio.json |200 OK     |./files/res0/Ierr6.json         |
     |GET    |/v1/tipo_organizacion  |./files/req/Vacio.json |200 OK     |./files/res8/Vok2.json          |
     |POST   |/v1/tipo_organizacion  |./files/req/Nt1.json   |200 OK     |./files/res8/Ierr1.json         |
     |POST   |/v1/tipo_organizacion  |./files/req/Nt2.json   |200 OK     |./files/res8/Ierr2.json         |

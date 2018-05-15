@@ -23,6 +23,7 @@ Scenario Outline: To probe response route /genero
     Examples: 
     |method |route       |bodyreq                |codres     |bodyres                         |
     |GET    |/v1/genero  |./files/req/Vacio.json |200 OK     |./files/res1/Vok2.json          |
+    |POST   |/v1/genero  |./files/req/Vacio.json |200 OK     |./files/res0/Ierr6.json         |
     |POST   |/v1/genero  |./files/req/Yt1.json   |201 Created|./files/res1/Vok1.json          |
     |POST   |/v1/genero  |./files/req/Nt1.json   |200 OK     |./files/res1/Ierr1.json         |
     |POST   |/v1/genero  |./files/req/Nt2.json   |200 OK     |./files/res1/Ierr2.json         |
