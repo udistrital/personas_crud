@@ -117,14 +117,14 @@ func deleteFile(path string) {
 	// delete file
 	err := os.Remove(path)
 	if err != nil {
-		fmt.Errorf("no se pudo elimonar el archivo")
+		fmt.Errorf("no se pudo eliminar el archivo")
 	}
 
 }
 
 //@exe_cmd ejecuta comandos en la terminal
 func exe_cmd(cmd string, wg *sync.WaitGroup) {
-	fmt.Println(cmd)
+	//fmt.Println(cmd)
 	parts := strings.Fields(cmd)
 	out, err := exec.Command(parts[0], parts[1]).Output()
 	if err != nil {
@@ -184,25 +184,22 @@ func iSendRequestToWhereBodyIsJson(method, endpoint, bodyreq string) error {
 
 	if method == "GET" || method == "POST" {
 		url = "http://localhost:8080" + endpoint
-		//fmt.Println("La URL: ", url)
+
 	} else {
 		if method == "PUT" || method == "DELETE" {
 			str := strconv.FormatFloat(Id, 'f', 5, 64)
 			url = "http://localhost:8080" + endpoint + "/" + str
-			//fmt.Println(Id)
+
 		}
 	}
 	if method == "GETID" {
 		method = "GET"
 		str := strconv.FormatFloat(Id, 'f', 5, 64)
 		url = "http://localhost:8080" + endpoint + "/" + str
-		fmt.Println(Id)
 
 	}
-	//fmt.Println("La URL: ", url)
-	//fmt.Println("el metodo: ", method)
+
 	pages := getPages(bodyreq)
-	//fmt.Println(string(pages))
 
 	req, err := http.NewRequest(method, url, bytes.NewBuffer(pages))
 	req.Header.Set("Content-Type", "application/json")
@@ -214,10 +211,8 @@ func iSendRequestToWhereBodyIsJson(method, endpoint, bodyreq string) error {
 	}
 	defer resp.Body.Close()
 
-	//fmt.Println("response Status:", resp.Status)
-
 	bodyr, _ := ioutil.ReadAll(resp.Body)
-	//fmt.Println("response Body:", string(bodyr))
+
 	resStatus = resp.Status
 	resBody = bodyr
 
@@ -225,7 +220,7 @@ func iSendRequestToWhereBodyIsJson(method, endpoint, bodyreq string) error {
 		ioutil.WriteFile("./files/req/Yt2.json", resBody, 0644)
 		json.Unmarshal([]byte(bodyr), &savepostres)
 		Id = savepostres["Body"].(map[string]interface{})["Id"].(float64)
-		fmt.Println(Id)
+
 	}
 	return nil
 

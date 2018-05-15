@@ -1,5 +1,5 @@
 {
     "Type": "error",
     "Code": "E_400",
-    "Body": "json: cannot unmarshal string into Go struct field PerfilProfesional.NumeroOrden of type float64"
+    "Body": "json: cannot unmarshal string into Go struct field TipoContacto.NumeroOrden of type float64"
   }
