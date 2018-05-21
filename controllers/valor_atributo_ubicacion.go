@@ -6,7 +6,9 @@ import (
 	"strconv"
 	"strings"
 
+	"github.com/fatih/structs"
 	"github.com/udistrital/personas_crud/models"
+	"github.com/udistrital/utils_oas/formatdata"
 
 	"github.com/astaxie/beego"
 )
@@ -39,10 +41,14 @@ func (c *ValorAtributoUbicacionController) Post() {
 			c.Ctx.Output.SetStatus(201)
 			c.Data["json"] = v
 		} else {
-			c.Data["json"] = err.Error()
+			alertdb := structs.Map(err)
+			var code string
+			formatdata.FillStruct(alertdb["Code"], &code)
+			alert := models.Alert{Type: "error", Code: "E_" + code, Body: err.Error()}
+			c.Data["json"] = alert
 		}
 	} else {
-		c.Data["json"] = err.Error()
+		c.Data["json"] = models.Alert{Type: "error", Code: "E_400", Body: err.Error()}
 	}
 	c.ServeJSON()
 }
@@ -59,7 +65,7 @@ func (c *ValorAtributoUbicacionController) GetOne() {
 	id, _ := strconv.Atoi(idStr)
 	v, err := models.GetValorAtributoUbicacionById(id)
 	if err != nil {
-		c.Data["json"] = err.Error()
+		c.Data["json"] = models.Alert{Type: "error", Code: "E_400", Body: err.Error()}
 	} else {
 		c.Data["json"] = v
 	}
@@ -122,7 +128,7 @@ func (c *ValorAtributoUbicacionController) GetAll() {
 
 	l, err := models.GetAllValorAtributoUbicacion(query, fields, sortby, order, offset, limit)
 	if err != nil {
-		c.Data["json"] = err.Error()
+		c.Data["json"] = models.Alert{Type: "error", Code: "E_400", Body: err.Error()}
 	} else {
 		c.Data["json"] = l
 	}
@@ -143,12 +149,17 @@ func (c *ValorAtributoUbicacionController) Put() {
 	v := models.ValorAtributoUbicacion{Id: id}
 	if err := json.Unmarshal(c.Ctx.Input.RequestBody, &v); err == nil {
 		if err := models.UpdateValorAtributoUbicacionById(&v); err == nil {
-			c.Data["json"] = "OK"
+			c.Ctx.Output.SetStatus(200)
+			c.Data["json"] = models.Alert{Type: "success", Code: "S_200", Body: v}
 		} else {
-			c.Data["json"] = err.Error()
+			alertdb := structs.Map(err)
+			var code string
+			formatdata.FillStruct(alertdb["Code"], &code)
+			alert := models.Alert{Type: "error", Code: "E_" + code, Body: err.Error()}
+			c.Data["json"] = alert
 		}
 	} else {
-		c.Data["json"] = err.Error()
+		c.Data["json"] = models.Alert{Type: "error", Code: "E_400", Body: err.Error()}
 	}
 	c.ServeJSON()
 }
@@ -164,9 +175,10 @@ func (c *ValorAtributoUbicacionController) Delete() {
 	idStr := c.Ctx.Input.Param(":id")
 	id, _ := strconv.Atoi(idStr)
 	if err := models.DeleteValorAtributoUbicacion(id); err == nil {
-		c.Data["json"] = "OK"
+		c.Ctx.Output.SetStatus(200)
+		c.Data["json"] = models.Alert{Type: "success", Code: "S_200", Body: "OK"}
 	} else {
-		c.Data["json"] = err.Error()
+		c.Data["json"] = models.Alert{Type: "error", Code: "E_400", Body: err.Error()}
 	}
 	c.ServeJSON()
 }
