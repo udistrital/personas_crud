@@ -15,6 +15,179 @@
     },
     "basePath": "/v1",
     "paths": {
+        "/atributo_ubicacion/": {
+            "get": {
+                "tags": [
+                    "atributo_ubicacion"
+                ],
+                "description": "get AtributoUbicacion",
+                "operationId": "AtributoUbicacionController.Get All",
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "query",
+                        "description": "Filter. e.g. col1:v1,col2:v2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "fields",
+                        "description": "Fields returned. e.g. col1,col2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "sortby",
+                        "description": "Sorted-by fields. e.g. col1,col2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "order",
+                        "description": "Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "limit",
+                        "description": "Limit the size of result set. Must be an integer",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "offset",
+                        "description": "Start position of result set. Must be an integer",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.AtributoUbicacion"
+                        }
+                    },
+                    "403": {
+                        "description": ""
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "atributo_ubicacion"
+                ],
+                "description": "create AtributoUbicacion",
+                "operationId": "AtributoUbicacionController.Post",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "body for AtributoUbicacion content",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.AtributoUbicacion"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "{int} models.AtributoUbicacion"
+                    },
+                    "403": {
+                        "description": "body is empty"
+                    }
+                }
+            }
+        },
+        "/atributo_ubicacion/{id}": {
+            "get": {
+                "tags": [
+                    "atributo_ubicacion"
+                ],
+                "description": "get AtributoUbicacion by id",
+                "operationId": "AtributoUbicacionController.Get One",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The key for staticblock",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.AtributoUbicacion"
+                        }
+                    },
+                    "403": {
+                        "description": ":id is empty"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "atributo_ubicacion"
+                ],
+                "description": "update the AtributoUbicacion",
+                "operationId": "AtributoUbicacionController.Put",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The id you want to update",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "body for AtributoUbicacion content",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.AtributoUbicacion"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.AtributoUbicacion"
+                        }
+                    },
+                    "403": {
+                        "description": ":id is not int"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "atributo_ubicacion"
+                ],
+                "description": "delete the AtributoUbicacion",
+                "operationId": "AtributoUbicacionController.Delete",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The id you want to delete",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "{string} delete success!"
+                    },
+                    "403": {
+                        "description": "id is empty"
+                    }
+                }
+            }
+        },
         "/contacto_ente/": {
             "get": {
                 "tags": [
@@ -4200,11 +4373,210 @@
                     }
                 }
             }
+        },
+        "/valor_atributo_ubicacion/": {
+            "get": {
+                "tags": [
+                    "valor_atributo_ubicacion"
+                ],
+                "description": "get ValorAtributoUbicacion",
+                "operationId": "ValorAtributoUbicacionController.Get All",
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "query",
+                        "description": "Filter. e.g. col1:v1,col2:v2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "fields",
+                        "description": "Fields returned. e.g. col1,col2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "sortby",
+                        "description": "Sorted-by fields. e.g. col1,col2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "order",
+                        "description": "Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "limit",
+                        "description": "Limit the size of result set. Must be an integer",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "offset",
+                        "description": "Start position of result set. Must be an integer",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.ValorAtributoUbicacion"
+                        }
+                    },
+                    "403": {
+                        "description": ""
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "valor_atributo_ubicacion"
+                ],
+                "description": "create ValorAtributoUbicacion",
+                "operationId": "ValorAtributoUbicacionController.Post",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "body for ValorAtributoUbicacion content",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.ValorAtributoUbicacion"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "{int} models.ValorAtributoUbicacion"
+                    },
+                    "403": {
+                        "description": "body is empty"
+                    }
+                }
+            }
+        },
+        "/valor_atributo_ubicacion/{id}": {
+            "get": {
+                "tags": [
+                    "valor_atributo_ubicacion"
+                ],
+                "description": "get ValorAtributoUbicacion by id",
+                "operationId": "ValorAtributoUbicacionController.Get One",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The key for staticblock",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.ValorAtributoUbicacion"
+                        }
+                    },
+                    "403": {
+                        "description": ":id is empty"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "valor_atributo_ubicacion"
+                ],
+                "description": "update the ValorAtributoUbicacion",
+                "operationId": "ValorAtributoUbicacionController.Put",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The id you want to update",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "body for ValorAtributoUbicacion content",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.ValorAtributoUbicacion"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.ValorAtributoUbicacion"
+                        }
+                    },
+                    "403": {
+                        "description": ":id is not int"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "valor_atributo_ubicacion"
+                ],
+                "description": "delete the ValorAtributoUbicacion",
+                "operationId": "ValorAtributoUbicacionController.Delete",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The id you want to delete",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "{string} delete success!"
+                    },
+                    "403": {
+                        "description": "id is empty"
+                    }
+                }
+            }
         }
     },
     "definitions": {
         ".interface{}": {
             "type": "object"
+        },
+        "models.AtributoUbicacion": {
+            "title": "AtributoUbicacion",
+            "type": "object",
+            "properties": {
+                "Activo": {
+                    "type": "boolean"
+                },
+                "CodigoAbreviacion": {
+                    "type": "string"
+                },
+                "Descripcion": {
+                    "type": "string"
+                },
+                "Id": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "Nombre": {
+                    "type": "string"
+                },
+                "NumeroOrden": {
+                    "type": "number",
+                    "format": "double"
+                }
+            }
         },
         "models.ContactoEnte": {
             "title": "ContactoEnte",
@@ -4741,12 +5113,31 @@
                     "type": "integer",
                     "format": "int64"
                 },
-                "LugarUbicacion": {
+                "Lugar": {
                     "type": "integer",
                     "format": "int64"
                 },
                 "TipoRelacionUbicacionEnte": {
                     "$ref": "#/definitions/models.TipoRelacionUbicacionEnte"
+                }
+            }
+        },
+        "models.ValorAtributoUbicacion": {
+            "title": "ValorAtributoUbicacion",
+            "type": "object",
+            "properties": {
+                "AtributoUbicacion": {
+                    "$ref": "#/definitions/models.AtributoUbicacion"
+                },
+                "Id": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "UbicacionEnte": {
+                    "$ref": "#/definitions/models.UbicacionEnte"
+                },
+                "Valor": {
+                    "type": "string"
                 }
             }
         }
@@ -4847,6 +5238,14 @@
         {
             "name": "grupo_sanguineo_persona",
             "description": "GrupoSanguineoPersonaController operations for GrupoSanguineoPersona\n"
+        },
+        {
+            "name": "valor_atributo_ubicacion",
+            "description": "ValorAtributoUbicacionController operations for ValorAtributoUbicacion\n"
+        },
+        {
+            "name": "atributo_ubicacion",
+            "description": "AtributoUbicacionController operations for AtributoUbicacion\n"
         }
     ]
 }

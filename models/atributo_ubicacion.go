@@ -9,47 +9,48 @@ import (
 	"github.com/astaxie/beego/orm"
 )
 
-type UbicacionEnte struct {
-	Id                        int                        `orm:"column(id);pk"`
-	Lugar                     int                        `orm:"column(lugar)"`
-	Ente                      *Ente                      `orm:"column(ente);rel(fk)"`
-	TipoRelacionUbicacionEnte *TipoRelacionUbicacionEnte `orm:"column(tipo_relacion_ubicacion_ente);rel(fk)"`
-	Activo                    bool                       `orm:"column(activo)"`
+type AtributoUbicacion struct {
+	Id                int     `orm:"column(id);pk"`
+	Nombre            string  `orm:"column(nombre)"`
+	Descripcion       string  `orm:"column(descripcion);null"`
+	CodigoAbreviacion string  `orm:"column(codigo_abreviacion);null"`
+	Activo            bool    `orm:"column(activo)"`
+	NumeroOrden       float64 `orm:"column(numero_orden);null"`
 }
 
-func (t *UbicacionEnte) TableName() string {
-	return "ubicacion_ente"
+func (t *AtributoUbicacion) TableName() string {
+	return "atributo_ubicacion"
 }
 
 func init() {
-	orm.RegisterModel(new(UbicacionEnte))
+	orm.RegisterModel(new(AtributoUbicacion))
 }
 
-// AddUbicacionEnte insert a new UbicacionEnte into database and returns
+// AddAtributoUbicacion insert a new AtributoUbicacion into database and returns
 // last inserted Id on success.
-func AddUbicacionEnte(m *UbicacionEnte) (id int64, err error) {
+func AddAtributoUbicacion(m *AtributoUbicacion) (id int64, err error) {
 	o := orm.NewOrm()
 	id, err = o.Insert(m)
 	return
 }
 
-// GetUbicacionEnteById retrieves UbicacionEnte by Id. Returns error if
+// GetAtributoUbicacionById retrieves AtributoUbicacion by Id. Returns error if
 // Id doesn't exist
-func GetUbicacionEnteById(id int) (v *UbicacionEnte, err error) {
+func GetAtributoUbicacionById(id int) (v *AtributoUbicacion, err error) {
 	o := orm.NewOrm()
-	v = &UbicacionEnte{Id: id}
+	v = &AtributoUbicacion{Id: id}
 	if err = o.Read(v); err == nil {
 		return v, nil
 	}
 	return nil, err
 }
 
-// GetAllUbicacionEnte retrieves all UbicacionEnte matches certain condition. Returns empty list if
+// GetAllAtributoUbicacion retrieves all AtributoUbicacion matches certain condition. Returns empty list if
 // no records exist
-func GetAllUbicacionEnte(query map[string]string, fields []string, sortby []string, order []string,
+func GetAllAtributoUbicacion(query map[string]string, fields []string, sortby []string, order []string,
 	offset int64, limit int64) (ml []interface{}, err error) {
 	o := orm.NewOrm()
-	qs := o.QueryTable(new(UbicacionEnte))
+	qs := o.QueryTable(new(AtributoUbicacion))
 	// query k=v
 	for k, v := range query {
 		// rewrite dot-notation to Object__Attribute
@@ -99,7 +100,7 @@ func GetAllUbicacionEnte(query map[string]string, fields []string, sortby []stri
 		}
 	}
 
-	var l []UbicacionEnte
+	var l []AtributoUbicacion
 	qs = qs.OrderBy(sortFields...)
 	if _, err = qs.Limit(limit, offset).All(&l, fields...); err == nil {
 		if len(fields) == 0 {
@@ -122,11 +123,11 @@ func GetAllUbicacionEnte(query map[string]string, fields []string, sortby []stri
 	return nil, err
 }
 
-// UpdateUbicacionEnte updates UbicacionEnte by Id and returns error if
+// UpdateAtributoUbicacion updates AtributoUbicacion by Id and returns error if
 // the record to be updated doesn't exist
-func UpdateUbicacionEnteById(m *UbicacionEnte) (err error) {
+func UpdateAtributoUbicacionById(m *AtributoUbicacion) (err error) {
 	o := orm.NewOrm()
-	v := UbicacionEnte{Id: m.Id}
+	v := AtributoUbicacion{Id: m.Id}
 	// ascertain id exists in the database
 	if err = o.Read(&v); err == nil {
 		var num int64
@@ -137,15 +138,15 @@ func UpdateUbicacionEnteById(m *UbicacionEnte) (err error) {
 	return
 }
 
-// DeleteUbicacionEnte deletes UbicacionEnte by Id and returns error if
+// DeleteAtributoUbicacion deletes AtributoUbicacion by Id and returns error if
 // the record to be deleted doesn't exist
-func DeleteUbicacionEnte(id int) (err error) {
+func DeleteAtributoUbicacion(id int) (err error) {
 	o := orm.NewOrm()
-	v := UbicacionEnte{Id: id}
+	v := AtributoUbicacion{Id: id}
 	// ascertain id exists in the database
 	if err = o.Read(&v); err == nil {
 		var num int64
-		if num, err = o.Delete(&UbicacionEnte{Id: id}); err == nil {
+		if num, err = o.Delete(&AtributoUbicacion{Id: id}); err == nil {
 			fmt.Println("Number of records deleted in database:", num)
 		}
 	}

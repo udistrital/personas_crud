@@ -7,6 +7,46 @@ import (
 
 func init() {
 
+	beego.GlobalControllerRouter["github.com/udistrital/personas_crud/controllers:AtributoUbicacionController"] = append(beego.GlobalControllerRouter["github.com/udistrital/personas_crud/controllers:AtributoUbicacionController"],
+		beego.ControllerComments{
+			Method: "Post",
+			Router: `/`,
+			AllowHTTPMethods: []string{"post"},
+			MethodParams: param.Make(),
+			Params: nil})
+
+	beego.GlobalControllerRouter["github.com/udistrital/personas_crud/controllers:AtributoUbicacionController"] = append(beego.GlobalControllerRouter["github.com/udistrital/personas_crud/controllers:AtributoUbicacionController"],
+		beego.ControllerComments{
+			Method: "GetAll",
+			Router: `/`,
+			AllowHTTPMethods: []string{"get"},
+			MethodParams: param.Make(),
+			Params: nil})
+
+	beego.GlobalControllerRouter["github.com/udistrital/personas_crud/controllers:AtributoUbicacionController"] = append(beego.GlobalControllerRouter["github.com/udistrital/personas_crud/controllers:AtributoUbicacionController"],
+		beego.ControllerComments{
+			Method: "GetOne",
+			Router: `/:id`,
+			AllowHTTPMethods: []string{"get"},
+			MethodParams: param.Make(),
+			Params: nil})
+
+	beego.GlobalControllerRouter["github.com/udistrital/personas_crud/controllers:AtributoUbicacionController"] = append(beego.GlobalControllerRouter["github.com/udistrital/personas_crud/controllers:AtributoUbicacionController"],
+		beego.ControllerComments{
+			Method: "Put",
+			Router: `/:id`,
+			AllowHTTPMethods: []string{"put"},
+			MethodParams: param.Make(),
+			Params: nil})
+
+	beego.GlobalControllerRouter["github.com/udistrital/personas_crud/controllers:AtributoUbicacionController"] = append(beego.GlobalControllerRouter["github.com/udistrital/personas_crud/controllers:AtributoUbicacionController"],
+		beego.ControllerComments{
+			Method: "Delete",
+			Router: `/:id`,
+			AllowHTTPMethods: []string{"delete"},
+			MethodParams: param.Make(),
+			Params: nil})
+
 	beego.GlobalControllerRouter["github.com/udistrital/personas_crud/controllers:ContactoEnteController"] = append(beego.GlobalControllerRouter["github.com/udistrital/personas_crud/controllers:ContactoEnteController"],
 		beego.ControllerComments{
 			Method: "Post",
@@ -968,6 +1008,46 @@ func init() {
 			Params: nil})
 
 	beego.GlobalControllerRouter["github.com/udistrital/personas_crud/controllers:UbicacionEnteController"] = append(beego.GlobalControllerRouter["github.com/udistrital/personas_crud/controllers:UbicacionEnteController"],
+		beego.ControllerComments{
+			Method: "Delete",
+			Router: `/:id`,
+			AllowHTTPMethods: []string{"delete"},
+			MethodParams: param.Make(),
+			Params: nil})
+
+	beego.GlobalControllerRouter["github.com/udistrital/personas_crud/controllers:ValorAtributoUbicacionController"] = append(beego.GlobalControllerRouter["github.com/udistrital/personas_crud/controllers:ValorAtributoUbicacionController"],
+		beego.ControllerComments{
+			Method: "Post",
+			Router: `/`,
+			AllowHTTPMethods: []string{"post"},
+			MethodParams: param.Make(),
+			Params: nil})
+
+	beego.GlobalControllerRouter["github.com/udistrital/personas_crud/controllers:ValorAtributoUbicacionController"] = append(beego.GlobalControllerRouter["github.com/udistrital/personas_crud/controllers:ValorAtributoUbicacionController"],
+		beego.ControllerComments{
+			Method: "GetAll",
+			Router: `/`,
+			AllowHTTPMethods: []string{"get"},
+			MethodParams: param.Make(),
+			Params: nil})
+
+	beego.GlobalControllerRouter["github.com/udistrital/personas_crud/controllers:ValorAtributoUbicacionController"] = append(beego.GlobalControllerRouter["github.com/udistrital/personas_crud/controllers:ValorAtributoUbicacionController"],
+		beego.ControllerComments{
+			Method: "GetOne",
+			Router: `/:id`,
+			AllowHTTPMethods: []string{"get"},
+			MethodParams: param.Make(),
+			Params: nil})
+
+	beego.GlobalControllerRouter["github.com/udistrital/personas_crud/controllers:ValorAtributoUbicacionController"] = append(beego.GlobalControllerRouter["github.com/udistrital/personas_crud/controllers:ValorAtributoUbicacionController"],
+		beego.ControllerComments{
+			Method: "Put",
+			Router: `/:id`,
+			AllowHTTPMethods: []string{"put"},
+			MethodParams: param.Make(),
+			Params: nil})
+
+	beego.GlobalControllerRouter["github.com/udistrital/personas_crud/controllers:ValorAtributoUbicacionController"] = append(beego.GlobalControllerRouter["github.com/udistrital/personas_crud/controllers:ValorAtributoUbicacionController"],
 		beego.ControllerComments{
 			Method: "Delete",
 			Router: `/:id`,

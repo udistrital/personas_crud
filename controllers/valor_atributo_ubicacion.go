@@ -2,23 +2,22 @@ package controllers
 
 import (
 	"encoding/json"
+	"errors"
 	"strconv"
 	"strings"
 
-	"github.com/fatih/structs"
 	"github.com/udistrital/personas_crud/models"
-	"github.com/udistrital/utils_oas/formatdata"
 
 	"github.com/astaxie/beego"
 )
 
-// ContactoEnteController operations for ContactoEnte
-type ContactoEnteController struct {
+// ValorAtributoUbicacionController operations for ValorAtributoUbicacion
+type ValorAtributoUbicacionController struct {
 	beego.Controller
 }
 
 // URLMapping ...
-func (c *ContactoEnteController) URLMapping() {
+func (c *ValorAtributoUbicacionController) URLMapping() {
 	c.Mapping("Post", c.Post)
 	c.Mapping("GetOne", c.GetOne)
 	c.Mapping("GetAll", c.GetAll)
@@ -28,43 +27,39 @@ func (c *ContactoEnteController) URLMapping() {
 
 // Post ...
 // @Title Post
-// @Description create ContactoEnte
-// @Param	body		body 	models.ContactoEnte	true		"body for ContactoEnte content"
-// @Success 201 {int} models.ContactoEnte
+// @Description create ValorAtributoUbicacion
+// @Param	body		body 	models.ValorAtributoUbicacion	true		"body for ValorAtributoUbicacion content"
+// @Success 201 {int} models.ValorAtributoUbicacion
 // @Failure 403 body is empty
 // @router / [post]
-func (c *ContactoEnteController) Post() {
-	var v models.ContactoEnte
+func (c *ValorAtributoUbicacionController) Post() {
+	var v models.ValorAtributoUbicacion
 	if err := json.Unmarshal(c.Ctx.Input.RequestBody, &v); err == nil {
-		if _, err := models.AddContactoEnte(&v); err == nil {
+		if _, err := models.AddValorAtributoUbicacion(&v); err == nil {
 			c.Ctx.Output.SetStatus(201)
 			c.Data["json"] = v
 		} else {
-			alertdb := structs.Map(err)
-			var code string
-			formatdata.FillStruct(alertdb["Code"], &code)
-			alert := models.Alert{Type: "error", Code: "E_" + code, Body: err.Error()}
-			c.Data["json"] = alert
+			c.Data["json"] = err.Error()
 		}
 	} else {
-		c.Data["json"] = models.Alert{Type: "error", Code: "E_400", Body: err.Error()}
+		c.Data["json"] = err.Error()
 	}
 	c.ServeJSON()
 }
 
 // GetOne ...
 // @Title Get One
-// @Description get ContactoEnte by id
+// @Description get ValorAtributoUbicacion by id
 // @Param	id		path 	string	true		"The key for staticblock"
-// @Success 200 {object} models.ContactoEnte
+// @Success 200 {object} models.ValorAtributoUbicacion
 // @Failure 403 :id is empty
 // @router /:id [get]
-func (c *ContactoEnteController) GetOne() {
+func (c *ValorAtributoUbicacionController) GetOne() {
 	idStr := c.Ctx.Input.Param(":id")
 	id, _ := strconv.Atoi(idStr)
-	v, err := models.GetContactoEnteById(id)
+	v, err := models.GetValorAtributoUbicacionById(id)
 	if err != nil {
-		c.Data["json"] = models.Alert{Type: "error", Code: "E_400", Body: err.Error()}
+		c.Data["json"] = err.Error()
 	} else {
 		c.Data["json"] = v
 	}
@@ -73,17 +68,17 @@ func (c *ContactoEnteController) GetOne() {
 
 // GetAll ...
 // @Title Get All
-// @Description get ContactoEnte
+// @Description get ValorAtributoUbicacion
 // @Param	query	query	string	false	"Filter. e.g. col1:v1,col2:v2 ..."
 // @Param	fields	query	string	false	"Fields returned. e.g. col1,col2 ..."
 // @Param	sortby	query	string	false	"Sorted-by fields. e.g. col1,col2 ..."
 // @Param	order	query	string	false	"Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc ..."
 // @Param	limit	query	string	false	"Limit the size of result set. Must be an integer"
 // @Param	offset	query	string	false	"Start position of result set. Must be an integer"
-// @Success 200 {object} models.ContactoEnte
+// @Success 200 {object} models.ValorAtributoUbicacion
 // @Failure 403
 // @router / [get]
-func (c *ContactoEnteController) GetAll() {
+func (c *ValorAtributoUbicacionController) GetAll() {
 	var fields []string
 	var sortby []string
 	var order []string
@@ -116,7 +111,7 @@ func (c *ContactoEnteController) GetAll() {
 		for _, cond := range strings.Split(v, ",") {
 			kv := strings.SplitN(cond, ":", 2)
 			if len(kv) != 2 {
-				c.Data["json"] = models.Alert{Type: "error", Code: "S_400", Body: "Error: invalid query key/value pair"}
+				c.Data["json"] = errors.New("Error: invalid query key/value pair")
 				c.ServeJSON()
 				return
 			}
@@ -125,9 +120,9 @@ func (c *ContactoEnteController) GetAll() {
 		}
 	}
 
-	l, err := models.GetAllContactoEnte(query, fields, sortby, order, offset, limit)
+	l, err := models.GetAllValorAtributoUbicacion(query, fields, sortby, order, offset, limit)
 	if err != nil {
-		c.Data["json"] = models.Alert{Type: "error", Code: "E_400", Body: err.Error()}
+		c.Data["json"] = err.Error()
 	} else {
 		c.Data["json"] = l
 	}
@@ -136,48 +131,42 @@ func (c *ContactoEnteController) GetAll() {
 
 // Put ...
 // @Title Put
-// @Description update the ContactoEnte
+// @Description update the ValorAtributoUbicacion
 // @Param	id		path 	string	true		"The id you want to update"
-// @Param	body		body 	models.ContactoEnte	true		"body for ContactoEnte content"
-// @Success 200 {object} models.ContactoEnte
+// @Param	body		body 	models.ValorAtributoUbicacion	true		"body for ValorAtributoUbicacion content"
+// @Success 200 {object} models.ValorAtributoUbicacion
 // @Failure 403 :id is not int
 // @router /:id [put]
-func (c *ContactoEnteController) Put() {
+func (c *ValorAtributoUbicacionController) Put() {
 	idStr := c.Ctx.Input.Param(":id")
 	id, _ := strconv.Atoi(idStr)
-	v := models.ContactoEnte{Id: id}
+	v := models.ValorAtributoUbicacion{Id: id}
 	if err := json.Unmarshal(c.Ctx.Input.RequestBody, &v); err == nil {
-		if err := models.UpdateContactoEnteById(&v); err == nil {
-			c.Ctx.Output.SetStatus(200)
-			c.Data["json"] = models.Alert{Type: "success", Code: "S_200", Body: v}
+		if err := models.UpdateValorAtributoUbicacionById(&v); err == nil {
+			c.Data["json"] = "OK"
 		} else {
-			alertdb := structs.Map(err)
-			var code string
-			formatdata.FillStruct(alertdb["Code"], &code)
-			alert := models.Alert{Type: "error", Code: "E_" + code, Body: err.Error()}
-			c.Data["json"] = alert
+			c.Data["json"] = err.Error()
 		}
 	} else {
-		c.Data["json"] = models.Alert{Type: "error", Code: "E_400", Body: err.Error()}
+		c.Data["json"] = err.Error()
 	}
 	c.ServeJSON()
 }
 
 // Delete ...
 // @Title Delete
-// @Description delete the ContactoEnte
+// @Description delete the ValorAtributoUbicacion
 // @Param	id		path 	string	true		"The id you want to delete"
 // @Success 200 {string} delete success!
 // @Failure 403 id is empty
 // @router /:id [delete]
-func (c *ContactoEnteController) Delete() {
+func (c *ValorAtributoUbicacionController) Delete() {
 	idStr := c.Ctx.Input.Param(":id")
 	id, _ := strconv.Atoi(idStr)
-	if err := models.DeleteContactoEnte(id); err == nil {
-		c.Ctx.Output.SetStatus(200)
-		c.Data["json"] = models.Alert{Type: "success", Code: "S_200", Body: "OK"}
+	if err := models.DeleteValorAtributoUbicacion(id); err == nil {
+		c.Data["json"] = "OK"
 	} else {
-		c.Data["json"] = models.Alert{Type: "error", Code: "E_400", Body: err.Error()}
+		c.Data["json"] = err.Error()
 	}
 	c.ServeJSON()
 }

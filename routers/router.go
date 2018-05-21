@@ -159,6 +159,17 @@ func init() {
 				&controllers.GrupoSanguineoPersonaController{},
 			),
 		),
+		beego.NSNamespace("/valor_atributo_ubicacion",
+			beego.NSInclude(
+				&controllers.ValorAtributoUbicacionController{},
+			),
+		),
+
+		beego.NSNamespace("/atributo_ubicacion",
+			beego.NSInclude(
+				&controllers.AtributoUbicacionController{},
+			),
+		),
 	)
 	beego.AddNamespace(ns)
 }
