@@ -10,7 +10,7 @@ import (
 )
 
 type Organizacion struct {
-	Id               int               `orm:"column(id);pk"`
+	Id               int               `orm:"column(id);pk;auto"`
 	Nombre           string            `orm:"column(nombre)"`
 	Ente             *Ente             `orm:"column(ente);rel(fk)"`
 	TipoOrganizacion *TipoOrganizacion `orm:"column(tipo_organizacion);rel(fk)"`

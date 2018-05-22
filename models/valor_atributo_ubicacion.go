@@ -10,7 +10,7 @@ import (
 )
 
 type ValorAtributoUbicacion struct {
-	Id                int                `orm:"column(id);pk"`
+	Id                int                `orm:"column(id);pk;auto"`
 	UbicacionEnte     *UbicacionEnte     `orm:"column(ubicacion_ente);rel(fk)"`
 	AtributoUbicacion *AtributoUbicacion `orm:"column(atributo_ubicacion);rel(fk)"`
 	Valor             string             `orm:"column(valor)"`
