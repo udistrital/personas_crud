@@ -158,7 +158,7 @@ func (c *ContactoEnteController) Put() {
 			c.Data["json"] = alert
 		}
 	} else {
-		c.Data["json"] = models.Alert{Type: "error", Code: "E_400", Body: err.Error()} //DELETE
+		c.Data["json"] = models.Alert{Type: "error", Code: "E_400", Body: err.Error()}
 	}
 	c.ServeJSON()
 }
@@ -177,7 +177,7 @@ func (c *ContactoEnteController) Delete() {
 		c.Ctx.Output.SetStatus(200)
 		c.Data["json"] = models.Alert{Type: "success", Code: "S_200", Body: "OK"}
 	} else {
-		c.Data["json"] = models.Alert{Type: "error", Code: "E_400", Body: err.Error()} //DELETE
+		c.Data["json"] = models.Alert{Type: "error", Code: "E_400", Body: err.Error()}
 	}
 	c.ServeJSON()
 }

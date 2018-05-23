@@ -9,7 +9,7 @@ import (
 	"github.com/astaxie/beego/orm"
 )
 
-type TipoRelacionUbicacionEnte struct {
+type AtributoUbicacion struct {
 	Id                int     `orm:"column(id);pk;auto"`
 	Nombre            string  `orm:"column(nombre)"`
 	Descripcion       string  `orm:"column(descripcion);null"`
@@ -18,39 +18,39 @@ type TipoRelacionUbicacionEnte struct {
 	NumeroOrden       float64 `orm:"column(numero_orden);null"`
 }
 
-func (t *TipoRelacionUbicacionEnte) TableName() string {
-	return "tipo_relacion_ubicacion_ente"
+func (t *AtributoUbicacion) TableName() string {
+	return "atributo_ubicacion"
 }
 
 func init() {
-	orm.RegisterModel(new(TipoRelacionUbicacionEnte))
+	orm.RegisterModel(new(AtributoUbicacion))
 }
 
-// AddTipoRelacionUbicacionEnte insert a new TipoRelacionUbicacionEnte into database and returns
+// AddAtributoUbicacion insert a new AtributoUbicacion into database and returns
 // last inserted Id on success.
-func AddTipoRelacionUbicacionEnte(m *TipoRelacionUbicacionEnte) (id int64, err error) {
+func AddAtributoUbicacion(m *AtributoUbicacion) (id int64, err error) {
 	o := orm.NewOrm()
 	id, err = o.Insert(m)
 	return
 }
 
-// GetTipoRelacionUbicacionEnteById retrieves TipoRelacionUbicacionEnte by Id. Returns error if
+// GetAtributoUbicacionById retrieves AtributoUbicacion by Id. Returns error if
 // Id doesn't exist
-func GetTipoRelacionUbicacionEnteById(id int) (v *TipoRelacionUbicacionEnte, err error) {
+func GetAtributoUbicacionById(id int) (v *AtributoUbicacion, err error) {
 	o := orm.NewOrm()
-	v = &TipoRelacionUbicacionEnte{Id: id}
+	v = &AtributoUbicacion{Id: id}
 	if err = o.Read(v); err == nil {
 		return v, nil
 	}
 	return nil, err
 }
 
-// GetAllTipoRelacionUbicacionEnte retrieves all TipoRelacionUbicacionEnte matches certain condition. Returns empty list if
+// GetAllAtributoUbicacion retrieves all AtributoUbicacion matches certain condition. Returns empty list if
 // no records exist
-func GetAllTipoRelacionUbicacionEnte(query map[string]string, fields []string, sortby []string, order []string,
+func GetAllAtributoUbicacion(query map[string]string, fields []string, sortby []string, order []string,
 	offset int64, limit int64) (ml []interface{}, err error) {
 	o := orm.NewOrm()
-	qs := o.QueryTable(new(TipoRelacionUbicacionEnte))
+	qs := o.QueryTable(new(AtributoUbicacion))
 	// query k=v
 	for k, v := range query {
 		// rewrite dot-notation to Object__Attribute
@@ -100,7 +100,7 @@ func GetAllTipoRelacionUbicacionEnte(query map[string]string, fields []string, s
 		}
 	}
 
-	var l []TipoRelacionUbicacionEnte
+	var l []AtributoUbicacion
 	qs = qs.OrderBy(sortFields...)
 	if _, err = qs.Limit(limit, offset).All(&l, fields...); err == nil {
 		if len(fields) == 0 {
@@ -123,11 +123,11 @@ func GetAllTipoRelacionUbicacionEnte(query map[string]string, fields []string, s
 	return nil, err
 }
 
-// UpdateTipoRelacionUbicacionEnte updates TipoRelacionUbicacionEnte by Id and returns error if
+// UpdateAtributoUbicacion updates AtributoUbicacion by Id and returns error if
 // the record to be updated doesn't exist
-func UpdateTipoRelacionUbicacionEnteById(m *TipoRelacionUbicacionEnte) (err error) {
+func UpdateAtributoUbicacionById(m *AtributoUbicacion) (err error) {
 	o := orm.NewOrm()
-	v := TipoRelacionUbicacionEnte{Id: m.Id}
+	v := AtributoUbicacion{Id: m.Id}
 	// ascertain id exists in the database
 	if err = o.Read(&v); err == nil {
 		var num int64
@@ -138,15 +138,15 @@ func UpdateTipoRelacionUbicacionEnteById(m *TipoRelacionUbicacionEnte) (err erro
 	return
 }
 
-// DeleteTipoRelacionUbicacionEnte deletes TipoRelacionUbicacionEnte by Id and returns error if
+// DeleteAtributoUbicacion deletes AtributoUbicacion by Id and returns error if
 // the record to be deleted doesn't exist
-func DeleteTipoRelacionUbicacionEnte(id int) (err error) {
+func DeleteAtributoUbicacion(id int) (err error) {
 	o := orm.NewOrm()
-	v := TipoRelacionUbicacionEnte{Id: id}
+	v := AtributoUbicacion{Id: id}
 	// ascertain id exists in the database
 	if err = o.Read(&v); err == nil {
 		var num int64
-		if num, err = o.Delete(&TipoRelacionUbicacionEnte{Id: id}); err == nil {
+		if num, err = o.Delete(&AtributoUbicacion{Id: id}); err == nil {
 			fmt.Println("Number of records deleted in database:", num)
 		}
 	}

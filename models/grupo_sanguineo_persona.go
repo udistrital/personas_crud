@@ -10,7 +10,7 @@ import (
 )
 
 type GrupoSanguineoPersona struct {
-	Id             int      `orm:"column(id);pk"`
+	Id             int      `orm:"column(id);pk;auto"`
 	FactorRh       string   `orm:"column(factor_rh)"`
 	GrupoSanguineo string   `orm:"column(grupo_sanguineo)"`
 	Persona        *Persona `orm:"column(persona);rel(fk)"`
