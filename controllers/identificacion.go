@@ -38,7 +38,7 @@ func (c *IdentificacionController) Post() {
 	if err := json.Unmarshal(c.Ctx.Input.RequestBody, &v); err == nil {
 		if _, err := models.AddIdentificacion(&v); err == nil {
 			c.Ctx.Output.SetStatus(201)
-			c.Data["json"] = v
+			c.Data["json"] = models.Alert{Type: "success", Code: "S_201", Body: v}
 		} else {
 			c.Data["json"] = models.Alert{Type: "error", Code: "E_400", Body: err.Error()}
 		}
