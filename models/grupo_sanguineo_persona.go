@@ -150,3 +150,31 @@ func DeleteGrupoSanguineoPersona(id int) (err error) {
 	}
 	return
 }
+
+// GetPersonaGrupoSanguineoByIdPersonaOnCh retrieves EstadoCivil by PersonaId. Returns error if
+// Id doesn't exist
+func GetPersonaGrupoSanguineoByIdPersonaOnCh(id int, c chan interface{}) (err error) {
+
+	o := orm.NewOrm()
+	var pg GrupoSanguineoPersona
+	qs := o.QueryTable(new(GrupoSanguineoPersona))
+	fmt.Println(qs)
+	qs.Filter("persona", id).All(&pg, "GrupoSanguineo", "FactorRh")
+	c <- pg.GrupoSanguineo
+
+	return nil
+}
+
+// GetPersonaGrupoSanguineoByIdPersonaOnCh retrieves EstadoCivil by PersonaId. Returns error if
+// Id doesn't exist
+func GetPersonaRhByIdPersonaOnCh(id int, c chan interface{}) (err error) {
+
+	o := orm.NewOrm()
+	var pg GrupoSanguineoPersona
+	qs := o.QueryTable(new(GrupoSanguineoPersona))
+
+	qs.Filter("persona", id).All(&pg, "FactorRh")
+	c <- pg.FactorRh
+
+	return nil
+}
