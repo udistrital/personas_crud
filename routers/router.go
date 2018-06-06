@@ -94,80 +94,9 @@ func init() {
 			),
 		),
 
-		beego.NSNamespace("/tipo_ente",
-			beego.NSInclude(
-				&controllers.TipoEnteController{},
-			),
-		),
-
-		beego.NSNamespace("/contacto_ente",
-			beego.NSInclude(
-				&controllers.ContactoEnteController{},
-			),
-		),
-
-		beego.NSNamespace("/identificacion",
-			beego.NSInclude(
-				&controllers.IdentificacionController{},
-			),
-		),
-
-		beego.NSNamespace("/tipo_identificacion",
-			beego.NSInclude(
-				&controllers.TipoIdentificacionController{},
-			),
-		),
-
-		beego.NSNamespace("/tipo_contacto",
-			beego.NSInclude(
-				&controllers.TipoContactoController{},
-			),
-		),
-
-		beego.NSNamespace("/ente",
-			beego.NSInclude(
-				&controllers.EnteController{},
-			),
-		),
-
-		beego.NSNamespace("/organizacion",
-			beego.NSInclude(
-				&controllers.OrganizacionController{},
-			),
-		),
-
-		beego.NSNamespace("/tipo_organizacion",
-			beego.NSInclude(
-				&controllers.TipoOrganizacionController{},
-			),
-		),
-
-		beego.NSNamespace("/ubicacion_ente",
-			beego.NSInclude(
-				&controllers.UbicacionEnteController{},
-			),
-		),
-
-		beego.NSNamespace("/tipo_relacion_ubicacion_ente",
-			beego.NSInclude(
-				&controllers.TipoRelacionUbicacionEnteController{},
-			),
-		),
-
 		beego.NSNamespace("/grupo_sanguineo_persona",
 			beego.NSInclude(
 				&controllers.GrupoSanguineoPersonaController{},
-			),
-		),
-		beego.NSNamespace("/valor_atributo_ubicacion",
-			beego.NSInclude(
-				&controllers.ValorAtributoUbicacionController{},
-			),
-		),
-
-		beego.NSNamespace("/atributo_ubicacion",
-			beego.NSInclude(
-				&controllers.AtributoUbicacionController{},
 			),
 		),
 	)
