@@ -10,7 +10,7 @@ import (
 )
 
 type GrupoSanguineoPersona struct {
-	Id             int      `orm:"column(id);pk"`
+	Id             int      `orm:"column(id);pk;auto"`
 	FactorRh       string   `orm:"column(factor_rh)"`
 	GrupoSanguineo string   `orm:"column(grupo_sanguineo)"`
 	Persona        *Persona `orm:"column(persona);rel(fk)"`
@@ -149,4 +149,32 @@ func DeleteGrupoSanguineoPersona(id int) (err error) {
 		}
 	}
 	return
+}
+
+// GetPersonaGrupoSanguineoByIdPersonaOnCh retrieves EstadoCivil by PersonaId. Returns error if
+// Id doesn't exist
+func GetPersonaGrupoSanguineoByIdPersonaOnCh(id int, c chan interface{}) (err error) {
+
+	o := orm.NewOrm()
+	var pg GrupoSanguineoPersona
+	qs := o.QueryTable(new(GrupoSanguineoPersona))
+	fmt.Println(qs)
+	qs.Filter("persona", id).All(&pg, "GrupoSanguineo", "FactorRh")
+	c <- pg.GrupoSanguineo
+
+	return nil
+}
+
+// GetPersonaGrupoSanguineoByIdPersonaOnCh retrieves EstadoCivil by PersonaId. Returns error if
+// Id doesn't exist
+func GetPersonaRhByIdPersonaOnCh(id int, c chan interface{}) (err error) {
+
+	o := orm.NewOrm()
+	var pg GrupoSanguineoPersona
+	qs := o.QueryTable(new(GrupoSanguineoPersona))
+
+	qs.Filter("persona", id).All(&pg, "FactorRh")
+	c <- pg.FactorRh
+
+	return nil
 }

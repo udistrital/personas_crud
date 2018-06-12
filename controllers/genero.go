@@ -63,11 +63,11 @@ func (c *GeneroController) Post() {
 func (c *GeneroController) GetOne() {
 	idStr := c.Ctx.Input.Param(":id")
 	id, _ := strconv.Atoi(idStr)
-	v, err := models.GetGeneroById(id)
+	_, err := models.GetGeneroById(id)
 	if err != nil {
 		c.Data["json"] = models.Alert{Type: "error", Code: "E_400", Body: err.Error()}
 	} else {
-		c.Data["json"] = v
+		c.Data["json"] = models.Alert{Type: "error", Code: "E_400", Body: ""}
 	}
 	c.ServeJSON()
 }

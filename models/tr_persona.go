@@ -14,6 +14,8 @@ type TrPersona struct {
 	GrupoEtnico       interface{}
 	TipoDiscapacidad  interface{}
 	ContactoEnte      interface{}
+	GrupoSanguineo    interface{}
+	Rh                interface{}
 }
 
 // GetPersonaByIdFull retrieves FUll info from Persona by Id. Returns error if
@@ -48,6 +50,10 @@ func GetPersonaByIdFull(id interface{}) (v *TrPersona, err error) {
 		p.GrupoEtnico = <-ch
 		go GetPersonaTipoDiscapacidadByIdPersonaOnCh(p.Persona.(Persona).Id, ch)
 		p.TipoDiscapacidad = <-ch
+		go GetPersonaGrupoSanguineoByIdPersonaOnCh(p.Persona.(Persona).Id, ch)
+		p.GrupoSanguineo = <-ch
+		go GetPersonaRhByIdPersonaOnCh(p.Persona.(Persona).Id, ch)
+		p.Rh = <-ch
 	} else {
 		return
 	}
