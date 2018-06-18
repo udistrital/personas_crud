@@ -19,7 +19,7 @@ type Persona struct {
 	FechaNacimiento time.Time `orm:"column(fecha_nacimiento);type(date);null"`
 	Usuario         *string   `orm:"column(usuario);null"`
 	Ente            int       `orm:"column(ente);null"`
-	Foto            string    `orm:"column(foto);null"`
+	Foto            int    	  `orm:"column(foto);null"`
 }
 
 func (t *Persona) TableName() string {
