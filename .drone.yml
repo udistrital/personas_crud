@@ -12,6 +12,7 @@ build:
     commands:
      - go get -t
      - GOOS=linux GOARCH=amd64 go build -o main
+     #- go test ./... -cover
     when:
       branch: develop
       event: push

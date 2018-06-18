@@ -1742,7 +1742,8 @@ definitions:
         type: string
         format: string
       Foto:
-        type: string
+        type: integer
+        format: int64
       Id:
         type: integer
         format: int64
