@@ -1,10 +1,8 @@
 workspace:
   base: /go
-  path: src/github.com/udistrital/citest/
+  path: src/github.com/udistrital/personas_crud/
 
 pipeline:
-
-build:
 
   # build and test the go program
   go:
@@ -12,26 +10,60 @@ build:
     commands:
      - go get -t
      - GOOS=linux GOARCH=amd64 go build -o main
-     #- go test ./... -cover
+     
     when:
-      branch: develop
+      branch: [master, develop]
       event: push
 
-
-publish:
-
-  # build and push docker image to docker hub
-  docker:
-    repo: oas0/citests
-    tag:
-      - $${COMMIT:0:7}
-      - latest
-    username: $$DRONE_DOCKERID_LOGIN
-    password: $$DRONE_DOCKERID_PASSWORD
-    email: computoud@googlegroups.com
+  # prepare imagedef.json and app.zip for deployment
+  sed:
+    image: alpine
+    commands:
+      - sed -i 's|SED_TAG|'${CI_COMMIT:0:7}'|' imagedef.json
+      - apk -U add zip
+      - zip app.zip imagedef.json
     when:
-      branch: develop
+      branch: [master, develop]
       event: push
       
+  # build and push docker image to docker hub
+  publish_dockerhub:
+    image: plugins/docker
+    repo: oas0/personas_crud
+    secrets: [ docker_username, docker_password ]
+    tag:
+      - ${DRONE_COMMIT:0:7}
+      - latest
+    when:
+      branch: [master, develop]
+      event: push
+      
+  # upload app.zip to s3 bucket for CodePipline
+  publish_s3:
+    image: plugins/s3
+    secrets: [ aws_access_key_id, aws_secret_access_key ]
+    region: "us-east-1"
+    bucket: "drone-helper-bucket"
+    source: app.zip    
+    target: /apps/personas_crud-${DRONE_BRANCH}.zip
+    when:
+      branch: [master, develop]
+      event: push
+
+  #Notify results to telegram    
+  notify_telegram:
+    image: appleboy/drone-telegram    
+    secrets: [ telegram_token, telegram_to ]
+    format: html
+    message: >
+      {{#success build.status}}
+        <code>{{repo.owner}}/{{repo.name}}</code> <a href="{{build.link}}">SUCCESS</a> 
+        <code>{{commit.branch}}</code>@<a href="{{commit.link}}">{{truncate commit.sha 7}}</a>
+      {{else}}
+        <code>{{repo.owner}}/{{repo.name}}</code> <a href="{{build.link}}">FAILURE</a>
+        <code>{{commit.branch}}</code>@<a href="{{commit.link}}">{{truncate commit.sha 7}}</a>
+      {{/success}}
+    when:
+      status: [success, failure]
       
       
