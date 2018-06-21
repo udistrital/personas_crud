@@ -65,3 +65,4 @@ pipeline:
       {{/success}}
     when:
       status: [success, failure]
+
