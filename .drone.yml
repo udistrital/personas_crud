@@ -22,6 +22,7 @@ pipeline:
       - sed -i 's|SED_TAG|'${CI_COMMIT:0:7}'|' imagedef.json
       - apk -U add zip
       - zip app.zip imagedef.json
+      - zip personas_crud-${DRONE_BRANCH}.zip app.zip
     when:
       branch: [master, develop]
       event: push
@@ -44,8 +45,8 @@ pipeline:
     secrets: [ aws_access_key_id, aws_secret_access_key ]
     region: "us-east-1"
     bucket: "drone-helper-bucket"
-    source: app.zip    
-    target: /apps/personas_crud-${DRONE_BRANCH}.zip
+    source: personas_crud-${DRONE_BRANCH}.zip   
+    target: /apps
     when:
       branch: [master, develop]
       event: push
