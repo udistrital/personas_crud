@@ -1,6 +1,6 @@
 workspace:
   base: /go
-  path: src/github.com/udistrital/${DRONE_REPO:12:15}
+  path: src/github.com/udistrital/${DRONE_REPO:10:15}
 
 pipeline:
 
