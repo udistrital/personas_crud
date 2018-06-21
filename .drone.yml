@@ -1,6 +1,6 @@
 workspace:
   base: /go
-  path: src/github.com/udistrital/personas_crud/
+  path: src/github.com/udistrital/${DRONE_REPO##udistrital/}
 
 pipeline:
 
@@ -22,7 +22,7 @@ pipeline:
       - sed -i 's|SED_TAG|'${CI_COMMIT:0:7}'|' imagedef.json
       - apk -U add zip
       - zip app.zip imagedef.json
-      - zip personas_crud-${DRONE_BRANCH}.zip app.zip
+      - zip ${DRONE_REPO##udistrital/}-${DRONE_BRANCH}.zip app.zip
     when:
       branch: [master, develop]
       event: push
@@ -30,7 +30,7 @@ pipeline:
   # build and push docker image to docker hub
   publish_dockerhub:
     image: plugins/docker
-    repo: oas0/personas_crud
+    repo: oas0/${DRONE_REPO##udistrital/}
     secrets: [ docker_username, docker_password ]
     tag:
       - ${DRONE_COMMIT:0:7}
@@ -45,7 +45,7 @@ pipeline:
     secrets: [ aws_access_key_id, aws_secret_access_key ]
     region: "us-east-1"
     bucket: "drone-helper-bucket"
-    source: personas_crud-${DRONE_BRANCH}.zip   
+    source: ${DRONE_REPO##udistrital/}-${DRONE_BRANCH}.zip   
     target: /apps
     when:
       branch: [master, develop]
