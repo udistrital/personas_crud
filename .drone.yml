@@ -12,7 +12,7 @@ pipeline:
      - GOOS=linux GOARCH=amd64 go build -o main
      
     when:
-      branch: [1master, 1develop]
+      branch: [master, develop]
       event: push
 
   # prepare imagedef.json and app.zip for deployment
@@ -24,7 +24,7 @@ pipeline:
       - zip app.zip imagedef.json
       - zip ${DRONE_REPO##udistrital/}-${DRONE_BRANCH}.zip app.zip
     when:
-      branch: [1master, 1develop]
+      branch: [master, develop]
       event: push
       
   # build and push docker image to docker hub
@@ -36,7 +36,7 @@ pipeline:
       - ${DRONE_COMMIT:0:7}
       - latest
     when:
-      branch: [1master, 1develop]
+      branch: [master, develop]
       event: push
       
   # upload app.zip to s3 bucket for CodePipline
@@ -48,7 +48,7 @@ pipeline:
     source: ${DRONE_REPO##udistrital/}-${DRONE_BRANCH}.zip   
     target: /apps
     when:
-      branch: [1master, 1develop]
+      branch: [master, develop]
       event: push
 
   #Notify results to telegram    
