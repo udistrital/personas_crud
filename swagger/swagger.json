@@ -15,7 +15,7 @@
     },
     "basePath": "/v1",
     "paths": {
-        "/estado_civil/": {
+        "/estado_civil": {
             "get": {
                 "tags": [
                     "estado_civil"
@@ -188,7 +188,7 @@
                 }
             }
         },
-        "/genero/": {
+        "/genero": {
             "get": {
                 "tags": [
                     "genero"
@@ -361,7 +361,7 @@
                 }
             }
         },
-        "/grupo_etnico/": {
+        "/grupo_etnico": {
             "get": {
                 "tags": [
                     "grupo_etnico"
@@ -534,7 +534,7 @@
                 }
             }
         },
-        "/grupo_sanguineo_persona/": {
+        "/grupo_sanguineo_persona": {
             "get": {
                 "tags": [
                     "grupo_sanguineo_persona"
@@ -707,7 +707,7 @@
                 }
             }
         },
-        "/perfil_profesional/": {
+        "/perfil_profesional": {
             "get": {
                 "tags": [
                     "perfil_profesional"
@@ -880,7 +880,7 @@
                 }
             }
         },
-        "/persona/": {
+        "/persona": {
             "get": {
                 "tags": [
                     "persona"
@@ -964,7 +964,7 @@
                 }
             }
         },
-        "/persona/full/": {
+        "/persona/full": {
             "get": {
                 "tags": [
                     "persona"
@@ -1087,7 +1087,7 @@
                 }
             }
         },
-        "/persona_estado_civil/": {
+        "/persona_estado_civil": {
             "get": {
                 "tags": [
                     "persona_estado_civil"
@@ -1260,7 +1260,7 @@
                 }
             }
         },
-        "/persona_genero/": {
+        "/persona_genero": {
             "get": {
                 "tags": [
                     "persona_genero"
@@ -1433,7 +1433,7 @@
                 }
             }
         },
-        "/persona_grupo_etnico/": {
+        "/persona_grupo_etnico": {
             "get": {
                 "tags": [
                     "persona_grupo_etnico"
@@ -1606,7 +1606,7 @@
                 }
             }
         },
-        "/persona_perfil_profesional/": {
+        "/persona_perfil_profesional": {
             "get": {
                 "tags": [
                     "persona_perfil_profesional"
@@ -1779,7 +1779,7 @@
                 }
             }
         },
-        "/persona_tipo_discapacidad/": {
+        "/persona_tipo_discapacidad": {
             "get": {
                 "tags": [
                     "persona_tipo_discapacidad"
@@ -1952,7 +1952,7 @@
                 }
             }
         },
-        "/relacion_personas/": {
+        "/relacion_personas": {
             "get": {
                 "tags": [
                     "relacion_personas"
@@ -2125,7 +2125,7 @@
                 }
             }
         },
-        "/tipo_discapacidad/": {
+        "/tipo_discapacidad": {
             "get": {
                 "tags": [
                     "tipo_discapacidad"
@@ -2298,7 +2298,7 @@
                 }
             }
         },
-        "/tipo_relacion_personas/": {
+        "/tipo_relacion_personas": {
             "get": {
                 "tags": [
                     "tipo_relacion_personas"
