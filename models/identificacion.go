@@ -158,7 +158,7 @@ func DeleteIdentificacion(id int) (err error) {
 // Id doesn't exist
 func GetIdentificacionByIdEnte(id int, c chan interface{}) (err error) {
 	o := orm.NewOrm()
-	var pg []Identificacion
+	var pg Identificacion
 	_, err = o.QueryTable(new(Identificacion)).Filter("ente", id).RelatedSel("tipo_identificacion").All(&pg) //Values(&pg, "id", "numero_identificacion", "ente") //.Filter("ente", id)
 	//qs.Filter("ente", id).Values(&pg, "id", "numero_identificacion") //All(&pg)
 	//var perfiles []PerfilProfesional
