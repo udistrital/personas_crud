@@ -47,7 +47,7 @@ func GetPersonaGeneroById(id int) (v *PersonaGenero, err error) {
 func GetAllPersonaGenero(query map[string]string, fields []string, sortby []string, order []string,
 	offset int64, limit int64) (ml []interface{}, err error) {
 	o := orm.NewOrm()
-	qs := o.QueryTable(new(PersonaGenero))
+	qs := o.QueryTable(new(PersonaGenero)).RelatedSel()
 	// query k=v
 	for k, v := range query {
 		// rewrite dot-notation to Object__Attribute
