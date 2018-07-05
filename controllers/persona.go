@@ -71,40 +71,6 @@ func (c *PersonaController) GetOne() {
 	c.ServeJSON()
 }
 
-// GetFull ...
-// @Title GetFull
-// @Description get Full information of Persona by id
-// @Param	id	query	string	false	"Filter model by id"
-// @Param	userid	query	string	false	"Filter model by usuario"
-// @Success 200 {object} interface{}
-// @Failure 403 :id is empty
-// @router /full/ [get]
-func (c *PersonaController) GetFull() {
-	/*idStr := c.Ctx.Input.Param(":id")
-	id, _ := strconv.Atoi(idStr)*/
-	var id = 0
-	var uid = ""
-	id, _ = c.GetInt("id")
-	uid = c.GetString("userid")
-	if id != 0 && uid == "" {
-		v, err := models.GetPersonaByIdFull(id)
-		if err != nil {
-			c.Data["json"] = models.Alert{Type: "error", Code: "E_400", Body: err.Error()}
-		} else {
-			c.Data["json"] = v
-		}
-	} else if id == 0 && uid != "" {
-		v, err := models.GetPersonaByIdFull(uid)
-		if err != nil {
-			c.Data["json"] = models.Alert{Type: "error", Code: "E_400", Body: err.Error()}
-		} else {
-			c.Data["json"] = v
-		}
-	}
-
-	c.ServeJSON()
-}
-
 // GetAll ...
 // @Title Get All
 // @Description get Persona
