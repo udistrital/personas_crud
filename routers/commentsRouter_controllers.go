@@ -247,14 +247,6 @@ func init() {
 			MethodParams: param.Make(),
 			Params: nil})
 
-	beego.GlobalControllerRouter["github.com/udistrital/personas_crud/controllers:PersonaController"] = append(beego.GlobalControllerRouter["github.com/udistrital/personas_crud/controllers:PersonaController"],
-		beego.ControllerComments{
-			Method: "GetFull",
-			Router: `/full/`,
-			AllowHTTPMethods: []string{"get"},
-			MethodParams: param.Make(),
-			Params: nil})
-
 	beego.GlobalControllerRouter["github.com/udistrital/personas_crud/controllers:PersonaEstadoCivilController"] = append(beego.GlobalControllerRouter["github.com/udistrital/personas_crud/controllers:PersonaEstadoCivilController"],
 		beego.ControllerComments{
 			Method: "Post",
