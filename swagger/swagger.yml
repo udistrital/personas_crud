@@ -701,28 +701,6 @@ paths:
           description: '{string} delete success!'
         "403":
           description: id is empty
-  /persona/full/:
-    get:
-      tags:
-      - persona
-      description: get Full information of Persona by id
-      operationId: PersonaController.GetFull
-      parameters:
-      - in: query
-        name: id
-        description: Filter model by id
-        type: string
-      - in: query
-        name: userid
-        description: Filter model by usuario
-        type: string
-      responses:
-        "200":
-          description: ""
-          schema:
-            $ref: '#/definitions/.interface{}'
-        "403":
-          description: :id is empty
   /persona_estado_civil/:
     get:
       tags:
@@ -1644,8 +1622,6 @@ paths:
         "403":
           description: id is empty
 definitions:
-  .interface{}:
-    type: object
   models.EstadoCivil:
     title: EstadoCivil
     type: object
