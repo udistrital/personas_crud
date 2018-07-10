@@ -6,7 +6,7 @@ Drone 0.8
 Personas_crud master/develop
 
 ## Requirements
-Go version >= 1.?.
+Go version >= 1.8.
 
 ## Preparación:
     Para usar el API, usar el comando:
