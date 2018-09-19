@@ -44,8 +44,7 @@ pipeline:
     secrets: [ aws_access_key_id, aws_secret_access_key ]
     commands:
      - go get -v -u -t github.com/udistrital/go-awsecs/cmd/update-aws-ecs-service
-     - AWS_ACCESS_KEY_ID=$${AWS_ACCESS_KEY_ID} AWS_SECRET_ACCESS_KEY=$${AWS_SECRET_ACCESS_KEY} AWS_REGION=us-east-1 \
-     - $GOPATH/bin/update-aws-ecs-service -cluster oas -service personas_crud_desarrollo -container-image mycontainer=oas0/personas_crud:a487cb4
+     - AWS_ACCESS_KEY_ID=$${AWS_ACCESS_KEY_ID} AWS_SECRET_ACCESS_KEY=$${AWS_SECRET_ACCESS_KEY} AWS_REGION=us-east-1 $GOPATH/bin/update-aws-ecs-service -cluster oas -service personas_crud_desarrollo -container-image mycontainer=oas0/personas_crud:a487cb4
   
   #Notify results to telegram    
   notify_telegram:
