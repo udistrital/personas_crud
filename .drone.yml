@@ -45,7 +45,7 @@ pipeline:
     commands:
      - AWS_REGION=us-east-1
      - CLUSTER=oas
-     - SERVICE=personas_crud_desarrollo
+     - SERVICE=personas_crud_preprod
      - MYCONTAINER=oas0/personas_crud:a487cb4
      - go get -v -u -t github.com/udistrital/go-awsecs/cmd/update-aws-ecs-service
      - AWS_ACCESS_KEY_ID=$${AWS_ACCESS_KEY_ID} AWS_SECRET_ACCESS_KEY=$${AWS_SECRET_ACCESS_KEY} AWS_REGION=$AWS_REGION $GOPATH/bin/update-aws-ecs-service -cluster $CLUSTER -service $SERVICE -container-image mycontainer=$MYCONTAINER
