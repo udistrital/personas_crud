@@ -6,7 +6,7 @@ Drone 0.8
 Personas_crud master/develop
 
 ## Requirements
-Go version >= 1.?.
+Go version >= 1.8.
 
 ## Preparación:
     Para usar el API, usar el comando:
@@ -26,4 +26,6 @@ Definir los valores de las siguientes variables de entorno:
 Ejemplo: API_PERSONAS_HTTP_PORT=8083 PERSONAS_CRUD__PGUSER=user PERSONAS_CRUD__PGPASS=password PERSONAS_CRUD__PGURLS=localhost PERSONAS_CRUD__PGDB=udistrital_core_db PERSONAS_CRUD__SCHEMA=core_new bee run
 
 ## MODELO
-![image](https://user-images.githubusercontent.com/14035745/42359402-4cd653f4-80a7-11e8-8b90-61e30a20bbaf.png)
+![image](https://user-images.githubusercontent.com/14035745/42359402-4cd653f4-80a7-11e8-8b90-61e30a20bbaf.png).
+
+
