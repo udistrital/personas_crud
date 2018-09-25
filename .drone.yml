@@ -13,7 +13,7 @@ pipeline:
      - go get -t
      - GOOS=linux GOARCH=amd64 go build -o main
     when:
-      branch: [develop]      
+      branch: [develop]
             
   # build and push docker image to docker hub
   publish_dockerhub:
