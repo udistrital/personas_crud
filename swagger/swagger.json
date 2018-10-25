@@ -2572,7 +2572,7 @@
                 },
                 "FechaNacimiento": {
                     "type": "string",
-                    "format": "string"
+                    "format": "datetime"
                 },
                 "Foto": {
                     "type": "integer",
