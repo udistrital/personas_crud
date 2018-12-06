@@ -1716,7 +1716,7 @@ definitions:
         format: int64
       FechaNacimiento:
         type: string
-        format: string
+        format: datetime
       Foto:
         type: integer
         format: int64
