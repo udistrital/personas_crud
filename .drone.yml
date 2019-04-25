@@ -8,6 +8,8 @@ workspace:
     branch: 
     - master
     - develop
+    event:
+    - push
     
 steps:
 - name: build
@@ -21,6 +23,8 @@ steps:
     branch: 
     - master
     - develop
+    event:
+    - push
             
 - name: publish-dockerhub  
   image: plugins/docker
@@ -31,6 +35,12 @@ steps:
       from_secret: psdocker
     repo: planesticud/personas_crud
     tags: latest
+  when:
+    branch: 
+    - master
+    - develop
+    event:
+    - push
 
 - name: notify
   image: appleboy/drone-telegram
@@ -52,4 +62,9 @@ steps:
     status:
     - failure
     - success
+    branch: 
+    - master
+    - develop
+    event:
+    - push
 
