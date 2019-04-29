@@ -1,5 +1,5 @@
 kind: pipeline
-name: personas_crud
+name: ${DRONE_REPO##planesticud/}
 
 workspace:
   base: /go
@@ -33,8 +33,10 @@ steps:
       from_secret: usdocker
     password:
       from_secret: psdocker
-    repo: planesticud/personas_crud
-    tags: latest
+    repo: planesticud/${DRONE_REPO##planesticud/}
+    tags:
+    - ${DRONE_COMMIT:0:7}
+    - latest
   when:
     branch: 
     - master
@@ -67,4 +69,3 @@ steps:
     - develop
     event:
     - push
-
