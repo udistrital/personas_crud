@@ -1,5 +1,5 @@
 kind: pipeline
-name: ${DRONE_REPO}
+name: personas_crud
 
 workspace:
   base: /go
