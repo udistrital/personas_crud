@@ -1,5 +1,5 @@
 kind: pipeline
-name: ${DRONE_REPO##planesticud/}
+name: ${DRONE_REPO}
 
 workspace:
   base: /go
