@@ -7,7 +7,7 @@ import (
 	"strings"
 
 	"github.com/fatih/structs"
-	"github.com/udistrital/personas_crud/models"
+	"github.com/planesticud/personas_crud/models"
 	"github.com/udistrital/utils_oas/formatdata"
 
 	"github.com/astaxie/beego"
