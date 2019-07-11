@@ -5,15 +5,17 @@ import (
 	"fmt"
 	"reflect"
 	"strings"
+	"time"
 
 	"github.com/astaxie/beego/orm"
 )
 
 type GrupoSanguineoPersona struct {
-	Id             int      `orm:"column(id);pk;auto"`
-	FactorRh       string   `orm:"column(factor_rh)"`
-	GrupoSanguineo string   `orm:"column(grupo_sanguineo)"`
-	Persona        *Persona `orm:"column(persona);rel(fk)"`
+	Id                int      `orm:"column(id);pk;auto"`
+	FactorRh          string   `orm:"column(factor_rh)"`
+	GrupoSanguineo    string   `orm:"column(grupo_sanguineo)"`
+	Persona           *Persona `orm:"column(persona);rel(fk)"`
+	FechaModificacion string   `orm:"column(fecha_modificacion);null"`
 }
 
 func (t *GrupoSanguineoPersona) TableName() string {
@@ -27,6 +29,9 @@ func init() {
 // AddGrupoSanguineoPersona insert a new GrupoSanguineoPersona into database and returns
 // last inserted Id on success.
 func AddGrupoSanguineoPersona(m *GrupoSanguineoPersona) (id int64, err error) {
+	var t time.Time
+	t = time.Now()
+	m.FechaModificacion = fmt.Sprintf("%s", t.UTC().Format(time.UnixDate))
 	o := orm.NewOrm()
 	id, err = o.Insert(m)
 	return
@@ -126,6 +131,9 @@ func GetAllGrupoSanguineoPersona(query map[string]string, fields []string, sortb
 func UpdateGrupoSanguineoPersonaById(m *GrupoSanguineoPersona) (err error) {
 	o := orm.NewOrm()
 	v := GrupoSanguineoPersona{Id: m.Id}
+	var t time.Time
+	t = time.Now()
+	m.FechaModificacion = fmt.Sprintf("%s", t.UTC().Format(time.UnixDate))
 	// ascertain id exists in the database
 	if err = o.Read(&v); err == nil {
 		var num int64

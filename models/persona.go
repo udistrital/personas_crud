@@ -11,15 +11,16 @@ import (
 )
 
 type Persona struct {
-	Id              int       `orm:"column(id);pk;auto"`
-	PrimerNombre    string    `orm:"column(primer_nombre)"`
-	SegundoNombre   string    `orm:"column(segundo_nombre);null"`
-	PrimerApellido  string    `orm:"column(primer_apellido)"`
-	SegundoApellido string    `orm:"column(segundo_apellido);null"`
-	FechaNacimiento time.Time `orm:"column(fecha_nacimiento);type(date);null"`
-	Usuario         *string   `orm:"column(usuario);null"`
-	Ente            int       `orm:"column(ente);null"`
-	Foto            int    	  `orm:"column(foto);null"`
+	Id                int       `orm:"column(id);pk;auto"`
+	PrimerNombre      string    `orm:"column(primer_nombre)"`
+	SegundoNombre     string    `orm:"column(segundo_nombre);null"`
+	PrimerApellido    string    `orm:"column(primer_apellido)"`
+	SegundoApellido   string    `orm:"column(segundo_apellido);null"`
+	FechaNacimiento   time.Time `orm:"column(fecha_nacimiento);type(date);null"`
+	Usuario           *string   `orm:"column(usuario);null"`
+	Ente              int       `orm:"column(ente);null"`
+	Foto              int       `orm:"column(foto);null"`
+	FechaModificacion string    `orm:"column(fecha_modificacion);null"`
 }
 
 func (t *Persona) TableName() string {
@@ -38,6 +39,9 @@ func AddPersona(m *Persona) (id int64, err error) {
 	var en = &Ente{0, &TipoEnte{Id: 1}} //id del tipo ente para persona
 	iden, err := o.Insert(en)
 	if err == nil {
+		var t time.Time
+		t = time.Now()
+		m.FechaModificacion = fmt.Sprintf("%s", t.UTC().Format(time.UnixDate))
 		m.Ente = int(iden)
 		id, err = o.Insert(m)
 		o.Commit()
@@ -141,6 +145,9 @@ func GetAllPersona(query map[string]string, fields []string, sortby []string, or
 func UpdatePersonaById(m *Persona) (err error) {
 	o := orm.NewOrm()
 	v := Persona{Id: m.Id}
+	var t time.Time
+	t = time.Now()
+	m.FechaModificacion = fmt.Sprintf("%s", t.UTC().Format(time.UnixDate))
 	// ascertain id exists in the database
 	if err = o.Read(&v); err == nil {
 		var num int64

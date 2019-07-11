@@ -5,14 +5,16 @@ import (
 	"fmt"
 	"reflect"
 	"strings"
+	"time"
 
 	"github.com/astaxie/beego/orm"
 )
 
 type PersonaEstadoCivil struct {
-	Id          int          `orm:"column(id);pk;auto"`
-	EstadoCivil *EstadoCivil `orm:"column(estado_civil);rel(fk)"`
-	Persona     *Persona     `orm:"column(persona);rel(fk)"`
+	Id                int          `orm:"column(id);pk;auto"`
+	EstadoCivil       *EstadoCivil `orm:"column(estado_civil);rel(fk)"`
+	Persona           *Persona     `orm:"column(persona);rel(fk)"`
+	FechaModificacion string       `orm:"column(fecha_modificacion);null"`
 }
 
 func (t *PersonaEstadoCivil) TableName() string {
@@ -26,6 +28,9 @@ func init() {
 // AddPersonaEstadoCivil insert a new PersonaEstadoCivil into database and returns
 // last inserted Id on success.
 func AddPersonaEstadoCivil(m *PersonaEstadoCivil) (id int64, err error) {
+	var t time.Time
+	t = time.Now()
+	m.FechaModificacion = fmt.Sprintf("%s", t.UTC().Format(time.UnixDate))
 	o := orm.NewOrm()
 	id, err = o.Insert(m)
 	return
@@ -125,6 +130,9 @@ func GetAllPersonaEstadoCivil(query map[string]string, fields []string, sortby [
 func UpdatePersonaEstadoCivilById(m *PersonaEstadoCivil) (err error) {
 	o := orm.NewOrm()
 	v := PersonaEstadoCivil{Id: m.Id}
+	var t time.Time
+	t = time.Now()
+	m.FechaModificacion = fmt.Sprintf("%s", t.UTC().Format(time.UnixDate))
 	// ascertain id exists in the database
 	if err = o.Read(&v); err == nil {
 		var num int64

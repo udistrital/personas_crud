@@ -1632,6 +1632,8 @@ definitions:
         type: string
       Descripcion:
         type: string
+      FechaModificacion:
+        type: string
       Id:
         type: integer
         format: int64
@@ -1649,6 +1651,8 @@ definitions:
       CodigoAbreviacion:
         type: string
       Descripcion:
+        type: string
+      FechaModificacion:
         type: string
       Id:
         type: integer
@@ -1668,6 +1672,8 @@ definitions:
         type: string
       Descripcion:
         type: string
+      FechaModificacion:
+        type: string
       Id:
         type: integer
         format: int64
@@ -1681,6 +1687,8 @@ definitions:
     type: object
     properties:
       FactorRh:
+        type: string
+      FechaModificacion:
         type: string
       GrupoSanguineo:
         type: string
@@ -1699,6 +1707,8 @@ definitions:
         type: string
       Descripcion:
         type: string
+      FechaModificacion:
+        type: string
       Id:
         type: integer
         format: int64
@@ -1714,6 +1724,8 @@ definitions:
       Ente:
         type: integer
         format: int64
+      FechaModificacion:
+        type: string
       FechaNacimiento:
         type: string
         format: datetime
@@ -1739,6 +1751,8 @@ definitions:
     properties:
       EstadoCivil:
         $ref: '#/definitions/models.EstadoCivil'
+      FechaModificacion:
+        type: string
       Id:
         type: integer
         format: int64
@@ -1748,6 +1762,8 @@ definitions:
     title: PersonaGenero
     type: object
     properties:
+      FechaModificacion:
+        type: string
       Genero:
         $ref: '#/definitions/models.Genero'
       Id:
@@ -1759,6 +1775,8 @@ definitions:
     title: PersonaGrupoEtnico
     type: object
     properties:
+      FechaModificacion:
+        type: string
       GrupoEtnico:
         $ref: '#/definitions/models.GrupoEtnico'
       Id:
@@ -1770,6 +1788,8 @@ definitions:
     title: PersonaPerfilProfesional
     type: object
     properties:
+      FechaModificacion:
+        type: string
       Id:
         type: integer
         format: int64
@@ -1783,6 +1803,8 @@ definitions:
     properties:
       Activo:
         type: boolean
+      FechaModificacion:
+        type: string
       Id:
         type: integer
         format: int64
@@ -1794,6 +1816,8 @@ definitions:
     title: RelacionPersonas
     type: object
     properties:
+      FechaModificacion:
+        type: string
       Id:
         type: integer
         format: int64
@@ -1813,6 +1837,8 @@ definitions:
         type: string
       Descripcion:
         type: string
+      FechaModificacion:
+        type: string
       Id:
         type: integer
         format: int64
@@ -1830,6 +1856,8 @@ definitions:
       CodigoAbreviacion:
         type: string
       Descripcion:
+        type: string
+      FechaModificacion:
         type: string
       Id:
         type: integer

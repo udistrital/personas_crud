@@ -2452,6 +2452,9 @@
                 "Descripcion": {
                     "type": "string"
                 },
+                "FechaModificacion": {
+                    "type": "string"
+                },
                 "Id": {
                     "type": "integer",
                     "format": "int64"
@@ -2476,6 +2479,9 @@
                     "type": "string"
                 },
                 "Descripcion": {
+                    "type": "string"
+                },
+                "FechaModificacion": {
                     "type": "string"
                 },
                 "Id": {
@@ -2504,6 +2510,9 @@
                 "Descripcion": {
                     "type": "string"
                 },
+                "FechaModificacion": {
+                    "type": "string"
+                },
                 "Id": {
                     "type": "integer",
                     "format": "int64"
@@ -2522,6 +2531,9 @@
             "type": "object",
             "properties": {
                 "FactorRh": {
+                    "type": "string"
+                },
+                "FechaModificacion": {
                     "type": "string"
                 },
                 "GrupoSanguineo": {
@@ -2549,6 +2561,9 @@
                 "Descripcion": {
                     "type": "string"
                 },
+                "FechaModificacion": {
+                    "type": "string"
+                },
                 "Id": {
                     "type": "integer",
                     "format": "int64"
@@ -2569,6 +2584,9 @@
                 "Ente": {
                     "type": "integer",
                     "format": "int64"
+                },
+                "FechaModificacion": {
+                    "type": "string"
                 },
                 "FechaNacimiento": {
                     "type": "string",
@@ -2606,6 +2624,9 @@
                 "EstadoCivil": {
                     "$ref": "#/definitions/models.EstadoCivil"
                 },
+                "FechaModificacion": {
+                    "type": "string"
+                },
                 "Id": {
                     "type": "integer",
                     "format": "int64"
@@ -2619,6 +2640,9 @@
             "title": "PersonaGenero",
             "type": "object",
             "properties": {
+                "FechaModificacion": {
+                    "type": "string"
+                },
                 "Genero": {
                     "$ref": "#/definitions/models.Genero"
                 },
@@ -2635,6 +2659,9 @@
             "title": "PersonaGrupoEtnico",
             "type": "object",
             "properties": {
+                "FechaModificacion": {
+                    "type": "string"
+                },
                 "GrupoEtnico": {
                     "$ref": "#/definitions/models.GrupoEtnico"
                 },
@@ -2651,6 +2678,9 @@
             "title": "PersonaPerfilProfesional",
             "type": "object",
             "properties": {
+                "FechaModificacion": {
+                    "type": "string"
+                },
                 "Id": {
                     "type": "integer",
                     "format": "int64"
@@ -2670,6 +2700,9 @@
                 "Activo": {
                     "type": "boolean"
                 },
+                "FechaModificacion": {
+                    "type": "string"
+                },
                 "Id": {
                     "type": "integer",
                     "format": "int64"
@@ -2686,6 +2719,9 @@
             "title": "RelacionPersonas",
             "type": "object",
             "properties": {
+                "FechaModificacion": {
+                    "type": "string"
+                },
                 "Id": {
                     "type": "integer",
                     "format": "int64"
@@ -2714,6 +2750,9 @@
                 "Descripcion": {
                     "type": "string"
                 },
+                "FechaModificacion": {
+                    "type": "string"
+                },
                 "Id": {
                     "type": "integer",
                     "format": "int64"
@@ -2738,6 +2777,9 @@
                     "type": "string"
                 },
                 "Descripcion": {
+                    "type": "string"
+                },
+                "FechaModificacion": {
                     "type": "string"
                 },
                 "Id": {
