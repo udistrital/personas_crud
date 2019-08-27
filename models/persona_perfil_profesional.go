@@ -5,15 +5,16 @@ import (
 	"fmt"
 	"reflect"
 	"strings"
-	"time"
 
 	"github.com/astaxie/beego/orm"
+	"github.com/udistrital/utils_oas/time_bogota"
 )
 
 type PersonaPerfilProfesional struct {
 	Id                int                `orm:"column(id);pk;auto"`
 	PerfilProfesional *PerfilProfesional `orm:"column(perfil_profesional);rel(fk)"`
 	Persona           *Persona           `orm:"column(persona);rel(fk)"`
+	FechaCreacion     string             `orm:"column(fecha_creacion);null"`
 	FechaModificacion string             `orm:"column(fecha_modificacion);null"`
 }
 
@@ -28,9 +29,8 @@ func init() {
 // AddPersonaPerfilProfesional insert a new PersonaPerfilProfesional into database and returns
 // last inserted Id on success.
 func AddPersonaPerfilProfesional(m *PersonaPerfilProfesional) (id int64, err error) {
-	var t time.Time
-	t = time.Now()
-	m.FechaModificacion = fmt.Sprintf("%s", t.UTC().Format(time.UnixDate))
+	m.FechaCreacion = time_bogota.TiempoBogotaFormato()
+	m.FechaModificacion = time_bogota.TiempoBogotaFormato()
 	o := orm.NewOrm()
 	id, err = o.Insert(m)
 	return
@@ -130,9 +130,7 @@ func GetAllPersonaPerfilProfesional(query map[string]string, fields []string, so
 func UpdatePersonaPerfilProfesionalById(m *PersonaPerfilProfesional) (err error) {
 	o := orm.NewOrm()
 	v := PersonaPerfilProfesional{Id: m.Id}
-	var t time.Time
-	t = time.Now()
-	m.FechaModificacion = fmt.Sprintf("%s", t.UTC().Format(time.UnixDate))
+	m.FechaModificacion = time_bogota.TiempoBogotaFormato()
 	// ascertain id exists in the database
 	if err = o.Read(&v); err == nil {
 		var num int64

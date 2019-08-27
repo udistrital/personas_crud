@@ -8,6 +8,7 @@ import (
 	"time"
 
 	"github.com/astaxie/beego/orm"
+	"github.com/udistrital/utils_oas/time_bogota"
 )
 
 type Persona struct {
@@ -20,6 +21,7 @@ type Persona struct {
 	Usuario           *string   `orm:"column(usuario);null"`
 	Ente              int       `orm:"column(ente);null"`
 	Foto              int       `orm:"column(foto);null"`
+	FechaCreacion     string    `orm:"column(fecha_creacion);null"`
 	FechaModificacion string    `orm:"column(fecha_modificacion);null"`
 }
 
@@ -36,13 +38,15 @@ func init() {
 func AddPersona(m *Persona) (id int64, err error) {
 	o := orm.NewOrm()
 	o.Begin()
-	var en = &Ente{0, &TipoEnte{Id: 1}} //id del tipo ente para persona
+	var en = &Ente{Id: 0, TipoEnte: &TipoEnte{Id: 1}} //id del tipo ente para persona
 	iden, err := o.Insert(en)
+	fmt.Println(iden)
+	fmt.Println(err)
 	if err == nil {
-		var t time.Time
-		t = time.Now()
-		m.FechaModificacion = fmt.Sprintf("%s", t.UTC().Format(time.UnixDate))
+		m.FechaCreacion = time_bogota.TiempoBogotaFormato()
+		m.FechaModificacion = time_bogota.TiempoBogotaFormato()
 		m.Ente = int(iden)
+		m.Id = int(iden)
 		id, err = o.Insert(m)
 		o.Commit()
 		return
@@ -145,9 +149,7 @@ func GetAllPersona(query map[string]string, fields []string, sortby []string, or
 func UpdatePersonaById(m *Persona) (err error) {
 	o := orm.NewOrm()
 	v := Persona{Id: m.Id}
-	var t time.Time
-	t = time.Now()
-	m.FechaModificacion = fmt.Sprintf("%s", t.UTC().Format(time.UnixDate))
+	m.FechaModificacion = time_bogota.TiempoBogotaFormato()
 	// ascertain id exists in the database
 	if err = o.Read(&v); err == nil {
 		var num int64
@@ -216,5 +218,4 @@ func GetPersonaByIdOnRef(id int, c *interface{}) (err error) {
 		*c = nil
 		return err
 	}
-
 }
