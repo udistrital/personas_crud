@@ -6,6 +6,7 @@ import (
 	"strings"
 
 	"github.com/astaxie/beego"
+	"github.com/astaxie/beego/logs"
 	"github.com/planesticud/personas_crud/models"
 )
 
@@ -37,13 +38,13 @@ func (c *PersonaEstadoCivilController) Post() {
 			c.Ctx.Output.SetStatus(201)
 			c.Data["json"] = v
 		} else {
-			beego.Error(err)
+			logs.Error(err)
 			//c.Data["development"] = map[string]interface{}{"Code": "400", "Body": err.Error(), "Type": "error"}
 			c.Data["system"] = err
 			c.Abort("400")
 		}
 	} else {
-		beego.Error(err)
+		logs.Error(err)
 		//c.Data["development"] = map[string]interface{}{"Code": "400", "Body": err.Error(), "Type": "error"}
 		c.Data["system"] = err
 		c.Abort("400")
@@ -63,7 +64,7 @@ func (c *PersonaEstadoCivilController) GetOne() {
 	id, _ := strconv.Atoi(idStr)
 	v, err := models.GetPersonaEstadoCivilById(id)
 	if err != nil {
-		beego.Error(err)
+		logs.Error(err)
 		//c.Data["development"] = map[string]interface{}{"Code": "404", "Body": err.Error(), "Type": "error"}
 		c.Data["system"] = err
 		c.Abort("404")
@@ -129,7 +130,7 @@ func (c *PersonaEstadoCivilController) GetAll() {
 
 	l, err := models.GetAllPersonaEstadoCivil(query, fields, sortby, order, offset, limit)
 	if err != nil {
-		beego.Error(err)
+		logs.Error(err)
 		//c.Data["development"] = map[string]interface{}{"Code": "404", "Body": err.Error(), "Type": "error"}
 		c.Data["system"] = err
 		c.Abort("404")
@@ -159,13 +160,13 @@ func (c *PersonaEstadoCivilController) Put() {
 			c.Ctx.Output.SetStatus(200)
 			c.Data["json"] = v
 		} else {
-			beego.Error(err)
+			logs.Error(err)
 			//c.Data["development"] = map[string]interface{}{"Code": "400", "Body": err.Error(), "Type": "error"}
 			c.Data["System"] = err
 			c.Abort("400")
 		}
 	} else {
-		beego.Error(err)
+		logs.Error(err)
 		//c.Data["development"] = map[string]interface{}{"Code": "400", "Body": err.Error(), "Type": "error"}
 		c.Data["System"] = err
 		c.Abort("400")
@@ -186,7 +187,7 @@ func (c *PersonaEstadoCivilController) Delete() {
 	if err := models.DeletePersonaEstadoCivil(id); err == nil {
 		c.Data["json"] = map[string]interface{}{"Id": id}
 	} else {
-		beego.Error(err)
+		logs.Error(err)
 		//c.Data["development"] = map[string]interface{}{"Code": "404", "Body": err.Error(), "Type": "error"}
 		c.Data["System"] = err
 		c.Abort("404")
