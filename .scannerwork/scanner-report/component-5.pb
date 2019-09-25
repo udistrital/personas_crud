@@ -1,0 +1,1 @@
+models/genero.go 2goX¡hrmodels/genero.go

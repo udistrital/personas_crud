@@ -1,0 +1,1 @@
+models/persona_grupo_etnico.go 2goX´hrmodels/persona_grupo_etnico.go
