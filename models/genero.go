@@ -7,6 +7,7 @@ import (
 	"strings"
 
 	"github.com/astaxie/beego/orm"
+	"github.com/udistrital/utils_oas/time_bogota"
 )
 
 type Genero struct {
@@ -16,6 +17,8 @@ type Genero struct {
 	CodigoAbreviacion string  `orm:"column(codigo_abreviacion);null"`
 	Activo            bool    `orm:"column(activo)"`
 	NumeroOrden       float64 `orm:"column(numero_orden);null"`
+	FechaCreacion     string  `orm:"column(fecha_creacion);null"`
+	FechaModificacion string  `orm:"column(fecha_modificacion);null"`
 }
 
 func (t *Genero) TableName() string {
@@ -29,6 +32,8 @@ func init() {
 // AddGenero insert a new Genero into database and returns
 // last inserted Id on success.
 func AddGenero(m *Genero) (id int64, err error) {
+	m.FechaCreacion = time_bogota.TiempoBogotaFormato()
+	m.FechaModificacion = time_bogota.TiempoBogotaFormato()
 	o := orm.NewOrm()
 	id, err = o.Insert(m)
 	return
@@ -128,10 +133,11 @@ func GetAllGenero(query map[string]string, fields []string, sortby []string, ord
 func UpdateGeneroById(m *Genero) (err error) {
 	o := orm.NewOrm()
 	v := Genero{Id: m.Id}
+	m.FechaModificacion = time_bogota.TiempoBogotaFormato()
 	// ascertain id exists in the database
 	if err = o.Read(&v); err == nil {
 		var num int64
-		if num, err = o.Update(m); err == nil {
+		if num, err = o.Update(m, "Nombre", "Descripcion", "CodigoAbreviacion", "Activo", "NumeroOrden", "FechaModificacion"); err == nil {
 			fmt.Println("Number of records updated in database:", num)
 		}
 	}
@@ -152,18 +158,3 @@ func DeleteGenero(id int) (err error) {
 	}
 	return
 }
-
-// GetGeneroById retrieves Genero by Id. Returns error if
-// Id doesn't exist
-/*func GetGeneroByIdOnCh(id int, c chan interface{}) (err error) {
-	o := orm.NewOrm()
-	var v = new(Genero)
-	v = &Genero{Id: id}
-	if err = o.Read(v); err == nil {
-		c <- *v
-		return nil
-	}
-	c <- nil
-	return err
-}
-*/

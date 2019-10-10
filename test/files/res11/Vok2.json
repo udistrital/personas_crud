@@ -1,0 +1,17 @@
+{
+  "title": "Example Schema",
+  "type": "object",
+  "properties": {
+    "Id": { "type": "integer" },
+    "PrimerNombre": { "type": "string" },
+    "SegundoNombre": { "type": "string" },
+    "PrimerApellido": { "type": "string" },
+    "SegundoApellido": { "type": "string" },
+    "FechaNacimiento": { "type": "string" },
+    "Usuario": { "type": "string" },
+    "Ente": { "type": "integer" },
+    "Foto": { "type": "integer" },
+    "FechaCreacion": { "type": "string" },
+    "FechaModificacion": { "type": "string" }
+  }
+}

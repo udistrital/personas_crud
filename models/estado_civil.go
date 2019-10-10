@@ -7,6 +7,7 @@ import (
 	"strings"
 
 	"github.com/astaxie/beego/orm"
+	"github.com/udistrital/utils_oas/time_bogota"
 )
 
 type EstadoCivil struct {
@@ -16,6 +17,8 @@ type EstadoCivil struct {
 	CodigoAbreviacion string  `orm:"column(codigo_abreviacion);null"`
 	Activo            bool    `orm:"column(activo)"`
 	NumeroOrden       float64 `orm:"column(numero_orden);null"`
+	FechaCreacion     string  `orm:"column(fecha_creacion);null"`
+	FechaModificacion string  `orm:"column(fecha_modificacion);null"`
 }
 
 func (t *EstadoCivil) TableName() string {
@@ -29,6 +32,8 @@ func init() {
 // AddEstadoCivil insert a new EstadoCivil into database and returns
 // last inserted Id on success.
 func AddEstadoCivil(m *EstadoCivil) (id int64, err error) {
+	m.FechaCreacion = time_bogota.TiempoBogotaFormato()
+	m.FechaModificacion = time_bogota.TiempoBogotaFormato()
 	o := orm.NewOrm()
 	id, err = o.Insert(m)
 	return
@@ -128,10 +133,11 @@ func GetAllEstadoCivil(query map[string]string, fields []string, sortby []string
 func UpdateEstadoCivilById(m *EstadoCivil) (err error) {
 	o := orm.NewOrm()
 	v := EstadoCivil{Id: m.Id}
+	m.FechaModificacion = time_bogota.TiempoBogotaFormato()
 	// ascertain id exists in the database
 	if err = o.Read(&v); err == nil {
 		var num int64
-		if num, err = o.Update(m); err == nil {
+		if num, err = o.Update(m, "Nombre", "Descripcion", "CodigoAbreviacion", "Activo", "NumeroOrden", "FechaModificacion"); err == nil {
 			fmt.Println("Number of records updated in database:", num)
 		}
 	}
@@ -152,18 +158,3 @@ func DeleteEstadoCivil(id int) (err error) {
 	}
 	return
 }
-
-// GetEstadoCivilByIdOnCh retrieves EstadoCivil by Id from Persona. Returns error if
-// Id doesn't exist and assig nil to channel
-/*func GetEstadoCivilByIdOnCh(id int, c chan interface{}) (err error) {
-	o := orm.NewOrm()
-	var v = new(EstadoCivil)
-	v = &EstadoCivil{Id: id}
-	if err = o.Read(v); err == nil {
-		c <- v
-		return nil
-	}
-	c <- nil
-	return err
-}
-*/

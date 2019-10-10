@@ -1,4 +1,11 @@
 {
   "title": "Example Schema",
-  "type": "array"
+  "type": "object",
+  "properties": {
+    "Id": { "type": "integer" },
+    "PerfilProfesional":	{ "type": "PerfilProfesional" },
+    "Persona":	{ "type": "Persona" },
+    "FechaCreacion": { "type": "string" },
+    "FechaModificacion": { "type": "string" }
+  }
 }
