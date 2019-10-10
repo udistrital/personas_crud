@@ -1,1 +1,0 @@
-¾ controllers/tipo_discapacidad.go 2goXÅhr controllers/tipo_discapacidad.go

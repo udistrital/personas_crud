@@ -1,1 +1,0 @@
-Ç#controllers/persona_grupo_etnico.go 2goXÅhr#controllers/persona_grupo_etnico.go

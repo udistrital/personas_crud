@@ -1,1 +1,0 @@
-½(controllers/persona_tipo_discapacidad.go 2goXÅhr(controllers/persona_tipo_discapacidad.go

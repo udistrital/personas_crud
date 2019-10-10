@@ -36,13 +36,13 @@ func main() {
 		AllowCredentials: true,
 	}))
 
-	logPath := "{\"filename\":\""
+	/*logPath := "{\"filename\":\""
 	logPath += beego.AppConfig.String("logPath")
 	logPath += "\"}"
-	logs.SetLogger(logs.AdapterFile, logPath)
+	logs.SetLogger(logs.AdapterFile, logPath)*/
 
 	apistatus.Init()
-	auditoria.InitMiddleware()
+	//auditoria.InitMiddleware()
 	beego.ErrorController(&customerror.CustomErrorController{})
 	beego.Run()
 }

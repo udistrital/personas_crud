@@ -1,1 +1,0 @@
-ºcontrollers/genero.go 2goXÄhrcontrollers/genero.go
