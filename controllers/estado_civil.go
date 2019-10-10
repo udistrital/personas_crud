@@ -7,7 +7,7 @@ import (
 
 	"github.com/astaxie/beego"
 	"github.com/astaxie/beego/logs"
-	"github.com/planesticud/personas_crud/models"
+	"github.com/udistrital/personas_crud/models"
 )
 
 // EstadoCivilController operations for EstadoCivil
