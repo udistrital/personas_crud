@@ -132,7 +132,6 @@ steps:
     when:
       branch:
       - master
-      - test
       status:
       - failure
       - success
