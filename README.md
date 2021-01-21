@@ -14,7 +14,7 @@ Go version >= 1.8.
 ## Preparación
 Para usar el API, usar el comando:
 
- - `go get github.com/planesticud/personas_crud`
+ - `go get github.com/udistrital/personas_crud`
 
 ## Ejecución
 Definir los valores de las siguientes variables de entorno:
@@ -29,4 +29,4 @@ Definir los valores de las siguientes variables de entorno:
 Ejemplo: API_PERSONAS_HTTP_PORT=8083 PERSONAS_CRUD__PGUSER=user PERSONAS_CRUD__PGPASS=password PERSONAS_CRUD__PGURLS=localhost PERSONAS_CRUD__PGDB=bd PERSONAS_CRUD__SCHEMA=schema_new bee run
 
 ## MODELO
-![image](https://github.com/planesticud/personas_crud/blob/develop/modelo_personas_crud.png).
+![image](https://github.com/udistrital/personas_crud/blob/develop/modelo_personas_crud.png).
