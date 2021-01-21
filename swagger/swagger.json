@@ -15,7 +15,7 @@
     },
     "basePath": "/v1",
     "paths": {
-        "/estado_civil": {
+        "/estado_civil/": {
             "get": {
                 "tags": [
                     "estado_civil"
@@ -67,8 +67,8 @@
                             "$ref": "#/definitions/models.EstadoCivil"
                         }
                     },
-                    "403": {
-                        "description": ""
+                    "404": {
+                        "description": "not found resource"
                     }
                 }
             },
@@ -93,8 +93,8 @@
                     "201": {
                         "description": "{int} models.EstadoCivil"
                     },
-                    "403": {
-                        "description": "body is empty"
+                    "400": {
+                        "description": "the request contains incorrect syntax"
                     }
                 }
             }
@@ -122,8 +122,8 @@
                             "$ref": "#/definitions/models.EstadoCivil"
                         }
                     },
-                    "403": {
-                        "description": ":id is empty"
+                    "404": {
+                        "description": "not found resource"
                     }
                 }
             },
@@ -158,8 +158,8 @@
                             "$ref": "#/definitions/models.EstadoCivil"
                         }
                     },
-                    "403": {
-                        "description": ":id is not int"
+                    "400": {
+                        "description": "the request contains incorrect syntax"
                     }
                 }
             },
@@ -182,13 +182,13 @@
                     "200": {
                         "description": "{string} delete success!"
                     },
-                    "403": {
-                        "description": "id is empty"
+                    "404": {
+                        "description": "not found resource"
                     }
                 }
             }
         },
-        "/genero": {
+        "/genero/": {
             "get": {
                 "tags": [
                     "genero"
@@ -240,8 +240,8 @@
                             "$ref": "#/definitions/models.Genero"
                         }
                     },
-                    "403": {
-                        "description": ""
+                    "404": {
+                        "description": "not found resource"
                     }
                 }
             },
@@ -266,8 +266,8 @@
                     "201": {
                         "description": "{int} models.Genero"
                     },
-                    "403": {
-                        "description": "body is empty"
+                    "400": {
+                        "description": "the request contains incorrect syntax"
                     }
                 }
             }
@@ -295,8 +295,8 @@
                             "$ref": "#/definitions/models.Genero"
                         }
                     },
-                    "403": {
-                        "description": ":id is empty"
+                    "404": {
+                        "description": "not found resource"
                     }
                 }
             },
@@ -331,8 +331,8 @@
                             "$ref": "#/definitions/models.Genero"
                         }
                     },
-                    "403": {
-                        "description": ":id is not int"
+                    "400": {
+                        "description": "the request contains incorrect syntax"
                     }
                 }
             },
@@ -355,13 +355,13 @@
                     "200": {
                         "description": "{string} delete success!"
                     },
-                    "403": {
-                        "description": "id is empty"
+                    "404": {
+                        "description": "not found resource"
                     }
                 }
             }
         },
-        "/grupo_etnico": {
+        "/grupo_etnico/": {
             "get": {
                 "tags": [
                     "grupo_etnico"
@@ -413,8 +413,8 @@
                             "$ref": "#/definitions/models.GrupoEtnico"
                         }
                     },
-                    "403": {
-                        "description": ""
+                    "404": {
+                        "description": "not found resource"
                     }
                 }
             },
@@ -439,8 +439,8 @@
                     "201": {
                         "description": "{int} models.GrupoEtnico"
                     },
-                    "403": {
-                        "description": "body is empty"
+                    "400": {
+                        "description": "the request contains incorrect syntax"
                     }
                 }
             }
@@ -468,8 +468,8 @@
                             "$ref": "#/definitions/models.GrupoEtnico"
                         }
                     },
-                    "403": {
-                        "description": ":id is empty"
+                    "404": {
+                        "description": "not found resource"
                     }
                 }
             },
@@ -504,8 +504,8 @@
                             "$ref": "#/definitions/models.GrupoEtnico"
                         }
                     },
-                    "403": {
-                        "description": ":id is not int"
+                    "400": {
+                        "description": "the request contains incorrect syntax"
                     }
                 }
             },
@@ -528,13 +528,13 @@
                     "200": {
                         "description": "{string} delete success!"
                     },
-                    "403": {
-                        "description": "id is empty"
+                    "404": {
+                        "description": "not found resource"
                     }
                 }
             }
         },
-        "/grupo_sanguineo_persona": {
+        "/grupo_sanguineo_persona/": {
             "get": {
                 "tags": [
                     "grupo_sanguineo_persona"
@@ -586,8 +586,8 @@
                             "$ref": "#/definitions/models.GrupoSanguineoPersona"
                         }
                     },
-                    "403": {
-                        "description": ""
+                    "404": {
+                        "description": "not found resource"
                     }
                 }
             },
@@ -612,8 +612,8 @@
                     "201": {
                         "description": "{int} models.GrupoSanguineoPersona"
                     },
-                    "403": {
-                        "description": "body is empty"
+                    "400": {
+                        "description": "the request contains incorrect syntax"
                     }
                 }
             }
@@ -641,8 +641,8 @@
                             "$ref": "#/definitions/models.GrupoSanguineoPersona"
                         }
                     },
-                    "403": {
-                        "description": ":id is empty"
+                    "404": {
+                        "description": "not found resource"
                     }
                 }
             },
@@ -677,8 +677,8 @@
                             "$ref": "#/definitions/models.GrupoSanguineoPersona"
                         }
                     },
-                    "403": {
-                        "description": ":id is not int"
+                    "400": {
+                        "description": "the request contains incorrect syntax"
                     }
                 }
             },
@@ -701,13 +701,13 @@
                     "200": {
                         "description": "{string} delete success!"
                     },
-                    "403": {
-                        "description": "id is empty"
+                    "404": {
+                        "description": "not found resource"
                     }
                 }
             }
         },
-        "/perfil_profesional": {
+        "/perfil_profesional/": {
             "get": {
                 "tags": [
                     "perfil_profesional"
@@ -759,8 +759,8 @@
                             "$ref": "#/definitions/models.PerfilProfesional"
                         }
                     },
-                    "403": {
-                        "description": ""
+                    "404": {
+                        "description": "not found resource"
                     }
                 }
             },
@@ -785,8 +785,8 @@
                     "201": {
                         "description": "{int} models.PerfilProfesional"
                     },
-                    "403": {
-                        "description": "body is empty"
+                    "400": {
+                        "description": "the request contains incorrect syntax"
                     }
                 }
             }
@@ -814,8 +814,8 @@
                             "$ref": "#/definitions/models.PerfilProfesional"
                         }
                     },
-                    "403": {
-                        "description": ":id is empty"
+                    "404": {
+                        "description": "not found resource"
                     }
                 }
             },
@@ -850,8 +850,8 @@
                             "$ref": "#/definitions/models.PerfilProfesional"
                         }
                     },
-                    "403": {
-                        "description": ":id is not int"
+                    "400": {
+                        "description": "the request contains incorrect syntax"
                     }
                 }
             },
@@ -874,13 +874,13 @@
                     "200": {
                         "description": "{string} delete success!"
                     },
-                    "403": {
-                        "description": "id is empty"
+                    "404": {
+                        "description": "not found resource"
                     }
                 }
             }
         },
-        "/persona": {
+        "/persona/": {
             "get": {
                 "tags": [
                     "persona"
@@ -932,8 +932,8 @@
                             "$ref": "#/definitions/models.Persona"
                         }
                     },
-                    "403": {
-                        "description": ""
+                    "404": {
+                        "description": "not found resource"
                     }
                 }
             },
@@ -958,8 +958,8 @@
                     "201": {
                         "description": "{int} models.Persona"
                     },
-                    "403": {
-                        "description": "body is empty"
+                    "400": {
+                        "description": "the request contains incorrect syntax"
                     }
                 }
             }
@@ -987,8 +987,8 @@
                             "$ref": "#/definitions/models.Persona"
                         }
                     },
-                    "403": {
-                        "description": ":id is empty"
+                    "404": {
+                        "description": "not found resource"
                     }
                 }
             },
@@ -1023,8 +1023,8 @@
                             "$ref": "#/definitions/models.Persona"
                         }
                     },
-                    "403": {
-                        "description": ":id is not int"
+                    "400": {
+                        "description": "the request contains incorrect syntax"
                     }
                 }
             },
@@ -1047,13 +1047,13 @@
                     "200": {
                         "description": "{string} delete success!"
                     },
-                    "403": {
-                        "description": "id is empty"
+                    "404": {
+                        "description": "not found resource"
                     }
                 }
             }
         },
-        "/persona_estado_civil": {
+        "/persona_estado_civil/": {
             "get": {
                 "tags": [
                     "persona_estado_civil"
@@ -1105,8 +1105,8 @@
                             "$ref": "#/definitions/models.PersonaEstadoCivil"
                         }
                     },
-                    "403": {
-                        "description": ""
+                    "404": {
+                        "description": "not found resource"
                     }
                 }
             },
@@ -1131,8 +1131,8 @@
                     "201": {
                         "description": "{int} models.PersonaEstadoCivil"
                     },
-                    "403": {
-                        "description": "body is empty"
+                    "400": {
+                        "description": "the request contains incorrect syntax"
                     }
                 }
             }
@@ -1160,8 +1160,8 @@
                             "$ref": "#/definitions/models.PersonaEstadoCivil"
                         }
                     },
-                    "403": {
-                        "description": ":id is empty"
+                    "404": {
+                        "description": "not found resource"
                     }
                 }
             },
@@ -1196,8 +1196,8 @@
                             "$ref": "#/definitions/models.PersonaEstadoCivil"
                         }
                     },
-                    "403": {
-                        "description": ":id is not int"
+                    "400": {
+                        "description": "the request contains incorrect syntax"
                     }
                 }
             },
@@ -1226,7 +1226,7 @@
                 }
             }
         },
-        "/persona_genero": {
+        "/persona_genero/": {
             "get": {
                 "tags": [
                     "persona_genero"
@@ -1278,8 +1278,8 @@
                             "$ref": "#/definitions/models.PersonaGenero"
                         }
                     },
-                    "403": {
-                        "description": ""
+                    "404": {
+                        "description": "not found resource"
                     }
                 }
             },
@@ -1304,8 +1304,8 @@
                     "201": {
                         "description": "{int} models.PersonaGenero"
                     },
-                    "403": {
-                        "description": "body is empty"
+                    "400": {
+                        "description": "the request contains incorrect syntax"
                     }
                 }
             }
@@ -1333,8 +1333,8 @@
                             "$ref": "#/definitions/models.PersonaGenero"
                         }
                     },
-                    "403": {
-                        "description": ":id is empty"
+                    "404": {
+                        "description": "not found resource"
                     }
                 }
             },
@@ -1369,8 +1369,8 @@
                             "$ref": "#/definitions/models.PersonaGenero"
                         }
                     },
-                    "403": {
-                        "description": ":id is not int"
+                    "400": {
+                        "description": "the request contains incorrect syntax"
                     }
                 }
             },
@@ -1393,13 +1393,13 @@
                     "200": {
                         "description": "{string} delete success!"
                     },
-                    "403": {
-                        "description": "id is empty"
+                    "404": {
+                        "description": "not found resource"
                     }
                 }
             }
         },
-        "/persona_grupo_etnico": {
+        "/persona_grupo_etnico/": {
             "get": {
                 "tags": [
                     "persona_grupo_etnico"
@@ -1451,8 +1451,8 @@
                             "$ref": "#/definitions/models.PersonaGrupoEtnico"
                         }
                     },
-                    "403": {
-                        "description": ""
+                    "404": {
+                        "description": "not found resource"
                     }
                 }
             },
@@ -1477,8 +1477,8 @@
                     "201": {
                         "description": "{int} models.PersonaGrupoEtnico"
                     },
-                    "403": {
-                        "description": "body is empty"
+                    "400": {
+                        "description": "the request contains incorrect syntax"
                     }
                 }
             }
@@ -1506,8 +1506,8 @@
                             "$ref": "#/definitions/models.PersonaGrupoEtnico"
                         }
                     },
-                    "403": {
-                        "description": ":id is empty"
+                    "404": {
+                        "description": "not found resource"
                     }
                 }
             },
@@ -1542,8 +1542,8 @@
                             "$ref": "#/definitions/models.PersonaGrupoEtnico"
                         }
                     },
-                    "403": {
-                        "description": ":id is not int"
+                    "400": {
+                        "description": "the request contains incorrect syntax"
                     }
                 }
             },
@@ -1566,13 +1566,13 @@
                     "200": {
                         "description": "{string} delete success!"
                     },
-                    "403": {
-                        "description": "id is empty"
+                    "404": {
+                        "description": "not found resource"
                     }
                 }
             }
         },
-        "/persona_perfil_profesional": {
+        "/persona_perfil_profesional/": {
             "get": {
                 "tags": [
                     "persona_perfil_profesional"
@@ -1624,8 +1624,8 @@
                             "$ref": "#/definitions/models.PersonaPerfilProfesional"
                         }
                     },
-                    "403": {
-                        "description": ""
+                    "404": {
+                        "description": "not found resource"
                     }
                 }
             },
@@ -1650,8 +1650,8 @@
                     "201": {
                         "description": "{int} models.PersonaPerfilProfesional"
                     },
-                    "403": {
-                        "description": "body is empty"
+                    "400": {
+                        "description": "the request contains incorrect syntax"
                     }
                 }
             }
@@ -1679,8 +1679,8 @@
                             "$ref": "#/definitions/models.PersonaPerfilProfesional"
                         }
                     },
-                    "403": {
-                        "description": ":id is empty"
+                    "404": {
+                        "description": "not found resource"
                     }
                 }
             },
@@ -1715,8 +1715,8 @@
                             "$ref": "#/definitions/models.PersonaPerfilProfesional"
                         }
                     },
-                    "403": {
-                        "description": ":id is not int"
+                    "400": {
+                        "description": "the request contains incorrect syntax"
                     }
                 }
             },
@@ -1739,13 +1739,13 @@
                     "200": {
                         "description": "{string} delete success!"
                     },
-                    "403": {
-                        "description": "id is empty"
+                    "404": {
+                        "description": "not found resource"
                     }
                 }
             }
         },
-        "/persona_tipo_discapacidad": {
+        "/persona_tipo_discapacidad/": {
             "get": {
                 "tags": [
                     "persona_tipo_discapacidad"
@@ -1797,8 +1797,8 @@
                             "$ref": "#/definitions/models.PersonaTipoDiscapacidad"
                         }
                     },
-                    "403": {
-                        "description": ""
+                    "404": {
+                        "description": "not found resource"
                     }
                 }
             },
@@ -1823,8 +1823,8 @@
                     "201": {
                         "description": "{int} models.PersonaTipoDiscapacidad"
                     },
-                    "403": {
-                        "description": "body is empty"
+                    "400": {
+                        "description": "the request contains incorrect syntax"
                     }
                 }
             }
@@ -1852,8 +1852,8 @@
                             "$ref": "#/definitions/models.PersonaTipoDiscapacidad"
                         }
                     },
-                    "403": {
-                        "description": ":id is empty"
+                    "404": {
+                        "description": "not found resource"
                     }
                 }
             },
@@ -1888,8 +1888,8 @@
                             "$ref": "#/definitions/models.PersonaTipoDiscapacidad"
                         }
                     },
-                    "403": {
-                        "description": ":id is not int"
+                    "400": {
+                        "description": "the request contains incorrect syntax"
                     }
                 }
             },
@@ -1912,13 +1912,13 @@
                     "200": {
                         "description": "{string} delete success!"
                     },
-                    "403": {
-                        "description": "id is empty"
+                    "404": {
+                        "description": "not found resource"
                     }
                 }
             }
         },
-        "/relacion_personas": {
+        "/relacion_personas/": {
             "get": {
                 "tags": [
                     "relacion_personas"
@@ -1970,8 +1970,8 @@
                             "$ref": "#/definitions/models.RelacionPersonas"
                         }
                     },
-                    "403": {
-                        "description": ""
+                    "404": {
+                        "description": "not found resource"
                     }
                 }
             },
@@ -1996,8 +1996,8 @@
                     "201": {
                         "description": "{int} models.RelacionPersonas"
                     },
-                    "403": {
-                        "description": "body is empty"
+                    "400": {
+                        "description": "the request contains incorrect syntax"
                     }
                 }
             }
@@ -2025,8 +2025,8 @@
                             "$ref": "#/definitions/models.RelacionPersonas"
                         }
                     },
-                    "403": {
-                        "description": ":id is empty"
+                    "404": {
+                        "description": "not found resource"
                     }
                 }
             },
@@ -2061,8 +2061,8 @@
                             "$ref": "#/definitions/models.RelacionPersonas"
                         }
                     },
-                    "403": {
-                        "description": ":id is not int"
+                    "400": {
+                        "description": "the request contains incorrect syntax"
                     }
                 }
             },
@@ -2085,13 +2085,13 @@
                     "200": {
                         "description": "{string} delete success!"
                     },
-                    "403": {
-                        "description": "id is empty"
+                    "404": {
+                        "description": "not found resource"
                     }
                 }
             }
         },
-        "/tipo_discapacidad": {
+        "/tipo_discapacidad/": {
             "get": {
                 "tags": [
                     "tipo_discapacidad"
@@ -2143,8 +2143,8 @@
                             "$ref": "#/definitions/models.TipoDiscapacidad"
                         }
                     },
-                    "403": {
-                        "description": ""
+                    "404": {
+                        "description": "not found resource"
                     }
                 }
             },
@@ -2169,8 +2169,8 @@
                     "201": {
                         "description": "{int} models.TipoDiscapacidad"
                     },
-                    "403": {
-                        "description": "body is empty"
+                    "400": {
+                        "description": "the request contains incorrect syntax"
                     }
                 }
             }
@@ -2198,8 +2198,8 @@
                             "$ref": "#/definitions/models.TipoDiscapacidad"
                         }
                     },
-                    "403": {
-                        "description": ":id is empty"
+                    "404": {
+                        "description": "not found resource"
                     }
                 }
             },
@@ -2234,8 +2234,8 @@
                             "$ref": "#/definitions/models.TipoDiscapacidad"
                         }
                     },
-                    "403": {
-                        "description": ":id is not int"
+                    "400": {
+                        "description": "the request contains incorrect syntax"
                     }
                 }
             },
@@ -2258,13 +2258,13 @@
                     "200": {
                         "description": "{string} delete success!"
                     },
-                    "403": {
-                        "description": "id is empty"
+                    "404": {
+                        "description": "not found resource"
                     }
                 }
             }
         },
-        "/tipo_relacion_personas": {
+        "/tipo_relacion_personas/": {
             "get": {
                 "tags": [
                     "tipo_relacion_personas"
@@ -2316,8 +2316,8 @@
                             "$ref": "#/definitions/models.TipoRelacionPersonas"
                         }
                     },
-                    "403": {
-                        "description": ""
+                    "404": {
+                        "description": "not found resource"
                     }
                 }
             },
@@ -2342,8 +2342,8 @@
                     "201": {
                         "description": "{int} models.TipoRelacionPersonas"
                     },
-                    "403": {
-                        "description": "body is empty"
+                    "400": {
+                        "description": "the request contains incorrect syntax"
                     }
                 }
             }
@@ -2371,8 +2371,8 @@
                             "$ref": "#/definitions/models.TipoRelacionPersonas"
                         }
                     },
-                    "403": {
-                        "description": ":id is empty"
+                    "404": {
+                        "description": "not found resource"
                     }
                 }
             },
@@ -2407,8 +2407,8 @@
                             "$ref": "#/definitions/models.TipoRelacionPersonas"
                         }
                     },
-                    "403": {
-                        "description": ":id is not int"
+                    "400": {
+                        "description": "the request contains incorrect syntax"
                     }
                 }
             },
@@ -2431,8 +2431,8 @@
                     "200": {
                         "description": "{string} delete success!"
                     },
-                    "403": {
-                        "description": "id is empty"
+                    "404": {
+                        "description": "not found resource"
                     }
                 }
             }
@@ -2450,6 +2450,12 @@
                     "type": "string"
                 },
                 "Descripcion": {
+                    "type": "string"
+                },
+                "FechaCreacion": {
+                    "type": "string"
+                },
+                "FechaModificacion": {
                     "type": "string"
                 },
                 "Id": {
@@ -2478,6 +2484,12 @@
                 "Descripcion": {
                     "type": "string"
                 },
+                "FechaCreacion": {
+                    "type": "string"
+                },
+                "FechaModificacion": {
+                    "type": "string"
+                },
                 "Id": {
                     "type": "integer",
                     "format": "int64"
@@ -2504,6 +2516,12 @@
                 "Descripcion": {
                     "type": "string"
                 },
+                "FechaCreacion": {
+                    "type": "string"
+                },
+                "FechaModificacion": {
+                    "type": "string"
+                },
                 "Id": {
                     "type": "integer",
                     "format": "int64"
@@ -2522,6 +2540,12 @@
             "type": "object",
             "properties": {
                 "FactorRh": {
+                    "type": "string"
+                },
+                "FechaCreacion": {
+                    "type": "string"
+                },
+                "FechaModificacion": {
                     "type": "string"
                 },
                 "GrupoSanguineo": {
@@ -2549,6 +2573,12 @@
                 "Descripcion": {
                     "type": "string"
                 },
+                "FechaCreacion": {
+                    "type": "string"
+                },
+                "FechaModificacion": {
+                    "type": "string"
+                },
                 "Id": {
                     "type": "integer",
                     "format": "int64"
@@ -2570,9 +2600,15 @@
                     "type": "integer",
                     "format": "int64"
                 },
+                "FechaCreacion": {
+                    "type": "string"
+                },
+                "FechaModificacion": {
+                    "type": "string"
+                },
                 "FechaNacimiento": {
                     "type": "string",
-                    "format": "string"
+                    "format": "datetime"
                 },
                 "Foto": {
                     "type": "integer",
@@ -2606,6 +2642,12 @@
                 "EstadoCivil": {
                     "$ref": "#/definitions/models.EstadoCivil"
                 },
+                "FechaCreacion": {
+                    "type": "string"
+                },
+                "FechaModificacion": {
+                    "type": "string"
+                },
                 "Id": {
                     "type": "integer",
                     "format": "int64"
@@ -2619,6 +2661,12 @@
             "title": "PersonaGenero",
             "type": "object",
             "properties": {
+                "FechaCreacion": {
+                    "type": "string"
+                },
+                "FechaModificacion": {
+                    "type": "string"
+                },
                 "Genero": {
                     "$ref": "#/definitions/models.Genero"
                 },
@@ -2635,6 +2683,12 @@
             "title": "PersonaGrupoEtnico",
             "type": "object",
             "properties": {
+                "FechaCreacion": {
+                    "type": "string"
+                },
+                "FechaModificacion": {
+                    "type": "string"
+                },
                 "GrupoEtnico": {
                     "$ref": "#/definitions/models.GrupoEtnico"
                 },
@@ -2651,6 +2705,12 @@
             "title": "PersonaPerfilProfesional",
             "type": "object",
             "properties": {
+                "FechaCreacion": {
+                    "type": "string"
+                },
+                "FechaModificacion": {
+                    "type": "string"
+                },
                 "Id": {
                     "type": "integer",
                     "format": "int64"
@@ -2670,6 +2730,12 @@
                 "Activo": {
                     "type": "boolean"
                 },
+                "FechaCreacion": {
+                    "type": "string"
+                },
+                "FechaModificacion": {
+                    "type": "string"
+                },
                 "Id": {
                     "type": "integer",
                     "format": "int64"
@@ -2686,6 +2752,12 @@
             "title": "RelacionPersonas",
             "type": "object",
             "properties": {
+                "FechaCreacion": {
+                    "type": "string"
+                },
+                "FechaModificacion": {
+                    "type": "string"
+                },
                 "Id": {
                     "type": "integer",
                     "format": "int64"
@@ -2714,6 +2786,12 @@
                 "Descripcion": {
                     "type": "string"
                 },
+                "FechaCreacion": {
+                    "type": "string"
+                },
+                "FechaModificacion": {
+                    "type": "string"
+                },
                 "Id": {
                     "type": "integer",
                     "format": "int64"
@@ -2738,6 +2816,12 @@
                     "type": "string"
                 },
                 "Descripcion": {
+                    "type": "string"
+                },
+                "FechaCreacion": {
+                    "type": "string"
+                },
+                "FechaModificacion": {
                     "type": "string"
                 },
                 "Id": {

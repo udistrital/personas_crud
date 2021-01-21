@@ -1,4 +1,12 @@
 {
   "title": "Example Schema",
-  "type": "array"
+  "type": "object",
+  "properties": {
+    "Id": { "type": "integer" },
+    "FactorRh": { "type": "string" },
+    "GrupoSanguineo": { "type": "string" },
+    "Persona":	{ "type": "Persona" },
+    "FechaCreacion": { "type": "string" },
+    "FechaModificacion": { "type": "string" }
+  }
 }
