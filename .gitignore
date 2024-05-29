@@ -1,3 +1,5 @@
 personas_crud
 lastupdate.tmp
 .scannerwork/
+go.mod
+go.sum
