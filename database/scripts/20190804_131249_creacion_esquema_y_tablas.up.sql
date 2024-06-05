@@ -529,3 +529,7 @@ ALTER TABLE persona.relacion_personas ADD CONSTRAINT fk_relacion_personas_tipo_r
 REFERENCES persona.tipo_relacion_personas (id) MATCH FULL
 ON DELETE NO ACTION ON UPDATE NO ACTION;
 -- ddl-end --
+
+GRANT USAGE ON SCHEMA persona TO desarrollooas;
+GRANT SELECT, INSERT, UPDATE, DELETE ON ALL TABLES IN SCHEMA persona TO desarrollooas;
+GRANT USAGE, SELECT ON ALL SEQUENCES IN SCHEMA persona TO desarrollooas;
